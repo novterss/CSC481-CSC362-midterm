@@ -416,11 +416,11 @@
               <div class="db-table-wrapper">
                 <table class="db-table">
                   <thead>
-                    <tr><th class="pk-col"><u>OrderID</u></th><th>OrderDate</th><th>CustID</th><th>CustName</th></tr>
+                    <tr><th class="pk-col"><u>OrderID</u></th><th>OrderDate</th><th>CustomerID</th><th>CustomerName</th><th>CustomerAddress</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td class="pk-col">1001</td><td>02/10/69</td><td>C01</td><td>สมชาย</td></tr>
-                    <tr><td class="pk-col">1002</td><td>02/10/69</td><td>C02</td><td>สมศรี</td></tr>
+                    <tr><td class="pk-col">1001</td><td>02/10/69</td><td>C01</td><td>สมชาย</td><td>กทม.</td></tr>
+                    <tr><td class="pk-col">1002</td><td>02/10/69</td><td>C02</td><td>สมศรี</td><td>เชียงใหม่</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -446,7 +446,7 @@
               <div class="db-table-wrapper">
                 <table class="db-table">
                   <thead>
-                    <tr><th class="pk-col"><u>OrderID*</u></th><th class="pk-col"><u>ProductID*</u></th><th>Qty</th></tr>
+                    <tr><th class="pk-col"><u>OrderID*</u></th><th class="pk-col"><u>ProductID*</u></th><th>Quantity</th></tr>
                   </thead>
                   <tbody>
                     <tr><td class="pk-col">1001</td><td class="pk-col">P01</td><td>5</td></tr>
@@ -458,7 +458,7 @@
             </div>
           </div>
           <p style="font-size: 0.88rem; color: #fca5a5; margin-top: 0.5rem;">
-            ⚠️ <strong>ทำไม 2NF ยังไม่พอ?</strong> ดูที่ตาราง <code>ORDER</code>: ฟิลด์ <code>CustomerName</code> มันไม่ได้ขึ้นตรงกับ OrderID แต่ขึ้นกับ CustomerID ที่ไม่ใช่คีย์หลัก! เกิดเป็น <em>Transitive Dependency</em>
+            ⚠️ <strong>ทำไม 2NF ยังไม่พอ?</strong> ดูที่ตาราง <code>ORDER</code>: ฟิลด์ <code>CustomerName</code> และ <code>CustomerAddress</code> มันไม่ได้ขึ้นตรงกับ OrderID แต่แอบขึ้นกับ <code>CustomerID</code> (ซึ่งเป็นแค่ฟิลด์ธรรมดาไม่ใช่คีย์หลัก!) เกิดเป็นปัญหา <em>Transitive Dependency</em> จึงต้องส่งต่อไปจัดการใน <strong>3NF</strong>
           </p>
         </div>
 
