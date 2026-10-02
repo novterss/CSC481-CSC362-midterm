@@ -10,7 +10,22 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<!-- MOBILE TOP HEADER (Visible on Mobile & Tablet <= 992px) -->
+<header class="mobile-header">
+  <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
+    <span class="hamburger-icon">☰</span>
+    <span class="menu-text">สารบัญวิชา</span>
+  </button>
+  <div class="mobile-brand">
+    <span class="brand-emoji">🎓</span> RSU Exam Hub
+  </div>
+  <button class="mobile-theme-btn" id="mobileThemeBtn" onclick="toggleTheme()" title="สลับโหมดสี">
+    🌓
+  </button>
+</header>
+
+<!-- BACKDROP OVERLAY FOR MOBILE SIDEBAR -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
 
 <div class="app-container">
   <!-- SIDEBAR NAVIGATION -->
@@ -21,6 +36,7 @@
         <h1>RSU Exam Hub</h1>
         <div class="brand-subtitle">Midterm 2569 • Room 9N-200</div>
       </div>
+      <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close Menu">✕</button>
     </div>
 
     <ul class="nav-links">

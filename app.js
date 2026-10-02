@@ -22,6 +22,32 @@ function updateThemeBtnText(theme) {
   }
 }
 
+// Mobile Sidebar Controls
+function openSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  if (sidebar) sidebar.classList.add('open');
+  if (overlay) overlay.classList.add('active');
+  document.body.style.overflow = 'hidden'; // prevent bg scroll on mobile
+}
+
+function closeSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  if (sidebar) sidebar.classList.remove('open');
+  if (overlay) overlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  if (sidebar && sidebar.classList.contains('open')) {
+    closeSidebar();
+  } else {
+    openSidebar();
+  }
+}
+
 // Navigation Tab Switcher
 function switchTab(tabId) {
   // Update nav buttons
@@ -33,6 +59,11 @@ function switchTab(tabId) {
   document.querySelectorAll('.content-section').forEach(sec => {
     sec.style.display = sec.id === tabId ? 'block' : 'none';
   });
+
+  // Auto-close sidebar on mobile/iPad after selecting a tab
+  if (window.innerWidth <= 992) {
+    closeSidebar();
+  }
 
   // Scroll to top of main wrapper
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -374,4 +405,20 @@ window.addEventListener('DOMContentLoaded', () => {
       switchTab(tabId);
     });
   });
+
+  // Mobile menu triggers
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', toggleSidebar);
+  }
+
+  const sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
+  if (sidebarCloseBtn) {
+    sidebarCloseBtn.addEventListener('click', closeSidebar);
+  }
+
+  const sidebarOverlay = document.getElementById('sidebarOverlay');
+  if (sidebarOverlay) {
+    sidebarOverlay.addEventListener('click', closeSidebar);
+  }
 });
