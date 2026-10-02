@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RSU Midterm Exam Study Hub 🚀 | CSC362 & CSC481</title>
+  <meta name="description" content="คู่มือติวสอบกลางภาคแบบเจาะลึก Step-by-Step วิชา CSC362 และ CSC481 มหาวิทยาลัยรังสิต พร้อมแบบฝึกหัดคำนวณและข้อสอบวิเคราะห์">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app-container">
+  <!-- SIDEBAR NAVIGATION -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand-header">
+      <div class="brand-icon">🎓</div>
+      <div class="brand-title">
+        <h1>RSU Exam Hub</h1>
+        <div class="brand-subtitle">Midterm 2569 • Room 9N-200</div>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li class="nav-item">
+        <button class="nav-btn active" data-tab="tab-overview">
+          <span>📌 ตารางสอบ & ภาพรวม</span>
+        </button>
+      </li>
+
+      <li class="nav-section-title">วิชาเช้า: CSC362 (09:00 - 12:00)</li>
+      <li class="nav-item">
+        <button class="nav-btn" data-tab="tab-csc362-norm">
+          <span>1. Normalization (1NF->3NF)</span>
+          <span class="badge">15 คะแนน</span>
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-btn" data-tab="tab-csc362-erd">
+          <span>2. ออกแบบ ER Diagram</span>
+          <span class="badge">15 คะแนน</span>
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-btn" data-tab="tab-csc362-mapping">
+          <span>3. แปลง ERD เป็นตาราง</span>
+          <span class="badge">15 คะแนน</span>
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-btn" data-tab="tab-csc362-keys">
+          <span>4. Keys & Integrity</span>
+          <span class="badge">15 คะแนน</span>
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-btn" data-tab="tab-csc362-quiz">
+          <span>✍️ ซ้อมควิซ CSC362</span>
+        </button>
+      </li>
+
+      <li class="nav-section-title">วิชาบ่าย: CSC481 (13:00 - 16:00)</li>
+      <li class="nav-item">
+        <button class="nav-btn" data-tab="tab-csc481-sdlc">
+          <span>1. SDLC & Waterfall vs Agile</span>
+          <span class="badge">10 คะแนน</span>
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-btn" data-tab="tab-csc481-swot">
+          <span>2. Feasibility & SWOT/TOWS</span>
+          <span class="badge">10 คะแนน</span>
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-btn" data-tab="tab-csc481-cpm">
+          <span>3. คำนวณ Critical Path (CPM)</span>
+          <span class="badge">ออกชัวร์!</span>
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-btn" data-tab="tab-csc481-dfd">
+          <span>4. วาด DFD & กฎเหล็ก</span>
+          <span class="badge">10 คะแนน</span>
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-btn" data-tab="tab-csc481-fishbone">
+          <span>5. ผังก้างปลา (Fishbone)</span>
+          <span class="badge">10 คะแนน</span>
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-btn" data-tab="tab-csc481-quiz">
+          <span>✍️ ควิซ 15 ข้อ CSC481</span>
+        </button>
+      </li>
+
+      <li class="nav-section-title">ตัวช่วยเร่งด่วน</li>
+      <li class="nav-item">
+        <button class="nav-btn" data-tab="tab-cheatsheet">
+          <span>⚡ สรุปย่อ 5 นาทีสุดท้าย</span>
+        </button>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <div class="exam-pill">
+        <div class="pulse-dot"></div>
+        <div>สอบพรุ่งนี้ 3 ต.ค. 2569</div>
+      </div>
+      <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()">
+        ☀️ โหมดสว่าง (Light Mode)
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT AREA -->
+  <main class="main-wrapper">
+    <!-- Top Alert Banner -->
+    <div class="exam-alert-bar">
+      <div class="exam-alert-info">
+        <h2>🔥 ศึกใหญ่สอบกลางภาค 2 วิชาติด (ห้อง 9N-200)</h2>
+        <p>เน้นการ "วิเคราะห์และออกแบบ" ไม่ใช่ท่องจำทฤษฎีไปตอบ</p>
+      </div>
+      <div class="exam-badge-group">
+        <div class="exam-tag morning">🌅 เช้า 09:00 - 12:00: CSC362 (4 ข้อ 60 คะแนน)</div>
+        <div class="exam-tag afternoon">🌇 บ่าย 13:00 - 16:00: CSC481 (6 ข้อ 60 คะแนน)</div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB: OVERVIEW & EXAM RULES -->
+    <!-- ========================================== -->
+    <section id="tab-overview" class="content-section">
+      <div class="section-header">
+        <span class="section-tag">คู่มือเตรียมตัว</span>
+        <h2 class="section-title">กฎระเบียบห้องสอบ & แผนรับมือ 2 วิชาติด</h2>
+        <p class="section-desc">เตรียมตัวให้พร้อมเพื่อไม่ให้เสียสมาธิหรือพลาดเรื่องระเบียบการสอบ</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h3>📋 กฎเหล็กในห้องสอบ 9N-200</h3>
+            <span class="card-number">!</span>
+          </div>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.92rem; color: var(--text-secondary);">
+            <li>✍️ <strong>1. เซ็นชื่อเข้าสอบ:</strong> ที่หน้าห้องสอบในกระดาษที่แจ้งเลขที่นั่งสอบ</li>
+            <li>🪪 <strong>2. เตรียมบัตร:</strong> แสดงบัตรนักศึกษา และ/หรือ บัตรประชาชนก่อนเข้าห้องสอบ</li>
+            <li>📵 <strong>3. ปิดมือถือ:</strong> นำไปวางบนเวทีตำแหน่งตรงกับเลขที่นั่ง ห้ามพกมือถือ/โน้ตบุ๊กไปที่โต๊ะสอบ</li>
+            <li>🚫 <strong>4. ห้ามออกห้องน้ำ:</strong> ระหว่างสอบ ไม่อนุญาตให้ออกไปเข้าห้องน้ำเด็ดขาด (เข้าให้เรียบร้อยก่อน 09:00 และ 13:00)</li>
+            <li>📤 <strong>5. ส่งข้อสอบ:</strong> ส่งหน้าเวที รับมือถือคืน และคืนกระดาษเลขที่นั่งไว้ที่เดิม</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>🎯 กลยุทธ์การทำข้อสอบ (ข้อเขียน/วิเคราะห์)</h3>
+            <span class="card-number">💡</span>
+          </div>
+          <div class="callout tip">
+            <strong>คำเตือนจากอาจารย์:</strong> "อย่าลืมเข้าใจว่าไม่ใช่ท่องทฤษฎีไปตอบ แต่เป็นเรื่องของการวิเคราะห์และการออกแบบ"
+          </div>
+          <p style="font-size: 0.9rem; color: var(--text-secondary);">
+            • <strong>CSC362 (วิชาเช้า 4 ข้อ 180 นาที):</strong> ตกข้อละ 40-45 นาที! วาด ERD และเขียน Normalization ให้เป็นระเบียบ ขีดเส้นใต้ Primary Key เสมอ<br><br>
+            • <strong>CSC481 (วิชาบ่าย 6 ข้อ 180 นาที):</strong> ตกข้อละ 25-30 นาที! วาด Network Diagram หา Critical Path อย่างแม่นยำ และเขียน Context Diagram ให้ถูกกฎ
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB: CSC362 - NORMALIZATION -->
+    <!-- ========================================== -->
+    <section id="tab-csc362-norm" class="content-section" style="display: none;">
+      <div class="section-header">
+        <span class="section-tag">CSC362 • ข้อที่ 4 (15 คะแนนเต็ม)</span>
+        <h2 class="section-title">Normalization Masterclass (UNF -> 1NF -> 2NF -> 3NF)</h2>
+        <p class="section-desc">ขั้นตอนมาตรฐานในการแตกตารางเพื่อกำจัดความซ้ำซ้อนและ Anomaly (Insert, Update, Delete)</p>
+      </div>
+
+      <!-- Diagram Pipeline -->
+      <div class="diagram-container">
+        <svg class="diagram-svg" viewBox="0 0 900 130" xmlns="http://www.w3.org/2000/svg">
+          <!-- UNF -->
+          <rect x="20" y="25" width="180" height="80" rx="12" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+          <text x="110" y="55" fill="#f8fafc" font-size="16" font-weight="bold" text-anchor="middle">UNF (Unnormalized)</text>
+          <text x="110" y="80" fill="#94a3b8" font-size="12" text-anchor="middle">ตารางรวม มี Repeating Group</text>
+
+          <!-- Arrow 1 -->
+          <path d="M 205 65 L 245 65" stroke="#f59e0b" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+          <text x="225" y="55" fill="#f59e0b" font-size="11" text-anchor="middle">กำจัด Multi-value</text>
+
+          <!-- 1NF -->
+          <rect x="250" y="25" width="180" height="80" rx="12" fill="#1e293b" stroke="#06b6d4" stroke-width="2"/>
+          <text x="340" y="55" fill="#67e8f9" font-size="16" font-weight="bold" text-anchor="middle">1NF (First Normal)</text>
+          <text x="340" y="80" fill="#94a3b8" font-size="12" text-anchor="middle">ทุกช่องเป็น Atomic Value + PK</text>
+
+          <!-- Arrow 2 -->
+          <path d="M 435 65 L 475 65" stroke="#f59e0b" stroke-width="3" fill="none"/>
+          <text x="455" y="55" fill="#f59e0b" font-size="11" text-anchor="middle">แก้ Partial</text>
+
+          <!-- 2NF -->
+          <rect x="480" y="25" width="180" height="80" rx="12" fill="#1e293b" stroke="#6366f1" stroke-width="2"/>
+          <text x="570" y="55" fill="#a5b4fc" font-size="16" font-weight="bold" text-anchor="middle">2NF (Second Normal)</text>
+          <text x="570" y="80" fill="#94a3b8" font-size="12" text-anchor="middle">ไม่มี Partial Dependency</text>
+
+          <!-- Arrow 3 -->
+          <path d="M 665 65 L 705 65" stroke="#f59e0b" stroke-width="3" fill="none"/>
+          <text x="685" y="55" fill="#f59e0b" font-size="11" text-anchor="middle">แก้ Transitive</text>
+
+          <!-- 3NF -->
+          <rect x="710" y="25" width="170" height="80" rx="12" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+          <text x="795" y="55" fill="#6ee7b7" font-size="16" font-weight="bold" text-anchor="middle">3NF (Third Normal)</text>
+          <text x="795" y="80" fill="#94a3b8" font-size="12" text-anchor="middle">ไม่มี Transitive Dependency</text>
+        </svg>
+      </div>
+
+      <!-- Step By Step Walkthrough -->
+      <div class="step-pipeline">
+        <!-- Step 1 -->
+        <div class="step-card">
+          <div class="step-badge nf1">ขั้นตอนที่ 1: ทำ 1NF</div>
+          <h3>กำจัด Repeating Groups & กำหนด Primary Key</h3>
+          <p style="color: var(--text-secondary); margin: 0.4rem 0;">
+            • ในเอกสารบิล/ใบเสร็จ 1 ใบ จะมีรายการสินค้าหลายรายการ ทำให้เกิดข้อมูลซ้ำซ้อน<br>
+            • <strong>วิธีทำ 1NF:</strong> แตกให้ทุกรายการสินค้าเป็น 1 แถวแยกเดี่ยว และกำหนด Composite Primary Key ร่วมกันระหว่าง <code>OrderID</code> + <code>ProductID</code>
+          </p>
+          <div class="code-box">
+            <strong>1NF Relation:</strong><br>
+            ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerName, CustomerAddress, <span class="key-pk">ProductID</span>, ProductName, UnitPrice, Quantity)
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card">
+          <div class="step-badge nf2">ขั้นตอนที่ 2: ทำ 2NF</div>
+          <h3>กำจัด "Partial Dependency" (ความขึ้นต่อคีย์หลักเพียงบางส่วน)</h3>
+          <div class="callout warning">
+            <strong>ความหมายของ Partial Dependency:</strong> เมื่อ Primary Key เป็น Composite Key (เช่น OrderID + ProductID) แต่มีฟิลด์อื่นไปขึ้นตรงกับแค่ตัวใดตัวหนึ่ง เช่น:
+            <br>• <code>OrderID</code> -> <code>OrderDate, CustomerID, CustomerName, CustomerAddress</code> (ไม่เกี่ยวกับ ProductID เลย!)
+            <br>• <code>ProductID</code> -> <code>ProductName, UnitPrice</code> (ไม่เกี่ยวกับ OrderID เลย!)
+            <br>• <code>OrderID, ProductID</code> -> <code>Quantity</code> (อันนี้ Full Dependency ผ่าน!)
+          </div>
+          <p style="color: var(--text-secondary);"><strong>วิธีแก้:</strong> แตกออกเป็น 3 ตารางเพื่อดึงฟิลด์ที่ขึ้นกับคีย์บางส่วนออกไป:</p>
+          <div class="code-box">
+            <strong>2NF Tables:</strong><br>
+            1. ORDER (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerName, CustomerAddress)<br>
+            2. PRODUCT (<span class="key-pk">ProductID</span>, ProductName, UnitPrice)<br>
+            3. ORDER_DETAIL (<span class="key-pk">OrderID</span>*, <span class="key-pk">ProductID</span>*, Quantity)
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card active-step">
+          <div class="step-badge nf3">ขั้นตอนที่ 3: ทำ 3NF (ขั้นตอนสุดท้าย ได้คะแนนเต็ม!)</div>
+          <h3>กำจัด "Transitive Dependency" (ความขึ้นต่อกันระหว่างฟิลด์ที่ไม่ใช่คีย์)</h3>
+          <div class="callout danger">
+            <strong>ความหมายของ Transitive Dependency (A -> B -> C):</strong><br>
+            ดูที่ตาราง <code>ORDER</code>: ฟิลด์ <code>OrderID</code> (คีย์) -> <code>CustomerID</code> (ฟิลด์ธรรมดา) -> <code>CustomerName, CustomerAddress</code> (ฟิลด์ธรรมดา)<br>
+            *CustomerName และ Address มันไม่ได้ขึ้นตรงกับ OrderID แต่ขึ้นกับ CustomerID ต่างหาก!*
+          </div>
+          <p style="color: var(--text-secondary);"><strong>วิธีแก้:</strong> ดึง <code>CustomerID</code> และข้อมูลลูกค้าแยกไปเป็นตาราง <code>CUSTOMER</code> ต่างหาก:</p>
+          <div class="code-box">
+            <strong>3NF Tables (สมบูรณ์ 100%):</strong><br>
+            1. <span class="highlight">CUSTOMER</span> (<span class="key-pk">CustomerID</span>, CustomerName, CustomerAddress)<br>
+            2. <span class="highlight">ORDER</span> (<span class="key-pk">OrderID</span>, OrderDate, <span class="key-fk">CustomerID*</span>)<br>
+            3. <span class="highlight">PRODUCT</span> (<span class="key-pk">ProductID</span>, ProductName, UnitPrice)<br>
+            4. <span class="highlight">ORDER_DETAIL</span> (<span class="key-pk">OrderID*</span>, <span class="key-pk">ProductID*</span>, Quantity)
+          </div>
+          <div class="callout tip">
+            <strong>ทริคตอบข้อสอบให้ได้คะแนนเต็ม:</strong><br>
+            1. ขีดเส้นใต้ (<span style="text-decoration: underline;">Underline</span>) ใต้ Primary Key ทุกตัว<br>
+            2. ใส่เครื่องหมายดอกจัน <code>*</code> หรือเขียนกำกับ (FK) ชัดเจน<br>
+            3. ตั้งชื่อตารางให้สื่อความหมาย (Meaningful name)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB: CSC362 - ERD -->
+    <!-- ========================================== -->
+    <section id="tab-csc362-erd" class="content-section" style="display: none;">
+      <div class="section-header">
+        <span class="section-tag">CSC362 • ข้อที่ 2 (15 คะแนนเต็ม)</span>
+        <h2 class="section-title">คู่มือการออกแบบ ER Diagram (Chen & Crow's Foot)</h2>
+        <p class="section-desc">การตีโจทย์สถานการณ์ธุรกิจเป็น Entity, Attributes และ Relationships</p>
+      </div>
+
+      <!-- ERD SVG Illustration -->
+      <div class="diagram-container">
+        <svg class="diagram-svg" viewBox="0 0 850 260" xmlns="http://www.w3.org/2000/svg">
+          <!-- Entity CUSTOMER -->
+          <rect x="50" y="90" width="160" height="70" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+          <text x="130" y="132" fill="#f8fafc" font-size="18" font-weight="bold" text-anchor="middle">CUSTOMER</text>
+
+          <!-- Attributes of CUSTOMER -->
+          <ellipse cx="60" cy="30" rx="55" ry="22" fill="#0f172a" stroke="#f43f5e" stroke-width="2"/>
+          <text x="60" y="35" fill="#f43f5e" font-size="12" font-weight="bold" text-anchor="middle" text-decoration="underline">CustomerID (PK)</text>
+          <line x1="80" y1="52" x2="100" y2="90" stroke="#64748b" stroke-width="1.5"/>
+
+          <ellipse cx="180" cy="30" rx="50" ry="20" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+          <text x="180" y="34" fill="#cbd5e1" font-size="12" text-anchor="middle">CustName</text>
+          <line x1="165" y1="50" x2="150" y2="90" stroke="#64748b" stroke-width="1.5"/>
+
+          <!-- Relationship PLACES -->
+          <polygon points="360,125 420,80 480,125 420,170" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
+          <text x="420" y="130" fill="#e9d5ff" font-size="14" font-weight="bold" text-anchor="middle">PLACES</text>
+
+          <!-- Connectors with Cardinality -->
+          <line x1="210" y1="125" x2="360" y2="125" stroke="#94a3b8" stroke-width="2"/>
+          <text x="240" y="115" fill="#38bdf8" font-size="16" font-weight="bold">1</text>
+
+          <line x1="480" y1="125" x2="630" y2="125" stroke="#94a3b8" stroke-width="2"/>
+          <text x="600" y="115" fill="#38bdf8" font-size="16" font-weight="bold">M</text>
+
+          <!-- Entity ORDER -->
+          <rect x="630" y="90" width="160" height="70" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+          <text x="710" y="132" fill="#f8fafc" font-size="18" font-weight="bold" text-anchor="middle">ORDER</text>
+
+          <!-- Attributes of ORDER -->
+          <ellipse cx="660" cy="210" rx="55" ry="22" fill="#0f172a" stroke="#f43f5e" stroke-width="2"/>
+          <text x="660" y="215" fill="#f43f5e" font-size="12" font-weight="bold" text-anchor="middle" text-decoration="underline">OrderID (PK)</text>
+          <line x1="680" y1="188" x2="700" y2="160" stroke="#64748b" stroke-width="1.5"/>
+
+          <ellipse cx="780" cy="210" rx="50" ry="20" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+          <text x="780" y="214" fill="#cbd5e1" font-size="12" text-anchor="middle">OrderDate</text>
+          <line x1="765" y1="190" x2="750" y2="160" stroke="#64748b" stroke-width="1.5"/>
+        </svg>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h3>🏷️ ชนิดของ Attributes ในข้อสอบ</h3>
+            <span class="card-number">A</span>
+          </div>
+          <table class="custom-table">
+            <thead>
+              <tr><th>ประเภท</th><th>สัญลักษณ์</th><th>ตัวอย่าง</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Simple / Atomic</strong></td><td>วงรีเส้นเดี่ยว</td><td>Salary, Gender</td></tr>
+              <tr><td><strong>Composite</strong></td><td>วงรีกิ่งย่อย</td><td>Name (Fname, Lname)</td></tr>
+              <tr><td><strong>Multi-valued</strong></td><td>วงรี 2 ชั้น (Double)</td><td>Phone_Number, Skills</td></tr>
+              <tr><td><strong>Derived</strong></td><td>วงรีเส้นประ (Dashed)</td><td>Age (คำนวณจาก DOB)</td></tr>
+              <tr><td><strong>Primary Key</strong></td><td>วงรีขีดเส้นใต้</td><td>CustomerID, StudentID</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>🏢 Strong vs Weak Entity</h3>
+            <span class="card-number">B</span>
+          </div>
+          <div style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6;">
+            <p>• <strong>Strong Entity (เอนทิตีปกติ):</strong> อยู่ได้ด้วยตัวเอง มี Primary Key ของตนเอง เช่น <code>EMPLOYEE</code>, <code>STUDENT</code> (วาดกรอบสี่เหลี่ยมเส้นเดี่ยว)</p>
+            <br>
+            <p>• <strong>Weak Entity (เอนทิตีอ่อนแอ):</strong> อยู่คนเดียวไม่ได้ ต้องพึ่งพาการมีอยู่ของ Strong Entity (Existence Dependent) และไม่มี Primary Key ที่สมบูรณ์ในตัวเอง ต้องยืม PK ของตัวแม่มาร่วมเป็น Partial Key เช่น <code>DEPENDENT</code> (ข้อมูลบุตรของพนักงาน) (วาดกรอบสี่เหลี่ยมเส้นคู่ Double Rectangle)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB: CSC362 - MAPPING -->
+    <!-- ========================================== -->
+    <section id="tab-csc362-mapping" class="content-section" style="display: none;">
+      <div class="section-header">
+        <span class="section-tag">CSC362 • ข้อที่ 3 (15 คะแนนเต็ม)</span>
+        <h2 class="section-title">การแปลง ER Diagram เป็น Relational Schema (Tables)</h2>
+        <p class="section-desc">กฎตายตัว 3 ข้อในการแปลงความสัมพันธ์ 1:1, 1:M, M:N ให้ได้ตารางที่ถูกต้อง</p>
+      </div>
+
+      <div class="grid-3">
+        <!-- 1:M -->
+        <div class="card">
+          <div class="card-header">
+            <h3>1 : M (หนึ่งต่อกลุ่ม)</h3>
+            <span class="card-number">1</span>
+          </div>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">
+            <strong>สถานการณ์:</strong> แผนก 1 แผนก มีพนักงานได้หลายคน แต่พนักงาน 1 คนสังกัดได้แผนกเดียว
+          </p>
+          <div class="callout tip">
+            <strong>กฎเหล็ก:</strong> เอา Primary Key ของ <strong>ฝั่ง 1</strong> ไปเป็น Foreign Key ใน <strong>ฝั่ง M</strong> เสมอ!
+          </div>
+          <div class="code-box">
+            DEPARTMENT (<span class="key-pk">DeptNo</span>, DeptName)<br><br>
+            EMPLOYEE (<span class="key-pk">EmpID</span>, EmpName, <span class="key-fk">DeptNo*</span>)
+          </div>
+        </div>
+
+        <!-- M:N -->
+        <div class="card">
+          <div class="card-header">
+            <h3>M : N (กลุ่มต่อกลุ่ม)</h3>
+            <span class="card-number">2</span>
+          </div>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">
+            <strong>สถานการณ์:</strong> นักศึกษา 1 คน ลงเรียนได้หลายวิชา, 1 วิชา มีนักศึกษาเรียนได้หลายคน
+          </p>
+          <div class="callout danger">
+            <strong>กฎเหล็ก:</strong> แตกตารางตรงกลาง (Bridge Table) โดยดึง PK ของทั้ง 2 ฝั่งมารวมกันเป็น Composite PK!
+          </div>
+          <div class="code-box">
+            STUDENT (<span class="key-pk">StudentID</span>, Name)<br>
+            COURSE (<span class="key-pk">CourseID</span>, Title)<br><br>
+            ENROLL (<span class="key-pk">StudentID*</span>, <span class="key-pk">CourseID*</span>, Grade)
+          </div>
+        </div>
+
+        <!-- 1:1 -->
+        <div class="card">
+          <div class="card-header">
+            <h3>1 : 1 (หนึ่งต่อหนึ่ง)</h3>
+            <span class="card-number">3</span>
+          </div>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">
+            <strong>สถานการณ์:</strong> พนักงาน 1 คน มีที่จอดรถส่วนตัว 1 ช่อง (1 ช่องเป็นของพนักงานคนเดียว)
+          </p>
+          <div class="callout info">
+            <strong>กฎเหล็ก:</strong> เอา PK ฝั่งใดฝั่งหนึ่งไปเป็น FK ในอีกฝั่ง โดยเลือกฝั่งที่จำเป็นต้องมีข้อมูลเพื่อเลี่ยงค่า NULL
+          </div>
+          <div class="code-box">
+            EMPLOYEE (<span class="key-pk">EmpID</span>, EmpName)<br><br>
+            PARKING_SPACE (<span class="key-pk">SpaceID</span>, Location, <span class="key-fk">EmpID*</span>)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB: CSC362 - KEYS & INTEGRITY -->
+    <!-- ========================================== -->
+    <section id="tab-csc362-keys" class="content-section" style="display: none;">
+      <div class="section-header">
+        <span class="section-tag">CSC362 • ข้อที่ 1 (15 คะแนนเต็ม)</span>
+        <h2 class="section-title">คลังความรู้เรื่อง Keys & Relational Integrity</h2>
+        <p class="section-desc">ประเภทของ Key และกฎควบคุมความถูกต้องของฐานข้อมูลเชิงสัมพันธ์</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h3>🔑 สรุปสาระสำคัญเรื่อง Keys</h3>
+            <span class="card-number">Key</span>
+          </div>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.9rem; color: var(--text-secondary);">
+            <li>• <strong>Superkey:</strong> ฟิลด์หรือกลุ่มฟิลด์ใดๆ ที่ระบุแต่ละแถวได้ไม่ซ้ำกัน</li>
+            <li>• <strong>Candidate Key:</strong> Superkey ขั้นต่ำสุด (Minimal Superkey) ที่ไม่มีฟิลด์ส่วนเกิน ทุกตัวมีสิทธิ์เป็น Primary Key ได้</li>
+            <li>• <strong>Primary Key (PK):</strong> Candidate Key ที่ถูกเลือกขึ้นมาเป็นตัวแทนระบุแถวอย่างเป็นทางการ (ต้อง NOT NULL & UNIQUE)</li>
+            <li>• <strong>Composite Key:</strong> Primary Key ที่ประกอบด้วย 2 แอตทริบิวต์ขึ้นไป</li>
+            <li>• <strong>Foreign Key (FK):</strong> แอตทริบิวต์ที่ใช้เชื่อมโยง โดยไปอ้างอิงถึง Primary Key ของอีกตารางหนึ่ง</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>🛡️ Relational Integrity Constraints</h3>
+            <span class="card-number">Rule</span>
+          </div>
+          <div class="callout warning">
+            <strong>1. Entity Integrity (ความถูกต้องของเอนทิตี):</strong><br>
+            Primary Key จะต้อง **ห้ามเป็นค่าว่าง (NOT NULL)** และห้ามซ้ำกันโดยเด็ดขาด เพราะถ้าเป็น NULL จะไม่สามารถระบุตัวตนของแถวข้อมูลได้
+          </div>
+          <div class="callout tip">
+            <strong>2. Referential Integrity (ความถูกต้องของการอ้างอิง):</strong><br>
+            ค่าใน Foreign Key จะต้อง **ตรงกับค่า Primary Key ในตารางแม่ที่มีอยู่จริง** หรือเป็นค่า NULL (หากความสัมพันธ์นั้นเป็นแบบ Optional)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB: CSC362 - QUIZ -->
+    <!-- ========================================== -->
+    <section id="tab-csc362-quiz" class="content-section" style="display: none;">
+      <div class="section-header">
+        <span class="section-tag">แบบทดสอบเช็กความพร้อม</span>
+        <h2 class="section-title">ซ้อมทำโจทย์ CSC362 (พร้อมตรวจและเฉลยทันที)</h2>
+        <p class="section-desc">รวบรวมข้อสอบจริงจาก Quiz Google Form และ ProProfs ที่อาจารย์ให้มา</p>
+      </div>
+
+      <div id="csc362QuizContainer"></div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB: CSC481 - SDLC -->
+    <!-- ========================================== -->
+    <section id="tab-csc481-sdlc" class="content-section" style="display: none;">
+      <div class="section-header">
+        <span class="section-tag">CSC481 • ข้อที่ 1 (10 คะแนน)</span>
+        <h2 class="section-title">SDLC 5 ขั้นตอน & Waterfall vs Agile</h2>
+        <p class="section-desc">วงจรการพัฒนาระบบสารสนเทศ และการเปรียบเทียบวิธีการพัฒนายอดนิยม</p>
+      </div>
+
+      <!-- SDLC SVG -->
+      <div class="diagram-container">
+        <svg class="diagram-svg" viewBox="0 0 950 140" xmlns="http://www.w3.org/2000/svg">
+          <!-- Phase 1 -->
+          <rect x="10" y="30" width="165" height="75" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="2"/>
+          <text x="92" y="60" fill="#67e8f9" font-size="14" font-weight="bold" text-anchor="middle">1. Planning</text>
+          <text x="92" y="82" fill="#94a3b8" font-size="11" text-anchor="middle">Feasibility, Scope</text>
+
+          <path d="M 180 67 L 205 67" stroke="#f59e0b" stroke-width="2.5" fill="none"/>
+
+          <!-- Phase 2 -->
+          <rect x="210" y="30" width="165" height="75" rx="8" fill="#1e293b" stroke="#6366f1" stroke-width="2"/>
+          <text x="292" y="60" fill="#a5b4fc" font-size="14" font-weight="bold" text-anchor="middle">2. Analysis</text>
+          <text x="292" y="82" fill="#94a3b8" font-size="11" text-anchor="middle">DFD, Requirements</text>
+
+          <path d="M 380 67 L 405 67" stroke="#f59e0b" stroke-width="2.5" fill="none"/>
+
+          <!-- Phase 3 -->
+          <rect x="410" y="30" width="165" height="75" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
+          <text x="492" y="60" fill="#e9d5ff" font-size="14" font-weight="bold" text-anchor="middle">3. Design</text>
+          <text x="492" y="82" fill="#94a3b8" font-size="11" text-anchor="middle">UI, DB, Architecture</text>
+
+          <path d="M 580 67 L 605 67" stroke="#f59e0b" stroke-width="2.5" fill="none"/>
+
+          <!-- Phase 4 -->
+          <rect x="610" y="30" width="165" height="75" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+          <text x="692" y="60" fill="#6ee7b7" font-size="14" font-weight="bold" text-anchor="middle">4. Implementation</text>
+          <text x="692" y="82" fill="#94a3b8" font-size="11" text-anchor="middle">Coding, Testing</text>
+
+          <path d="M 780 67 L 805 67" stroke="#f59e0b" stroke-width="2.5" fill="none"/>
+
+          <!-- Phase 5 -->
+          <rect x="810" y="30" width="130" height="75" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="2"/>
+          <text x="875" y="60" fill="#fecdd3" font-size="13" font-weight="bold" text-anchor="middle">5. Maintenance</text>
+          <text x="875" y="82" fill="#94a3b8" font-size="11" text-anchor="middle">Support, Security</text>
+        </svg>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h3>🌊 Waterfall Model (แบบดั้งเดิม)</h3>
+            <span class="card-number">W</span>
+          </div>
+          <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6;">
+            • <strong>ลักษณะ:</strong> ทำงานเป็นขั้นบันไดทีละขั้น เฟสก่อนหน้าต้องเสร็จ 100% ถึงจะเริ่มเฟสถัดไปได้<br>
+            • <strong>ข้อดี:</strong> วางแผนชัดเจน ควบคุมเอกสารและงบประมาณได้ง่าย เหมาะกับโปรเจกต์ที่ Requirement นิ่ง ไม่เปลี่ยน<br>
+            • <strong>ข้อเสีย:</strong> ไม่ยืดหยุ่น ถ้าลูกค้าเปลี่ยน Requirement กลางคันจะแก้ยากมาก และเห็นระบบตอนปลายสุดเท่านั้น
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>⚡ Agile Methodologies (แบบสมัยใหม่)</h3>
+            <span class="card-number">A</span>
+          </div>
+          <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6;">
+            • <strong>ลักษณะ:</strong> แบ่งการทำงานเป็นรอบสั้นๆ เรียกว่า Sprint (1-4 สัปดาห์) มีการส่งมอบชิ้นงานที่ใช้งานได้จริงในทุกรอบ<br>
+            • <strong>ข้อดี:</strong> ยืดหยุ่นสูง รับมือกับการเปลี่ยนแปลงได้ดี ลูกค้าเห็นงานตลอดเวลา<br>
+            • <strong>ข้อเสีย:</strong> ควบคุม Scope และงบประมาณสุดท้ายได้ยาก หากไม่มีวินัยอาจเกิด Scope Creep ได้ง่าย
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB: CSC481 - SWOT / TOWS -->
+    <!-- ========================================== -->
+    <section id="tab-csc481-swot" class="content-section" style="display: none;">
+      <div class="section-header">
+        <span class="section-tag">CSC481 • ข้อที่ 2 (10 คะแนน)</span>
+        <h2 class="section-title">Feasibility 4 ด้าน & SWOT/TOWS Matrix</h2>
+        <p class="section-desc">การศึกษาความเป็นไปได้และการจับคู่กลยุทธ์ตามสไลด์เคสศึกษา 7-Eleven</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h3>🔍 Feasibility Study (ความเป็นไปได้ 4 ด้าน)</h3>
+            <span class="card-number">4</span>
+          </div>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.9rem; color: var(--text-secondary);">
+            <li>• <strong>1. Economic Feasibility:</strong> ความคุ้มค่าทางการเงิน (Cost-Benefit Analysis, TCO, ROI, Payback Period)</li>
+            <li>• <strong>2. Technical Feasibility:</strong> เทคโนโลยีและฮาร์ดแวร์/ทีมงานมีความพร้อมรองรับได้หรือไม่</li>
+            <li>• <strong>3. Operational Feasibility:</strong> ระบบใหม่เข้ากับการทำงานของคนในองค์กรและแก้ปัญหาได้จริงไหม</li>
+            <li>• <strong>4. Schedule Feasibility:</strong> สามารถพัฒนาระบบให้เสร็จทันเวลาที่กำหนดได้หรือไม่</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>🎯 TOWS Matrix (การจับคู่กลยุทธ์)</h3>
+            <span class="card-number">T</span>
+          </div>
+          <div style="font-size: 0.88rem; display: flex; flex-direction: column; gap: 0.6rem;">
+            <div style="background: rgba(16, 185, 129, 0.12); padding: 0.5rem 0.8rem; border-radius: 6px; border-left: 3px solid #10b981;">
+              <strong>กลยุทธ์เชิงรุก (S + O):</strong> ใช้จุดแข็ง วิ่งเข้าหาโอกาสที่เปิดอยู่เพื่อเติบโตก้าวกระโดด
+            </div>
+            <div style="background: rgba(6, 182, 212, 0.12); padding: 0.5rem 0.8rem; border-radius: 6px; border-left: 3px solid #06b6d4;">
+              <strong>กลยุทธ์เชิงแก้ไข (W + O):</strong> พยายามปิดจุดอ่อนภายใน เพื่อไม่ให้เสียโอกาสสำคัญภายนอกไป
+            </div>
+            <div style="background: rgba(245, 158, 11, 0.12); padding: 0.5rem 0.8rem; border-radius: 6px; border-left: 3px solid #f59e0b;">
+              <strong>กลยุทธ์เชิงป้องกัน (S + T):</strong> ใช้จุดแข็งเป็นเกราะป้องกันภัยคุกคามจากภายนอก
+            </div>
+            <div style="background: rgba(244, 63, 94, 0.12); padding: 0.5rem 0.8rem; border-radius: 6px; border-left: 3px solid #f43f5e;">
+              <strong>กลยุทธ์เชิงรับ (W + T):</strong> ลดความเสี่ยงที่เลวร้ายที่สุด (จุดที่จุดอ่อนตรงกับภัยคุกคามพอดี)
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB: CSC481 - CRITICAL PATH (CPM) -->
+    <!-- ========================================== -->
+    <section id="tab-csc481-cpm" class="content-section" style="display: none;">
+      <div class="section-header">
+        <span class="section-tag">CSC481 • ข้อที่ 3 (10 คะแนน ออกแน่นอน!)</span>
+        <h2 class="section-title">Critical Path Method (CPM / PERT) Interactive Calculator</h2>
+        <p class="section-desc">คำนวณ Forward Pass, Backward Pass, Slack Time และหา Critical Path จากโจทย์จริงใน Critical Path.xlsx</p>
+      </div>
+
+      <!-- Formula Card -->
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-header">
+            <h3>➡️ Forward Pass (เดินหน้า)</h3>
+            <span class="card-number">1</span>
+          </div>
+          <div class="code-box">
+            <strong>ES + Duration = EF</strong>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-secondary);">
+            • เริ่มจากงานแรก ES = 0<br>
+            • ถ้ามีลูกศรชี้เข้ามาหลายทาง ให้เลือก <strong>ค่ามากที่สุด (Maximum)</strong>
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>⬅️ Backward Pass (ถอยหลัง)</h3>
+            <span class="card-number">2</span>
+          </div>
+          <div class="code-box">
+            <strong>LF - Duration = LS</strong>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-secondary);">
+            • เริ่มจากงานสุดท้าย ให้ LF = EF รวม<br>
+            • ถ้าถอยหลังไปหาหลายทาง ให้เลือก <strong>ค่าน้อยที่สุด (Minimum)</strong>
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>🎯 Slack & Critical Path</h3>
+            <span class="card-number">3</span>
+          </div>
+          <div class="code-box">
+            <strong>Slack = LS - ES = LF - EF</strong>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-secondary);">
+            • <strong>Critical Path:</strong> คือเส้นทางที่งานทุกตัวมี <strong>Slack = 0</strong><br>
+            • งานบนสายนี้ห้ามดีเลย์แม้แต่วันเดียว!
+          </p>
+        </div>
+      </div>
+
+      <!-- Interactive CPM Display -->
+      <div class="cpm-interactive">
+        <div id="cpmTableContainer"></div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB: CSC481 - DFD -->
+    <!-- ========================================== -->
+    <section id="tab-csc481-dfd" class="content-section" style="display: none;">
+      <div class="section-header">
+        <span class="section-tag">CSC481 • ข้อที่ 5 (10 คะแนน)</span>
+        <h2 class="section-title">Data Flow Diagram (DFD) & กฎเหล็ก 3 ข้อ</h2>
+        <p class="section-desc">การจำลองการไหลของข้อมูลและข้อผิดพลาดร้ายแรงที่ห้ามวาดในห้องสอบ</p>
+      </div>
+
+      <div class="diagram-container">
+        <svg class="diagram-svg" viewBox="0 0 850 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- Context Diagram -->
+          <!-- Entity CUSTOMER -->
+          <rect x="40" y="60" width="140" height="70" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+          <text x="110" y="100" fill="#f8fafc" font-size="14" font-weight="bold" text-anchor="middle">Customer</text>
+
+          <!-- Flow to Process -->
+          <path d="M 180 80 L 335 80" stroke="#f59e0b" stroke-width="2" fill="none"/>
+          <text x="255" y="72" fill="#fcd34d" font-size="11" text-anchor="middle">Order Details -></text>
+
+          <!-- Flow from Process -->
+          <path d="M 335 110 L 180 110" stroke="#f59e0b" stroke-width="2" fill="none"/>
+          <text x="255" y="128" fill="#fcd34d" font-size="11" text-anchor="middle"><- Receipt / Food</text>
+
+          <!-- Process 0 -->
+          <circle cx="420" cy="95" r="75" fill="#1e293b" stroke="#6366f1" stroke-width="2.5"/>
+          <text x="420" y="80" fill="#a5b4fc" font-size="16" font-weight="bold" text-anchor="middle">0</text>
+          <text x="420" y="105" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">Food Ordering</text>
+          <text x="420" y="125" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">System</text>
+
+          <!-- Flow to Kitchen -->
+          <path d="M 500 95 L 660 95" stroke="#f59e0b" stroke-width="2" fill="none"/>
+          <text x="580" y="85" fill="#fcd34d" font-size="11" text-anchor="middle">Order Slip -></text>
+
+          <!-- Entity KITCHEN -->
+          <rect x="670" y="60" width="140" height="70" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+          <text x="740" y="100" fill="#f8fafc" font-size="14" font-weight="bold" text-anchor="middle">Kitchen</text>
+        </svg>
+      </div>
+
+      <div class="grid-3">
+        <!-- Error 1: Black Hole -->
+        <div class="card">
+          <div class="card-header">
+            <h3>🕳️ Black Hole (หลุมดำ)</h3>
+            <span class="card-number">!</span>
+          </div>
+          <div class="callout danger">
+            <strong>อาการ:</strong> Process มีแต่ลูกศรข้อมูลไหลเข้า (Inputs) แต่ไม่มีข้อมูลไหลออก (Outputs) เลยแม้แต่เส้นเดียว!
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-secondary);">
+            เหมือนโยนข้อมูลลงหลุมดำ ระบบประมวลผลแล้วไม่ส่งผลลัพธ์ให้ใครเลย ถือว่าผิดกฎทันที!
+          </p>
+        </div>
+
+        <!-- Error 2: Miracle -->
+        <div class="card">
+          <div class="card-header">
+            <h3>✨ Miracle (ปาฏิหาริย์)</h3>
+            <span class="card-number">!</span>
+          </div>
+          <div class="callout danger">
+            <strong>อาการ:</strong> Process มีลูกศรข้อมูลไหลออก (Outputs) แต่ไม่มีข้อมูลไหลเข้า (Inputs) เลย!
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-secondary);">
+            จู่ๆ ระบบก็เสกข้อมูลส่งออกไปเองได้โดยไม่รับข้อมูลต้นทางเข้ามา ถือเป็นปาฏิหาริย์ที่ผิดหลักการ
+          </p>
+        </div>
+
+        <!-- Error 3: Gray Hole -->
+        <div class="card">
+          <div class="card-header">
+            <h3>🌫️ Gray Hole (หลุมเทา)</h3>
+            <span class="card-number">!</span>
+          </div>
+          <div class="callout warning">
+            <strong>อาการ:</strong> ข้อมูลขาเข้าไม่สมเหตุสมผลหรือไม่เพียงพอที่จะสร้างข้อมูลขาออกได้
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-secondary);">
+            เช่น รับข้อมูลเข้ามาแค่ "ชื่อสินค้า" แต่ขาส่งออกดันสร้าง "ใบแจ้งยอดรวมภาษี" ได้ ซึ่งข้อมูลไม่พอ
+          </p>
+        </div>
+      </div>
+
+      <div class="callout tip">
+        <strong>กฎเหล็กความเชื่อมโยง DFD (ห้ามวาดข้าม):</strong><br>
+        1. ❌ ห้ามลากลูกศรจาก **Entity -> Entity** โดยตรง (ต้องผ่าน Process)<br>
+        2. ❌ ห้ามลากลูกศรจาก **Entity -> Data Store** โดยตรง (ต้องผ่าน Process)<br>
+        3. ❌ ห้ามลากลูกศรจาก **Data Store -> Data Store** โดยตรง (ต้องผ่าน Process)
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB: CSC481 - FISHBONE -->
+    <!-- ========================================== -->
+    <section id="tab-csc481-fishbone" class="content-section" style="display: none;">
+      <div class="section-header">
+        <span class="section-tag">CSC481 • ข้อที่ 6 (10 คะแนน)</span>
+        <h2 class="section-title">Fishbone Diagram (ผังก้างปลา) & การแก้ไขปัญหา</h2>
+        <p class="section-desc">การวิเคราะห์สาเหตุและผลกระทบ (Cause and Effect) เคส E-Commerce ยอดขายตก</p>
+      </div>
+
+      <!-- Fishbone SVG -->
+      <div class="diagram-container">
+        <svg class="diagram-svg" viewBox="0 0 900 240" xmlns="http://www.w3.org/2000/svg">
+          <!-- Main Spine -->
+          <line x1="60" y1="120" x2="680" y2="120" stroke="#f59e0b" stroke-width="4"/>
+          <!-- Fish Head (Problem) -->
+          <polygon points="680,80 860,120 680,160" fill="#dc2626" stroke="#991b1b" stroke-width="2"/>
+          <text x="750" y="115" fill="#ffffff" font-size="13" font-weight="bold" text-anchor="middle">ปัญหาหลัก:</text>
+          <text x="750" y="135" fill="#ffffff" font-size="12" text-anchor="middle">ยอดขายตก / Conv Rate ต่ำ</text>
+
+          <!-- Top Bones -->
+          <!-- Bone 1: Tech -->
+          <line x1="220" y1="30" x2="280" y2="120" stroke="#38bdf8" stroke-width="3"/>
+          <rect x="130" y="10" width="180" height="32" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+          <text x="220" y="31" fill="#67e8f9" font-size="12" font-weight="bold" text-anchor="middle">1. ระบบ & เทคโนโลยี</text>
+
+          <!-- Bone 2: Product -->
+          <line x1="450" y1="30" x2="510" y2="120" stroke="#38bdf8" stroke-width="3"/>
+          <rect x="370" y="10" width="160" height="32" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+          <text x="450" y="31" fill="#67e8f9" font-size="12" font-weight="bold" text-anchor="middle">2. สินค้า & ราคา</text>
+
+          <!-- Bottom Bones -->
+          <!-- Bone 3: Service -->
+          <line x1="280" y1="120" x2="220" y2="210" stroke="#a855f7" stroke-width="3"/>
+          <rect x="130" y="195" width="180" height="32" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
+          <text x="220" y="216" fill="#e9d5ff" font-size="12" font-weight="bold" text-anchor="middle">3. บริการ & ขนส่ง</text>
+
+          <!-- Bone 4: Marketing -->
+          <line x1="510" y1="120" x2="450" y2="210" stroke="#a855f7" stroke-width="3"/>
+          <rect x="370" y="195" width="160" height="32" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
+          <text x="450" y="216" fill="#e9d5ff" font-size="12" font-weight="bold" text-anchor="middle">4. การตลาด</text>
+
+          <!-- Sub-Ribs Text Example -->
+          <text x="175" y="70" fill="#94a3b8" font-size="11">• เว็บโหลดช้า</text>
+          <text x="175" y="85" fill="#94a3b8" font-size="11">• Checkout ซับซ้อน</text>
+        </svg>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h3>🐟 ก้างปลา 5 ด้าน (วิเคราะห์สาเหตุ)</h3>
+            <span class="card-number">5</span>
+          </div>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.88rem; color: var(--text-secondary);">
+            <li>• <strong>1. ระบบ & เทคโนโลยี:</strong> เว็บโหลดช้าเกิน 3 วินาที, Checkout หลายขั้นตอน, ล่มตอน Flash Sale</li>
+            <li>• <strong>2. สินค้า & ราคา:</strong> สินค้าหมดสต็อกบ่อย, แพงกว่าคู่แข่ง, ขาดรูปและรีวิวสร้างความเชื่อมั่น</li>
+            <li>• <strong>3. บริการ & ขนส่ง:</strong> ค่าส่งแพงเกินไป, ขนส่งล่าช้า, ไม่มีระบบ Tracking, แอดมินตอบช้า</li>
+            <li>• <strong>4. การตลาด & สื่อสาร:</strong> ยิงแอดไม่ตรงกลุ่มเป้าหมาย, ไม่ทำ Re-targeting ลูกค้าเก่า</li>
+            <li>• <strong>5. ปัจจัยภายนอก:</strong> กำลังซื้อผู้บริโภคชะลอตัว, คู่แข่งทำสงครามตัดราคา</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>🛠️ แผนแก้ไขปัญหา (Action Plan)</h3>
+            <span class="card-number">✓</span>
+          </div>
+          <div style="font-size: 0.88rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.5rem;">
+            <p>• <strong>แก้ไขด้านระบบ:</strong> บีบอัดรูปภาพเป็น <code>.webp</code> + ใช้ CDN ให้โหลดใน 1-2 วินาที, ทำ One-Page Guest Checkout ซื้อได้เลยไม่ต้องบังคับสมัครสมาชิก</p>
+            <p>• <strong>แก้ไขด้านสินค้า:</strong> ใช้ระบบ Real-time ERP สต็อกไม่ขาด และจัดเซ็ตบันเดิล (Bundling) เพื่อสร้าง Value แทนการตัดราคา</p>
+            <p>• <strong>แก้ไขด้านขนส่ง:</strong> ตั้งเงื่อนไขส่งฟรีเมื่อซื้อครบยอด (Free Shipping Threshold) เพื่อดันยอดสั่งซื้อเฉลี่ย (AOV) ให้สูงขึ้น</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB: CSC481 - QUIZ -->
+    <!-- ========================================== -->
+    <section id="tab-csc481-quiz" class="content-section" style="display: none;">
+      <div class="section-header">
+        <span class="section-tag">แบบทดสอบเช็กความพร้อม</span>
+        <h2 class="section-title">ซ้อมทำโจทย์ CSC481 (15 ข้อ Review The Lesson)</h2>
+        <p class="section-desc">แบบฝึกหัดทบทวนที่อาจารย์แจกให้ พร้อมเฉลยและเหตุผลประกอบอย่างละเอียด</p>
+      </div>
+
+      <div id="csc481QuizContainer"></div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB: FAST CHEAT SHEET -->
+    <!-- ========================================== -->
+    <section id="tab-cheatsheet" class="content-section" style="display: none;">
+      <div class="section-header">
+        <span class="section-tag">ก่อนเดินเข้าห้องสอบ</span>
+        <h2 class="section-title">⚡ แผ่นพับสรุปย่อ 5 นาทีสุดท้าย</h2>
+        <p class="section-desc">รวมสูตรและคีย์เวิร์ดสำคัญที่ต้องมองผ่านตาก่อนปิดมือถือวางบนเวที</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card" style="border-left: 4px solid #06b6d4;">
+          <h3 style="color: #67e8f9; margin-bottom: 0.5rem;">CSC362 (ฐานข้อมูล)</h3>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary);">
+            • <strong>1NF:</strong> กำจัด Repeating Groups, ค่าในช่องต้องเป็น Atomic, หา Composite PK<br>
+            • <strong>2NF:</strong> กำจัด Partial Dependency (ฟิลด์ธรรมดาขึ้นกับ PK บางส่วน) -> แตกตาราง<br>
+            • <strong>3NF:</strong> กำจัด Transitive Dependency (ฟิลด์ธรรมดาขึ้นกับฟิลด์ธรรมดา A -> B -> C) -> แตกตาราง<br>
+            • <strong>1:M Mapping:</strong> เอา PK ฝั่ง 1 ไปใส่เป็น FK ฝั่ง M<br>
+            • <strong>M:N Mapping:</strong> แตกตาราง Bridge ตรงกลาง ดึง PK ทั้งสองฝั่งเป็น Composite PK<br>
+            • <strong>Entity Integrity:</strong> PK ห้ามเป็น NULL และห้ามซ้ำ<br>
+            • <strong>Referential Integrity:</strong> FK ต้องตรงกับ PK แม่ที่มีอยู่จริง หรือเป็น NULL
+          </p>
+        </div>
+
+        <div class="card" style="border-left: 4px solid #f59e0b;">
+          <h3 style="color: #fcd34d; margin-bottom: 0.5rem;">CSC481 (วิเคราะห์ระบบ)</h3>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary);">
+            • <strong>SDLC:</strong> Planning -> Analysis -> Design -> Implementation -> Maintenance<br>
+            • <strong>Forward Pass:</strong> ES + Dur = EF (หลายทางเข้า เลือกค่ามากสุด)<br>
+            • <strong>Backward Pass:</strong> LF - Dur = LS (หลายทางออก เลือกค่าน้อยสุด)<br>
+            • <strong>Critical Path:</strong> เส้นทางที่ยาวที่สุด และ Slack = 0 ทุกตัว (ห้ามดีเลย์)<br>
+            • <strong>DFD กฎเหล็ก:</strong> ห้าม Black Hole (มีแต่เข้า), ห้าม Miracle (มีแต่ออก), ห้ามลาก Entity ชน Entity ตรงๆ
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
