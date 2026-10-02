@@ -77,7 +77,7 @@ const cpmDataSets = {
       { id: 'A', name: 'งาน A', pred: '-', dur: 3, es: 0, ef: 3, ls: 0, lf: 3, slack: 0, isCrit: true },
       { id: 'B', name: 'งาน B', pred: 'A', dur: 4, es: 3, ef: 7, ls: 5, lf: 9, slack: 2, isCrit: false },
       { id: 'C', name: 'งาน C', pred: 'A', dur: 6, es: 3, ef: 9, ls: 3, lf: 9, slack: 0, isCrit: true },
-      { id: 'D', name: 'งาน D', pred: 'B', dur: 6, es: 7, ef: 13, ls: 15, lf: 21, slack: 8, isCrit: false },
+      { id: 'D', name: 'งาน D', pred: 'B', dur: 6, es: 7, ef: 13, ls: 9, lf: 15, slack: 2, isCrit: false },
       { id: 'E', name: 'งาน E', pred: 'B', dur: 4, es: 7, ef: 11, ls: 9, lf: 13, slack: 2, isCrit: false },
       { id: 'F', name: 'งาน F', pred: 'C', dur: 4, es: 9, ef: 13, ls: 9, lf: 13, slack: 0, isCrit: true },
       { id: 'G', name: 'งาน G', pred: 'D', dur: 6, es: 13, ef: 19, ls: 15, lf: 21, slack: 2, isCrit: false },
