@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2">
 </head>
 <!-- MOBILE TOP HEADER (Visible on Mobile & Tablet <= 992px) -->
 <header class="mobile-header">
@@ -80,7 +80,7 @@
       <li class="nav-section-title">วิชาบ่าย: CSC481 (13:00 - 16:00)</li>
       <li class="nav-item">
         <button class="nav-btn" data-tab="tab-csc481-sdlc">
-          <span>1. SDLC & Waterfall vs Agile</span>
+          <span>1. SDLC, Agile & Fact-Finding</span>
           <span class="badge">10 คะแนน</span>
         </button>
       </li>
@@ -92,7 +92,7 @@
       </li>
       <li class="nav-item">
         <button class="nav-btn" data-tab="tab-csc481-cpm">
-          <span>3. คำนวณ Critical Path (CPM)</span>
+          <span>3. CPM & Gantt Chart</span>
           <span class="badge">ออกชัวร์!</span>
         </button>
       </li>
@@ -1282,16 +1282,16 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
               <p style="margin-bottom: 0.6rem;">
                 <strong style="color: #6ee7b7;">1. สูตรนับจำนวนตารางในห้องสอบ (ไม่ต้องจำ ไม่ต้องเดา):</strong><br>
                 จำสูตรลับนี้ไว้เลย: <code>จำนวนตาราง = (จำนวนกล่องสี่เหลี่ยม) + (จำนวนเพชรที่เป็น M:N)</code><br>
-                • ในรูปมีกล่องสี่เหลี่ยม 3 กล่อง (DEPARTMENT, EMPLOYEE, PROJECT) $\rightarrow$ ได้ 3 ตารางแรก<br>
-                • ในรูปมีรูปเพชรที่มีตัวอักษร <strong>M กับ N</strong> อยู่ 1 เพชร (WORKS_ON) $\rightarrow$ <strong>ต้องแตกตารางที่ 4 เสมอ 100%!</strong><br>
+                • ในรูปมีกล่องสี่เหลี่ยม 3 กล่อง (DEPARTMENT, EMPLOYEE, PROJECT) -> ได้ 3 ตารางแรก<br>
+                • ในรูปมีรูปเพชรที่มีตัวอักษร <strong>M กับ N</strong> อยู่ 1 เพชร (WORKS_ON) -> <strong>ต้องแตกตารางที่ 4 เสมอ 100%!</strong><br>
                 <em>(ถ้าในห้องสอบเขียนตอบแค่ 3 ตาราง แปลว่าลืมแตกตารางตรงกลางของ M:N แน่นอน)</em>
               </p>
               <p style="margin-bottom: 0.6rem;">
                 <strong style="color: #fca5a5;">2. จะตั้งชื่อตารางที่ 4 ว่าอะไรดี? (ในเมื่อรูป ERD ไม่มีคำว่า ASSIGNMENT):</strong><br>
                 อาจารย์ <strong>ไม่ได้บังคับ</strong> ว่าต้องชื่อ <code>ASSIGNMENT</code> ครับ! นายมี 3 ทางเลือกที่ถูกต้องและได้คะแนนเต็มเหมือนกันทั้งหมด:
-                <br>• <strong>ทางเลือกที่ 1 (ง่ายสุด & แนะนำที่สุด):</strong> เอาชื่อในรูปเพชรมาตั้งเลย $\rightarrow$ <strong><code>WORKS_ON</code></strong>
-                <br>• <strong>ทางเลือกที่ 2 (สูตรมาตรฐานสากล):</strong> เอาชื่อ 2 ตารางที่มันเชื่อมมาต่อกันด้วยขีดล่าง $\rightarrow$ <strong><code>EMPLOYEE_PROJECT</code></strong> (หรือ <code>EMP_PROJ</code>)
-                <br>• <strong>ทางเลือกที่ 3:</strong> ตั้งตามความหมายของระบบ $\rightarrow$ <strong><code>ASSIGNMENT</code></strong> (การมอบหมายงาน)
+                <br>• <strong>ทางเลือกที่ 1 (ง่ายสุด & แนะนำที่สุด):</strong> เอาชื่อในรูปเพชรมาตั้งเลย -> <strong><code>WORKS_ON</code></strong>
+                <br>• <strong>ทางเลือกที่ 2 (สูตรมาตรฐานสากล):</strong> เอาชื่อ 2 ตารางที่มันเชื่อมมาต่อกันด้วยขีดล่าง -> <strong><code>EMPLOYEE_PROJECT</code></strong> (หรือ <code>EMP_PROJ</code>)
+                <br>• <strong>ทางเลือกที่ 3:</strong> ตั้งตามความหมายของระบบ -> <strong><code>ASSIGNMENT</code></strong> (การมอบหมายงาน)
               </p>
               <p style="margin-bottom: 0;">
                 <strong style="color: #38bdf8;">3. แล้ว AssignedHours มาจากไหน?</strong><br>
@@ -1475,13 +1475,26 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
     <!-- ========================================== -->
     <section id="tab-csc481-sdlc" class="content-section" style="display: none;">
       <div class="section-header">
-        <span class="section-tag">CSC481 • ข้อที่ 1 (10 คะแนนเต็ม)</span>
-        <h2 class="section-title">SDLC 5 ขั้นตอน & Waterfall vs Agile แบบเจาะลึก</h2>
-        <p class="section-desc">เข้าใจหน้าที่ของแต่ละเฟส -> เอกสารส่งมอบ (Deliverables) ที่อาจารย์ถาม -> ตารางเทียบ 6 มิติ -> จำลองกระดาษคำตอบห้องสอบ</p>
+        <span class="section-tag">CSC481 • ข้อที่ 1 & 2 (SDLC, Agile & Fact-Finding)</span>
+        <h2 class="section-title">SDLC 5 ขั้นตอน, Waterfall vs Agile & Fact-Finding Techniques</h2>
+        <p class="section-desc">เข้าใจหน้าที่ของแต่ละเฟส -> เอกสารส่งมอบ (Deliverables) -> ตารางเทียบ 6 มิติ -> 5 เทคนิคการเก็บรวบรวมข้อมูล (Fact-Finding)</p>
+        
+        <!-- Quick Jump Navigation Pills -->
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
+          <a href="#sec-sdlc-phases" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.8rem; background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.4); border-radius: 20px; color: #93c5fd; font-size: 0.82rem; text-decoration: none; font-weight: 600;">
+            <span>📖 ส่วนที่ 1: SDLC 5 ขั้นตอน</span>
+          </a>
+          <a href="#sec-waterfall-agile" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.8rem; background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 20px; color: #d8b4fe; font-size: 0.82rem; text-decoration: none; font-weight: 600;">
+            <span>⚖️ ส่วนที่ 2: Waterfall vs Agile</span>
+          </a>
+          <a href="#sec-fact-finding" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.85rem; background: rgba(16, 185, 129, 0.2); border: 1.5px solid rgba(16, 185, 129, 0.6); border-radius: 20px; color: #6ee7b7; font-size: 0.85rem; text-decoration: none; font-weight: 700; box-shadow: 0 0 12px rgba(16, 185, 129, 0.25);">
+            <span>🔍 ส่วนที่ 3: Fact-Finding Techniques (กดดูตรงนี้เลย!)</span>
+          </a>
+        </div>
       </div>
 
       <!-- SECTION 1: THEORY - 5 PHASES OF SDLC & DELIVERABLES -->
-      <div class="box-read">
+      <div class="box-read" id="sec-sdlc-phases">
         <span class="content-badge theory">📖 ส่วนที่ 1: อ่านทำความเข้าใจ • วงจร SDLC 5 ขั้นตอน & เอกสารส่งมอบ (Deliverables)</span>
         <p style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 1.25rem;">
           SDLC (Systems Development Life Cycle) คือพิมพ์เขียวมาตรฐานที่นักวิเคราะห์ระบบ (SA) ใช้ควบคุมโปรเจกต์ตั้งแต่เริ่มต้นจนสิ้นสุดระบบ ทุกเฟสจะต้องมี <strong>"ผลลัพธ์หรือเอกสารส่งมอบ (Deliverables)"</strong> เพื่อส่งต่อให้เฟสถัดไป:
@@ -1551,7 +1564,7 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
       </div>
 
       <!-- SECTION 2: WATERFALL VS AGILE COMPARISON TABLE -->
-      <div class="box-read">
+      <div class="box-read" id="sec-waterfall-agile">
         <span class="content-badge theory">📖 ส่วนที่ 2: อ่านทำความเข้าใจ • ตารางเปรียบเทียบ Waterfall vs Agile 6 มิติ</span>
         <div class="db-table-wrapper" style="margin: 0.5rem 0 1rem 0;">
           <table class="db-table">
@@ -1598,9 +1611,99 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
         </div>
       </div>
 
-      <!-- SECTION 3: EXAM ANSWER BLUEPRINT -->
+      <!-- SECTION 3: FACT-FINDING TECHNIQUES -->
+      <div class="box-read" id="sec-fact-finding" style="border: 1.5px solid rgba(16, 185, 129, 0.4); box-shadow: 0 0 20px rgba(16, 185, 129, 0.08);">
+        <span class="content-badge theory" style="background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.5);">🔍 ส่วนที่ 3: อ่านทำความเข้าใจ • 5 เทคนิคการเก็บรวบรวมข้อมูล (Fact-Finding Techniques)</span>
+        <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">เครื่องมือสำคัญที่นักวิเคราะห์ระบบ (SA) ใช้หา Requirement ในเฟส Analysis:</h3>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+          ในการหาความต้องการของระบบ (Requirement Gathering) อาจารย์มักออกข้อสอบถามว่า <em>"แต่ละเทคนิคมีจุดเด่น-จุดด้อยอย่างไร และในสถานการณ์ใดควรเลือกใช้เทคนิคใด?"</em> สรุปเปรียบเทียบ 5 เทคนิคหลักดังนี้:
+        </p>
+
+        <div class="grid-2" style="gap: 1rem;">
+          <!-- 1. Interview -->
+          <div style="background: rgba(6, 182, 212, 0.08); border: 1px solid rgba(6, 182, 212, 0.3); border-radius: var(--radius-sm); padding: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+              <h4 style="color: #67e8f9; font-size: 1rem; margin: 0;">1. Interview (การสัมภาษณ์)</h4>
+              <span style="font-size: 0.75rem; background: rgba(6, 182, 212, 0.2); color: #67e8f9; padding: 0.15rem 0.5rem; border-radius: 4px;">เจาะลึกที่สุด</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin: 0.3rem 0;">
+              • <strong>รูปแบบ:</strong> พูดคุยตัวต่อตัว (Face-to-Face) มีทั้งแบบมีโครงสร้าง (Structured) และไม่มีโครงสร้าง (Unstructured)<br>
+              • <strong style="color: #6ee7b7;">✔️ ข้อดี:</strong> ได้ข้อมูลเชิงลึก ซักถามข้อสงสัยได้ทันที สังเกตสีหน้าท่าทางได้<br>
+              • <strong style="color: #fca5a5;">❌ ข้อเสีย:</strong> ใช้เวลาและงบประมาณสูงมาก อาจมีอคติ (Bias) จากผู้ตอบ<br>
+              • 🎯 <strong>เมื่อไหร่ควรใช้:</strong> คุยกับผู้บริหารระดับสูง (CEO, ผู้จัดการฝ่าย) หรือ Key User ที่กุมนโยบายหลัก
+            </p>
+          </div>
+
+          <!-- 2. Questionnaire -->
+          <div style="background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: var(--radius-sm); padding: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+              <h4 style="color: #a5b4fc; font-size: 1rem; margin: 0;">2. Questionnaire (แบบสอบถาม)</h4>
+              <span style="font-size: 0.75rem; background: rgba(99, 102, 241, 0.2); color: #a5b4fc; padding: 0.15rem 0.5rem; border-radius: 4px;">กลุ่มคนจำนวนมาก</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin: 0.3rem 0;">
+              • <strong>รูปแบบ:</strong> แจกแบบฟอร์มกระดาษหรือ Online Form (Google Forms/MS Forms) ทั้งคำถามปลายเปิดและปลายปิด<br>
+              • <strong style="color: #6ee7b7;">✔️ ข้อดี:</strong> เก็บข้อมูลจากคนจำนวนมาก (Mass Users) ได้รวดเร็ว ประหยัด นำข้อมูลมาวิเคราะห์สถิติง่าย<br>
+              • <strong style="color: #fca5a5;">❌ ข้อเสีย:</strong> อัตราการตอบกลับมักต่ำ (Low Response Rate) ไม่สามารถซักไซ้ข้อสงสัยได้<br>
+              • 🎯 <strong>เมื่อไหร่ควรใช้:</strong> สำรวจความพึงพอใจลูกค้าทั่วไป หรือสำรวจพนักงานระดับปฏิบัติการ 500-1,000 คน
+            </p>
+          </div>
+
+          <!-- 3. Observation -->
+          <div style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: var(--radius-sm); padding: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+              <h4 style="color: #fcd34d; font-size: 1rem; margin: 0;">3. Observation (การสังเกตการณ์)</h4>
+              <span style="font-size: 0.75rem; background: rgba(245, 158, 11, 0.2); color: #fcd34d; padding: 0.15rem 0.5rem; border-radius: 4px;">ดูหน้างานจริง</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin: 0.3rem 0;">
+              • <strong>รูปแบบ:</strong> นักวิเคราะห์ระบบเข้าไปนั่งดูขั้นตอนการทำงานจริงของพนักงานหน้างาน<br>
+              • <strong style="color: #6ee7b7;">✔️ ข้อดี:</strong> เห็นปัญหาจริงที่พนักงานอาจอธิบายไม่ถูก ตรวจสอบความถูกต้องจากคำพูดได้<br>
+              • <strong style="color: #fca5a5;">❌ ข้อเสีย:</strong> <strong style="color: #fca5a5;">Hawthorne Effect</strong> (คนทำงานเกร็งและเปลี่ยนพฤติกรรมเมื่อรู้ตัวว่าถูกเฝ้ามอง)<br>
+              • 🎯 <strong>เมื่อไหร่ควรใช้:</strong> ขั้นตอนการทำงานที่ซับซ้อน เช่น การประกอบชิ้นส่วน หรือการรับออเดอร์ในครัว
+            </p>
+          </div>
+
+          <!-- 4. Document Review -->
+          <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-sm); padding: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+              <h4 style="color: #6ee7b7; font-size: 1rem; margin: 0;">4. Document Review (การตรวจเอกสาร)</h4>
+              <span style="font-size: 0.75rem; background: rgba(16, 185, 129, 0.2); color: #6ee7b7; padding: 0.15rem 0.5rem; border-radius: 4px;">ศึกษาระบบเดิม</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin: 0.3rem 0;">
+              • <strong>รูปแบบ:</strong> ตรวจสอบคู่มือการทำงานเดิม ฟอร์มกรอกข้อมูล ใบเสร็จ รายงานยอดขาย ผังองค์กร<br>
+              • <strong style="color: #6ee7b7;">✔️ ข้อดี:</strong> เข้าใจกระบวนการเดิม (AS-IS) รู้ว่าต้องใช้ฟิลด์ข้อมูลอะไรบ้าง ไม่รบกวนเวลาทำงานของคน<br>
+              • <strong style="color: #fca5a5;">❌ ข้อเสีย:</strong> เอกสารมักล้าสมัย (Outdated) ไม่ตรงกับการปฏิบัติงานจริงในปัจจุบัน<br>
+              • 🎯 <strong>เมื่อไหร่ควรใช้:</strong> ช่วงเริ่มต้นโปรเจกต์เพื่อปูพื้นฐานความเข้าใจก่อนไปสัมภาษณ์
+            </p>
+          </div>
+        </div>
+
+        <!-- 5. JAD (Special Highlight) -->
+        <div style="margin-top: 1rem; background: rgba(168, 85, 247, 0.08); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: var(--radius-sm); padding: 1rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem; flex-wrap: wrap; gap: 0.5rem;">
+            <h4 style="color: #e9d5ff; font-size: 1rem; margin: 0;">5. JAD (Joint Application Development) • เทคนิคยอดฮิตยุคใหม่</h4>
+            <span style="font-size: 0.75rem; background: rgba(168, 85, 247, 0.2); color: #e9d5ff; padding: 0.15rem 0.5rem; border-radius: 4px;">ระดมสมองพร้อมกันทุกฝ่าย</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin: 0.3rem 0;">
+            • <strong>รูปแบบ:</strong> เวิร์กช็อปเข้มข้นที่นำทุกฝ่าย (SA, ผู้ใช้งาน, ผู้บริหาร, โปรแกรมเมอร์) มานั่งประชุมในห้องเดียวกันหลายๆ วัน โดยมี Facilitator (คนกลาง) คอยดำเนินการประชุม<br>
+            • <strong style="color: #6ee7b7;">✔️ ข้อดี:</strong> ลดความขัดแย้งข้ามแผนก ได้ข้อสรุป Requirement ที่ทุกคนเห็นพ้องต้องกัน (Consensus) ภายในระยะเวลาอันสั้น<br>
+            • <strong style="color: #fca5a5;">❌ ข้อเสีย:</strong> มีค่าใช้จ่ายสูง และจัดตารางเวลาของทุกคนให้ว่างตรงกันได้ยากมาก<br>
+            • 🎯 <strong>เมื่อไหร่ควรใช้:</strong> โครงการระบบขนาดใหญ่ที่มีความขัดแย้งระหว่างแผนกสูง และต้องการเริ่มงานอย่างเร่งด่วน
+          </p>
+        </div>
+
+        <!-- Exam Tip for Fact-Finding -->
+        <div class="callout tip" style="margin-top: 1rem;">
+          <strong>🎯 สูตรโกงคำตอบในห้องสอบ (อาจารย์ชอบถามจับคู่สถานการณ์):</strong><br>
+          • ถ้าโจทย์ระบุว่า <em>"ผู้ใช้งานอยู่กระจายกันทั่วประเทศหลักพันคน"</em> -> ตอบ <strong>Questionnaire (แบบสอบถาม)</strong><br>
+          • ถ้าโจทย์ระบุว่า <em>"ต้องการทราบวิสัยทัศน์หรือนโยบายจากผู้บริหารระดับสูง"</em> -> ตอบ <strong>Interview (การสัมภาษณ์)</strong><br>
+          • ถ้าโจทย์ถามถึงคำว่า <em>"Hawthorne Effect (คนทำงานเกร็งเมื่อรู้ว่าถูกมอง)"</em> -> ตอบ <strong>Observation (การสังเกตการณ์)</strong><br>
+          • ถ้าโจทย์บอกว่า <em>"ต้องการให้ทุกแผนกตกลง Requirement ร่วมกันอย่างรวดเร็วเพื่อลดข้อพิพาท"</em> -> ตอบ <strong>JAD</strong>
+        </div>
+      </div>
+
+      <!-- SECTION 4: EXAM ANSWER BLUEPRINT -->
       <div class="box-action">
-        <span class="content-badge exam-template">✍️ ส่วนที่ 3: วิธีเขียนตอบในห้องสอบ (Exam Answer Blueprint)</span>
+        <span class="content-badge exam-template">✍️ ส่วนที่ 4: วิธีเขียนตอบในห้องสอบ (Exam Answer Blueprint)</span>
         <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">แนวข้อสอบยอดฮิต: "โจทย์ให้สถานการณ์มา แล้วถามว่าควรใช้ Waterfall หรือ Agile?"</h3>
         <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1rem;">
           จำลองกระดาษคำตอบที่อาจารย์ตรวจแล้วให้คะแนนเต็ม 100% ให้เขียนโครงสร้าง 3 ท่อน: <strong>1. ฟันธงเลือกโมเดล -> 2. ให้เหตุผลสนับสนุน 3 ข้อ -> 3. ยกตัวอย่างความเสี่ยงหากเลือกผิด</strong>
@@ -1810,12 +1913,28 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
     <section id="tab-csc481-cpm" class="content-section" style="display: none;">
       <div class="section-header">
         <span class="section-tag">CSC481 • ข้อที่ 3 (10 คะแนน ออกแน่นอน 100%)</span>
-        <h2 class="section-title">Critical Path Method (CPM / PERT) แบบเจาะลึก</h2>
-        <p class="section-desc">วิธีคิดเลขในกระดาษข้อสอบทีละตัว -> กฎ MAX ขาไป, กฎ MIN ขากลับ -> ตารางคำนวณสำเร็จรูปทั้ง 2 ชีต</p>
+        <h2 class="section-title">Critical Path Method (CPM) & แผนภูมิแกนต์ (Gantt Chart)</h2>
+        <p class="section-desc">คำนวณ ES, EF, LS, LF, Slack -> ผังเครือข่าย AON -> แผนภูมิแท่ง Gantt Chart พร้อม Milestone และจุดเปรียบเทียบข้อสอบ</p>
+
+        <!-- Quick Jump Navigation Pills -->
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
+          <a href="#sec-cpm-rules" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.8rem; background: rgba(244, 63, 94, 0.15); border: 1px solid rgba(244, 63, 94, 0.4); border-radius: 20px; color: #fca5a5; font-size: 0.82rem; text-decoration: none; font-weight: 600;">
+            <span>⚡ ส่วนที่ 1: หัวใจ CPM & Node 6 ช่อง</span>
+          </a>
+          <a href="#sec-cpm-walkthrough" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.8rem; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 20px; color: #6ee7b7; font-size: 0.82rem; text-decoration: none; font-weight: 600;">
+            <span>✍️ ส่วนที่ 2: ผังเครือข่าย AON & วิธีคำนวณ</span>
+          </a>
+          <a href="#sec-gantt-chart" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.85rem; background: rgba(245, 158, 11, 0.2); border: 1.5px solid rgba(245, 158, 11, 0.6); border-radius: 20px; color: #fde047; font-size: 0.85rem; text-decoration: none; font-weight: 700; box-shadow: 0 0 12px rgba(245, 158, 11, 0.25);">
+            <span>📊 ส่วนที่ 3: Gantt Chart & Milestone (กดดูตรงนี้เลย!)</span>
+          </a>
+          <a href="#sec-gantt-vs-pert" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.8rem; background: rgba(99, 102, 241, 0.15); border: 1px solid rgba(99, 102, 241, 0.4); border-radius: 20px; color: #c7d2fe; font-size: 0.82rem; text-decoration: none; font-weight: 600;">
+            <span>⚖️ ส่วนที่ 4: ตารางเทียบ Gantt vs PERT/CPM</span>
+          </a>
+        </div>
       </div>
 
       <!-- SECTION 1: WHAT IS CRITICAL PATH & NODE STRUCTURE -->
-      <div class="grid-2">
+      <div class="grid-2" id="sec-cpm-rules">
         <div class="card" style="border-left: 4px solid var(--accent-rose);">
           <span class="content-badge theory">📖 ส่วนที่ 1: หัวใจของสายงานวิกฤต (ทำไมต้องหา?)</span>
           <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">Critical Path คืออะไร?</h3>
@@ -1850,7 +1969,7 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
       </div>
 
       <!-- SECTION 2: STEP-BY-STEP MANUAL CALCULATION (THE GOLDEN RULES) -->
-      <div class="card" style="border-left: 4px solid var(--accent-emerald);">
+      <div class="card" id="sec-cpm-walkthrough" style="border-left: 4px solid var(--accent-emerald);">
         <span class="content-badge exam-template">✍️ ส่วนที่ 2: วิธีทดเลขในกระดาษข้อสอบทีละก้าว (Step-by-Step Walkthrough)</span>
         <h3 id="cpmWalkthroughTitle" style="color: var(--text-primary); margin-bottom: 0.75rem;">วิธีคำนวณจริงจากแบบฝึกหัดที่ 1 (Activity A -> H • รวม 21 วัน):</h3>
 
@@ -2365,12 +2484,143 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
         </div>
       </div>
 
-      <!-- SECTION 3: INTERACTIVE TABLE DISPLAY (SHEET 1 & SHEET 2) -->
+      <!-- SECTION 3: GANTT CHART (แผนภูมิแกนต์) & INTERACTIVE VISUALIZER -->
+      <div class="box-read" id="sec-gantt-chart" style="border: 1.5px solid rgba(245, 158, 11, 0.4); box-shadow: 0 0 20px rgba(245, 158, 11, 0.08);">
+        <span class="content-badge theory" style="background: rgba(245, 158, 11, 0.2); color: #fde047; border: 1px solid rgba(245, 158, 11, 0.5);">📊 ส่วนที่ 3: อ่านทำความเข้าใจ • แผนภูมิแกนต์ (Gantt Chart) & หมุดหมาย (Milestone)</span>
+        
+        <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">Gantt Chart คืออะไร และทำไมถึงสำคัญใน Project Management?</h3>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1.25rem;">
+          <strong>แผนภูมิแกนต์ (Gantt Chart)</strong> คิดค้นโดย <em>Henry Gantt</em> เป็นแผนภูมิแท่งแนวนอน (Horizontal Bar Chart) มาตรฐานสากลที่ใช้ในการ <strong>"วางแผน กำหนดตารางเวลา (Scheduling) และติดตามความคืบหน้า (Progress Tracking)"</strong> ของโครงการ โดยแปลงตารางกิจกรรมให้ออกมาเป็นแท่งเวลาบนปฏิทินที่ทุกคนมองเห็นภาพชัดเจนทันที
+        </p>
+
+        <!-- 4 Key Elements Grid -->
+        <div class="grid-2" style="gap: 1rem; margin-bottom: 1.25rem;">
+          <!-- 1. Task Bar & Time Axis -->
+          <div style="background: rgba(6, 182, 212, 0.08); border: 1px solid rgba(6, 182, 212, 0.3); border-radius: var(--radius-sm); padding: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+              <h4 style="color: #67e8f9; font-size: 1rem; margin: 0;">1. แกนเวลา & แท่งกิจกรรม (Task Bars)</h4>
+              <span style="font-size: 0.75rem; background: rgba(6, 182, 212, 0.2); color: #67e8f9; padding: 0.15rem 0.5rem; border-radius: 4px;">Timeline</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin: 0.3rem 0;">
+              • <strong>แกนนอน (X-axis):</strong> คือเวลาตามปฏิทิน (วัน, สัปดาห์ หรือเดือน)<br>
+              • <strong>แกนตั้ง (Y-axis):</strong> รายชื่อกิจกรรมทั้งหมดที่ต้องทำ (Tasks/Activities)<br>
+              • <strong>แท่งบาร์ (Bars):</strong> เริ่มต้นที่จุดเริ่ม (Start) และสิ้นสุดที่จุดจบ (Finish) ความยาวของแท่งเท่ากับ <em>ระยะเวลา (Duration)</em>
+            </p>
+          </div>
+
+          <!-- 2. Milestone (The Golden Exam Trap) -->
+          <div style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: var(--radius-sm); padding: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+              <h4 style="color: #fcd34d; font-size: 1rem; margin: 0;">2. หมุดหมายสำคัญ (Milestone ◆)</h4>
+              <span style="font-size: 0.75rem; background: rgba(245, 158, 11, 0.25); color: #fde68a; padding: 0.15rem 0.5rem; border-radius: 4px; font-weight: bold;">⭐ ออกสอบชัวร์</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin: 0.3rem 0;">
+              • <strong style="color: #fef08a;">กฎเหล็ก:</strong> Milestone คือ <em>"เหตุการณ์หรือจุดส่งมอบสำคัญที่ <u>ไม่มีระยะเวลาทำงาน (Duration = 0)</u> และไม่ใช้ทรัพยากร"</em><br>
+              • <strong>สัญลักษณ์:</strong> ใช้รูป <strong>สี่เหลี่ยมข้าวหลามตัด (Diamond ◆)</strong> บน Gantt Chart<br>
+              • <strong>ตัวอย่าง:</strong> วันลงนามสัญญา, วันส่งมอบซอฟต์แวร์รอบแรก, วันเปิดตัวระบบจริง (Go-Live)
+            </p>
+          </div>
+
+          <!-- 3. Precedence & Dependencies -->
+          <div style="background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: var(--radius-sm); padding: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+              <h4 style="color: #a5b4fc; font-size: 1rem; margin: 0;">3. ความสัมพันธ์ระหว่างงาน (Dependencies)</h4>
+              <span style="font-size: 0.75rem; background: rgba(99, 102, 241, 0.2); color: #a5b4fc; padding: 0.15rem 0.5rem; border-radius: 4px;">Finish-to-Start</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin: 0.3rem 0;">
+              • เส้นลูกศรเชื่อมระหว่างบาร์ เพื่อระบุว่างานไหนต้องเสร็จก่อน งานไหนถึงจะเริ่มได้<br>
+              • รูปแบบพื้นฐานที่สุดคือ <strong>Finish-to-Start (FS):</strong> งาน A ต้องเสร็จสมบูรณ์ก่อน งาน B จึงจะสามารถเริ่มทำได้<br>
+              • งานที่ไม่มีงานก่อนหน้า (Predecessor = -) สามารถเริ่มต้นได้ทันทีพร้อมกัน (Parallel)
+            </p>
+          </div>
+
+          <!-- 4. Slack / Float Window -->
+          <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-sm); padding: 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+              <h4 style="color: #6ee7b7; font-size: 1rem; margin: 0;">4. ช่วงเวลาลอยตัว (Slack / Float Bar)</h4>
+              <span style="font-size: 0.75rem; background: rgba(16, 185, 129, 0.2); color: #6ee7b7; padding: 0.15rem 0.5rem; border-radius: 4px;">ความยืดหยุ่น</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin: 0.3rem 0;">
+              • แถบประต่อท้ายแท่งงาน แสดง <strong>Slack Time (LS - ES)</strong><br>
+              • ช่วยให้ผู้จัดการโครงการรู้ว่างานนี้ <em>"สามารถเลื่อนออกไปได้กี่วัน โดยไม่ส่งผลกระทบต่อวันเสร็จสิ้นของโครงการรวม"</em><br>
+              • ส่วนงานที่อยู่บน <strong>Critical Path จะไม่มีแถบประนี้เลย (Slack = 0)</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- Interactive Gantt Chart Visualizer Container -->
+        <div id="ganttChartContainer"></div>
+      </div>
+
+      <!-- SECTION 4: GANTT CHART VS PERT/CPM (COMPARISON TABLE) -->
+      <div class="box-read" id="sec-gantt-vs-pert">
+        <span class="content-badge theory">⚖️ ส่วนที่ 4: อ่านทำความเข้าใจ • ตารางเปรียบเทียบมหากาพย์ Gantt Chart vs PERT/CPM</span>
+        <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">เปรียบเทียบ 6 มิติสำคัญ (โจทย์ชอบออกถามข้อดี-ข้อจำกัด):</h3>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1rem;">
+          อาจารย์มักนำมาออกสอบข้อเขียนว่า <em>"Gantt Chart กับ PERT/CPM แตกต่างกันอย่างไร และเมื่อไหร่ควรใช้เครื่องมือใด?"</em> จำตารางนี้ไปตอบได้คะแนนเต็มแน่นอน:
+        </p>
+
+        <div class="db-table-wrapper" style="margin: 0.5rem 0 1rem 0;">
+          <table class="db-table">
+            <thead>
+              <tr>
+                <th style="width: 20%;">มิติการเปรียบเทียบ</th>
+                <th style="color: #fcd34d; width: 40%;">📊 Gantt Chart (แผนภูมิแกนต์)</th>
+                <th style="color: #67e8f9; width: 40%;">🕸️ PERT / CPM (แผนผังเครือข่าย AON)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1. ลักษณะกราฟิก</strong></td>
+                <td>แผนภูมิแท่งแนวนอน (Horizontal Bar Chart) วางเรียงตามปฏิทินเวลาจริง</td>
+                <td>แผนผังเครือข่าย (Network Diagram) เชื่อมโยงด้วยโหนด (Nodes) และลูกศรแสดงทิศทาง</td>
+              </tr>
+              <tr>
+                <td><strong>2. จุดเด่นที่สุด</strong></td>
+                <td>เห็น <strong>ปฏิทินไทม์ไลน์ (Timeline) และความคืบหน้า (Progress)</strong> ของงานแต่ละชิ้นได้ชัดเจนมากที่สุด</td>
+                <td>แสดง <strong>ความสัมพันธ์ระหว่างกิจกรรม (Dependencies)</strong> และคำนวณหาสายงานวิกฤตได้แม่นยำที่สุด</td>
+              </tr>
+              <tr>
+                <td><strong>3. การดูสายงานวิกฤต (Critical Path)</strong></td>
+                <td>ดูยากในระดับสายตา ต้องใช้การไฮไลต์สีแท่งพิเศษ จึงจะสังเกตเห็น</td>
+                <td>ดูง่ายและชัดเจนมาก เพราะคำนวณด้วยสูตรคณิตศาสตร์ (ES, EF, LS, LF) และเชื่อมต่อเส้นทาง Slack = 0</td>
+              </tr>
+              <tr>
+                <td><strong>4. การดูเวลาลอยตัว (Slack Time)</strong></td>
+                <td>แสดงได้ยาก หากไม่วาดแถบประต่อท้ายแท่งงาน</td>
+                <td>คำนวณออกมาเป็นตัวเลขชัดเจนในทุกกล่องโหนด (Slack = LS - ES)</td>
+              </tr>
+              <tr>
+                <td><strong>5. ความเหมาะสมในการนำเสนอ</strong></td>
+                <td>เหมาะมากสำหรับนำเสนอ <strong>ผู้บริหารระดับสูง (Executive), ลูกค้า หรือคณะกรรมการ</strong> เพราะเข้าใจง่าย สวยงาม ใครดูก็รู้เรื่อง</td>
+                <td>เหมาะสำหรับ <strong>ผู้จัดการโครงการ (Project Manager), วิศวกร และทีมพัฒนา</strong> ใช้ควบคุมงานเทคนิคหลังบ้าน</td>
+              </tr>
+              <tr>
+                <td><strong>6. ข้อจำกัดเมื่อโครงการมีขนาดใหญ่</strong></td>
+                <td>หากมีกิจกรรมมากกว่า 50-100 กิจกรรม แท่งจะยาวและแออัดมาก มองไม่เห็นว่างานไหนกระทบงานไหน</td>
+                <td>สามารถรองรับโครงสร้างโครงการที่มีความซับซ้อนสูงและการแตกแขนงของงานหลายร้อยงานได้ดีกว่า</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Exam Trick Box -->
+        <div style="padding: 1rem; background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: var(--radius-sm); margin-top: 1rem;">
+          <h4 style="color: #a5b4fc; margin-bottom: 0.35rem; font-size: 0.95rem;">💡 สูตรลัดจับประเด็นในห้องสอบ:</h4>
+          <div style="font-size: 0.86rem; color: var(--text-secondary); line-height: 1.65;">
+            • ถ้าโจทย์ถามว่า <em>"ต้องการสื่อสารตารางเวลากับลูกค้า หรือรายงานสถานะโครงการให้บอร์ดบริหารดู ควรใช้เครื่องมือใด?"</em> -> <strong>ตอบ: Gantt Chart</strong><br>
+            • ถ้าโจทย์ถามว่า <em>"ต้องการคำนวณหาระยะเวลาโครงการที่สั้นที่สุด และหากิจกรรมที่ห้ามล่าช้าเด็ดขาด ควรใช้เครื่องมือใด?"</em> -> <strong>ตอบ: PERT / CPM</strong><br>
+            • ถ้าโจทย์ถามว่า <em>"Milestone แตกต่างจาก Activity ทั่วไปอย่างไร?"</em> -> <strong>ตอบ: Milestone มี Duration = 0 ไม่ใช้ทรัพยากร มักแทนด้วยสัญลักษณ์สี่เหลี่ยมข้าวหลามตัด (Diamond ◆)</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 5: INTERACTIVE TABLE DISPLAY (SHEET 1 & SHEET 2) -->
       <div class="cpm-interactive">
         <div id="cpmTableContainer"></div>
       </div>
 
-      <!-- SECTION 4: EXAM TRAPS -->
+      <!-- SECTION 6: EXAM TRAPS -->
       <div class="card" style="border-left: 4px solid var(--accent-rose);">
         <span class="content-badge trap">⚠️ จุดที่เด็กชอบพลาดจนเสียคะแนนในเรื่อง Critical Path</span>
         <div style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7;">
@@ -2586,8 +2836,8 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
             <span>⚖️</span> กฎความสมดุล (Level Balancing Checklist ที่อาจารย์ใช้ตรวจข้อสอบ):
           </div>
           <div style="font-size: 0.86rem; color: var(--text-secondary); line-height: 1.65;">
-            • <strong>Input ขาเข้าจาก Entity:</strong> ใน Context Diagram มี <code>Order Details</code> จาก Customer $\rightarrow$ ใน Diagram 0 ก็ต้องไหลเข้า Process ย่อยครบถ้วน<br>
-            • <strong>Output ขาส่งออกไป Entity:</strong> ใน Context Diagram มี <code>Order Slip</code> ส่งให้ Kitchen และ <code>Receipt / Food</code> ส่งกลับให้ Customer $\rightarrow$ ใน Diagram 0 ต้องส่งออกให้ Entity เดิมห้ามตกหล่น!<br>
+            • <strong>Input ขาเข้าจาก Entity:</strong> ใน Context Diagram มี <code>Order Details</code> จาก Customer -> ใน Diagram 0 ก็ต้องไหลเข้า Process ย่อยครบถ้วน<br>
+            • <strong>Output ขาส่งออกไป Entity:</strong> ใน Context Diagram มี <code>Order Slip</code> ส่งให้ Kitchen และ <code>Receipt / Food</code> ส่งกลับให้ Customer -> ใน Diagram 0 ต้องส่งออกให้ Entity เดิมห้ามตกหล่น!<br>
             • <strong>สิ่งที่เพิ่มเข้ามาเฉพาะใน Diagram 0:</strong> เริ่มมีเลขกระบวนการย่อย <code>1.0, 2.0, 3.0</code> และมี <strong>Data Store</strong> <code>D1, D2</code> เพื่อจัดเก็บข้อมูล (ซึ่งใน Context Diagram ถูกซ่อนไว้ข้างใน)
           </div>
         </div>
@@ -2787,73 +3037,191 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
     <!-- ========================================== -->
     <section id="tab-cheatsheet" class="content-section" style="display: none;">
       <div class="section-header">
-        <span class="section-tag">ก่อนเดินเข้าห้องสอบ 9N-200</span>
+        <span class="section-tag">ก่อนเดินเข้าห้องสอบ 9N-200 • ครอบคลุม 100% ทั้ง 10 ข้อ (120 คะแนนเต็ม)</span>
         <h2 class="section-title">⚡ แผ่นพับสรุปย่อ 5 นาทีสุดท้าย (The Master Blueprint)</h2>
-        <p class="section-desc">สรุปสูตร กฎเหล็ก และคีย์เวิร์ดโกยคะแนนทั้งหมดของ 2 วิชาติด รวมไว้ในหน้าเดียวเพื่อกวาดสายตาก่อนปิดเครื่อง</p>
+        <p class="section-desc">รวมสูตรเด็ด กฎเหล็ก นิยาม และทริคโกยคะแนนของทั้ง 2 วิชา (CSC362 เช้า + CSC481 บ่าย) กวาดสายตา 5 นาทีจำได้ครบทุกประเด็น!</p>
       </div>
 
-      <!-- MASTER CHEAT SHEET MATRICES -->
-      <div class="grid-2">
-        <!-- Morning CSC362 -->
-        <div class="box-read" style="margin-bottom: 0;">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-            <h3 style="color: #67e8f9; font-size: 1.15rem;">🌅 เช้า: CSC362 (ฐานข้อมูล 4 ข้อ 60 คะแนน)</h3>
-            <span style="font-size: 0.75rem; background: rgba(6, 182, 212, 0.2); color: #67e8f9; padding: 0.2rem 0.5rem; border-radius: 4px;">09:00 - 12:00</span>
+      <!-- QUICK SUBJECT ANCHOR BUTTONS -->
+      <div style="display: flex; gap: 0.75rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
+        <a href="#cheat-csc362" style="text-decoration: none; padding: 0.6rem 1.1rem; background: rgba(6, 182, 212, 0.15); border: 1px solid rgba(6, 182, 212, 0.4); border-radius: var(--radius-sm); color: #67e8f9; font-weight: 700; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.45rem;">
+          <span>🌅</span> วิชาเช้า: CSC362 ฐานข้อมูล (4 ข้อ • 60 คะแนน)
+        </a>
+        <a href="#cheat-csc481" style="text-decoration: none; padding: 0.6rem 1.1rem; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); border-radius: var(--radius-sm); color: #fcd34d; font-weight: 700; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.45rem;">
+          <span>🌇</span> วิชาบ่าย: CSC481 วิเคราะห์ระบบ (6 ข้อ • 60 คะแนน)
+        </a>
+      </div>
+
+      <!-- MASTER CHEAT SHEET 2 COLUMNS -->
+      <div class="grid-2" style="align-items: start; gap: 1.25rem;">
+        
+        <!-- ============================================== -->
+        <!-- COLUMN 1: CSC362 (DATABASE SYSTEMS - 4 QUESTIONS) -->
+        <!-- ============================================== -->
+        <div id="cheat-csc362" class="box-read" style="margin-bottom: 0; border-left: 4px solid #06b6d4;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px dashed rgba(255,255,255,0.1);">
+            <h3 style="color: #67e8f9; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem; margin: 0;">
+              <span>🌅</span> เช้า: CSC362 Database Systems
+            </h3>
+            <span style="font-size: 0.78rem; font-weight: bold; background: rgba(6, 182, 212, 0.2); color: #67e8f9; padding: 0.25rem 0.6rem; border-radius: 4px;">4 ข้อ • 60 คะแนน (09:00 - 12:00)</span>
           </div>
 
-          <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
-            <div style="background: rgba(255,255,255,0.03); padding: 0.75rem; border-radius: 6px; border-left: 3px solid #06b6d4;">
-              <strong style="color: #67e8f9;">1. Normalization Recipe:</strong><br>
-              • <strong>1NF:</strong> กำจัด Repeating Groups -> ค่า Atomic -> รวม Composite PK (ขีดเส้นใต้ 2 ตัว)<br>
-              • <strong>2NF:</strong> กำจัด Partial Dependency (ฟิลด์ที่ขึ้นกับ PK ตัวใดตัวหนึ่ง) -> แตกเป็นตารางเดี่ยว<br>
-              • <strong>3NF:</strong> กำจัด Transitive Dependency (A -> B -> C ฟิลด์ธรรมดาขึ้นกับฟิลด์ธรรมดา) -> แตกตารางทิ้ง FK ไว้เชื่อม
+          <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65;">
+            
+            <!-- CSC362 - Q1: NORMALIZATION -->
+            <div style="background: rgba(255,255,255,0.03); padding: 0.85rem; border-radius: 6px; border-left: 3px solid #06b6d4;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                <strong style="color: #67e8f9; font-size: 0.95rem;">🧪 ข้อที่ 1 • Normalization (1NF ➔ 3NF & BCNF) [15 คะแนน]</strong>
+              </div>
+              • <strong>1NF:</strong> กำจัด Repeating Groups (กลุ่มข้อมูลซ้ำ) -> ทุกช่องเป็นค่าเดี่ยว (Atomic Values) -> ขีดเส้นใต้ Composite PK (มักมี 2 ตัว เช่น <u>StudentID</u>, <u>CourseID</u>)<br>
+              • <strong>2NF:</strong> กำจัด <strong>Partial Dependency</strong> (ฟิลด์ธรรมดาแอบขึ้นกับ PK แค่ตัวใดตัวหนึ่ง) -> แตกฟิลด์นั้นออกไปสร้างตารางใหม่พร้อมยก PK ตัวที่มันขึ้นตรงด้วยไปเป็น Primary Key<br>
+              • <strong>3NF:</strong> กำจัด <strong>Transitive Dependency</strong> (A -> B -> C ฟิลด์ธรรมดาแอบขึ้นตรงกับฟิลด์ธรรมดาด้วยกันเอง เช่น Zipcode -> Province) -> แตกออกเป็นตารางใหม่ ทิ้ง FK ไว้เชื่อม<br>
+              • <strong>BCNF:</strong> ทุกตัวที่เป็น Determinant (ตัวระบุค่าคนอื่น) จะต้องมีสถานะเป็น <strong>Candidate Key</strong> เสมอ!
             </div>
 
-            <div style="background: rgba(255,255,255,0.03); padding: 0.75rem; border-radius: 6px; border-left: 3px solid #6366f1;">
-              <strong style="color: #a5b4fc;">2. ERD to Relational Mapping:</strong><br>
-              • <strong>1:M:</strong> เอา PK ฝั่ง 1 ไปวางเป็น FK ฝั่ง Many (ลูกดึงบัตรแม่มาถือ)<br>
-              • <strong>M:N:</strong> แตกตาราง Bridge ตรงกลาง ดึง PK ทั้งสองฝั่งมารวมเป็น Composite PK<br>
-              • <strong>1:1:</strong> เอา PK ฝั่งใดฝั่งหนึ่งไปเป็น FK ของอีกฝั่ง (มักเลือกฝั่งที่จำเป็นต้องมี)
+            <!-- CSC362 - Q2: ER DIAGRAM -->
+            <div style="background: rgba(255,255,255,0.03); padding: 0.85rem; border-radius: 6px; border-left: 3px solid #38bdf8;">
+              <strong style="color: #38bdf8; font-size: 0.95rem;">📐 ข้อที่ 2 • สัญลักษณ์ ER Diagram & Crow's Foot [15 คะแนน]</strong><br>
+              • <strong>รูปทรงพื้นฐาน:</strong> สี่เหลี่ยม = Entity | วงรี = Attribute | สี่เหลี่ยมซ้อน 2 ชั้น = Weak Entity (เอนทิตีอ่อนแอ อยู่ตามลำพังไม่ได้ เช่น บุตรพนักงาน)<br>
+              • <strong>ประเภท Attribute:</strong><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <u>ขีดเส้นใต้ทึบ</u> = Primary Key<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <span style="text-decoration: underline dotted;">ขีดเส้นใต้ประ</span> = Partial Key / Discriminator (คีย์จำแนกใน Weak Entity)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <strong>วงรีซ้อน 2 ชั้น ((...)):</strong> Multi-valued Attribute (มีได้หลายค่า เช่น เบอร์โทร, ทักษะ)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <strong>วงรีเส้นประ (--...--):</strong> Derived Attribute (คำนวณมาจากฟิลด์อื่นได้ เช่น อายุ คำนวณจากวันเกิด)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <strong>กิ่งก้านแตกออก:</strong> Composite Attribute (แตกเป็นส่วนย่อยได้ เช่น ชื่อ-นามสกุล, ที่อยู่)<br>
+              • <strong>สัญลักษณ์ปลายเส้น Crow's Foot:</strong><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <code>||</code> = Mandatory One (ต้องมี 1 และมีได้แค่ 1 เดียว)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <code>O|</code> = Optional One (จะมีหรือไม่มีก็ได้ ไม่เกิน 1)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <code>|{</code> = Mandatory Many (ต้องมีอย่างน้อย 1 และมีได้หลายรายการ)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <code>O{</code> = Optional Many (จะมีหรือไม่มีก็ได้ และมีได้หลายรายการ)
             </div>
 
-            <div style="background: rgba(255,255,255,0.03); padding: 0.75rem; border-radius: 6px; border-left: 3px solid #10b981;">
-              <strong style="color: #6ee7b7;">3. Keys & Integrity Rules:</strong><br>
-              • <strong>Entity Integrity:</strong> Primary Key ห้ามเป็น NULL และห้ามซ้ำเด็ดขาด<br>
-              • <strong>Referential Integrity:</strong> Foreign Key ต้องมีค่าตรงกับ Primary Key ในตารางแม่ หรือเป็น NULL
+            <!-- CSC362 - Q3: RELATIONAL MAPPING -->
+            <div style="background: rgba(255,255,255,0.03); padding: 0.85rem; border-radius: 6px; border-left: 3px solid #6366f1;">
+              <strong style="color: #a5b4fc; font-size: 0.95rem;">🔄 ข้อที่ 3 • แปลง ERD เป็นตาราง (Relational Schema) [15 คะแนน]</strong><br>
+              • <strong>1:M (หนึ่ง ต่อ กลุ่ม):</strong> เอา PK ฝั่ง 1 ไปเป็น Foreign Key (FK) ให้ฝั่ง Many (ท่อง: <em>"ลูกดึงบัตรแม่มาถือ"</em>)<br>
+              • <strong>M:N (กลุ่ม ต่อ กลุ่ม):</strong> <strong>ต้องสร้างตารางกลาง (Bridge Table / Junction Table)</strong> เสมอ! เช่น <code>ASSIGNMENT(<u>EmpID</u>, <u>ProjectID</u>, Hours)</code><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;👉 ดึง PK ทั้งสองฝั่งมารวมเป็น <strong>Composite PK</strong> (และทำหน้าที่เป็น FK ด้วย)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;👉 <strong>จุดห้ามลืม:</strong> ถ้ามี Attribute บนเส้นความสัมพันธ์ (เช่น Hours, Grade) ให้ดึงมาใส่ในตารางกลางนี้!<br>
+              • <strong>1:1 (หนึ่ง ต่อ หนึ่ง):</strong> เอา PK ฝั่งที่มี Total Participation (ฝั่งที่จำเป็นต้องมี) ไปเป็น FK ของอีกฝั่ง หรือรวมเป็นตารางเดียว<br>
+              • <strong>Multi-valued Attribute:</strong> ต้องแตกเป็นตารางใหม่ โดยมี PK ของตารางหลักเป็น FK + ดึงตัวมันเองมารวมเป็น Composite PK
             </div>
+
+            <!-- CSC362 - Q4: KEYS & INTEGRITY RULES -->
+            <div style="background: rgba(255,255,255,0.03); padding: 0.85rem; border-radius: 6px; border-left: 3px solid #10b981;">
+              <strong style="color: #6ee7b7; font-size: 0.95rem;">🔑 ข้อที่ 4 • ชนิดของ Keys & กฎความสมบูรณ์ [15 คะแนน]</strong><br>
+              • <strong>ความต่างของ Keys:</strong><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <strong>Super Key:</strong> กลุ่มของฟิลด์ที่ระบุแถวได้ไม่ซ้ำ (อาจมีฟิลด์แถมฟุ่มเฟือยได้)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <strong>Candidate Key:</strong> Super Key ขั้นต่ำที่ตัดของแถมออกหมดแล้ว พร้อมเป็น PK ได้ทุกตัว<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <strong>Primary Key (PK):</strong> ตัวแทนที่ถูกเลือกให้เป็นคีย์หลักเพียงหนึ่งเดียว (ห้าม NULL และห้ามซ้ำ)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <strong>Alternate Key:</strong> Candidate Key ตัวสำรองที่ไม่ถูกเลือกเป็น PK<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <strong>Foreign Key (FK):</strong> คีย์นอกที่ชี้ไปยัง Primary Key ของอีกตารางหนึ่ง<br>
+              • <strong>กฎความสมบูรณ์ 2 ข้อหลัก (Integrity Rules):</strong><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;1. <strong>Entity Integrity Rule:</strong> ค่าของ Primary Key <u>ห้ามเป็น NULL</u> และห้ามมีค่าซ้ำโดยเด็ดขาด<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;2. <strong>Referential Integrity Rule:</strong> ค่าของ Foreign Key จะต้องตรงกับค่า Primary Key ในตารางแม่ที่มีอยู่จริง หรือเป็นค่า NULL เท่านั้น (ห้ามมีข้อมูลกำพร้า / Orphan Records)
+            </div>
+
           </div>
         </div>
 
-        <!-- Afternoon CSC481 -->
-        <div class="box-action" style="margin-bottom: 0;">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-            <h3 style="color: #fcd34d; font-size: 1.15rem;">🌇 บ่าย: CSC481 (วิเคราะห์ระบบ 6 ข้อ 60 คะแนน)</h3>
-            <span style="font-size: 0.75rem; background: rgba(245, 158, 11, 0.2); color: #fcd34d; padding: 0.2rem 0.5rem; border-radius: 4px;">13:00 - 16:00</span>
+        <!-- ============================================== -->
+        <!-- COLUMN 2: CSC481 (SYSTEMS ANALYSIS - 6 QUESTIONS) -->
+        <!-- ============================================== -->
+        <div id="cheat-csc481" class="box-action" style="margin-bottom: 0; border-left: 4px solid #f59e0b;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px dashed rgba(255,255,255,0.1);">
+            <h3 style="color: #fcd34d; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem; margin: 0;">
+              <span>🌇</span> บ่าย: CSC481 Systems Analysis & Design
+            </h3>
+            <span style="font-size: 0.78rem; font-weight: bold; background: rgba(245, 158, 11, 0.2); color: #fcd34d; padding: 0.25rem 0.6rem; border-radius: 4px;">6 ข้อ • 60 คะแนน (13:00 - 16:00)</span>
           </div>
 
-          <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
-            <div style="background: rgba(255,255,255,0.03); padding: 0.75rem; border-radius: 6px; border-left: 3px solid #f59e0b;">
-              <strong style="color: #fcd34d;">1. CPM Calculation (ออกชัวร์ 100%):</strong><br>
-              • <strong>Forward Pass (ขาไป):</strong> <code>ES + Duration = EF</code> (ทางแยกชนกันเลือก <strong>MAX</strong>)<br>
-              • <strong>Backward Pass (ขากลับ):</strong> <code>LF - Duration = LS</code> (ทางแยกชนกันเลือก <strong>MIN</strong>)<br>
-              • <strong>Slack:</strong> <code>LS - ES</code> หรือ <code>LF - EF</code> (สายวิกฤต Critical Path คือสายที่ Slack = 0 ทุกตัว)
+          <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65;">
+            
+            <!-- CSC481 - Q4: CPM CALCULATION & GANTT CHART -->
+            <div style="background: rgba(255,255,255,0.03); padding: 0.85rem; border-radius: 6px; border-left: 3px solid #f59e0b;">
+              <strong style="color: #fcd34d; font-size: 0.95rem;">⏱️ ข้อที่ 4 • คำนวณ Critical Path Method (CPM) & Gantt Chart [10 คะแนน ออกชัวร์ 100%]</strong><br>
+              • <strong>โครงสร้างกล่องโหนด 6 ช่อง:</strong> <code>[ES | Dur | EF] / [LS | Slack | LF]</code><br>
+              • <strong>1. Forward Pass (เดินหน้าซ้าย ➔ ขวา):</strong> <code>EF = ES + Duration</code><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;👉 <em>จุดระวัง:</em> ถ้ามีลูกศรวิ่งชนโหนดปลายทางมากกว่า 1 เส้น ให้เลือกค่า <strong>มากที่สุด (MAX)</strong> เสมอ!<br>
+              • <strong>2. Backward Pass (ถอยหลังขวา ➔ ซ้าย):</strong> <code>LS = LF - Duration</code><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;👉 เริ่มต้นให้ LF ของงานสุดท้าย = เวลารวมโครงการ (EF ล่าสุด)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;👉 <em>จุดระวัง:</em> ถ้างานหนึ่งส่งให้หลายงานข้างหลัง ให้เลือกค่า LS ที่ <strong>น้อยที่สุด (MIN)</strong> ย้อนกลับมา!<br>
+              • <strong>3. Slack (เวลาลอยตัว):</strong> <code>Slack = LS - ES</code> (หรือ <code>LF - EF</code> ได้เท่ากันเป๊ะ)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;👉 <strong>Critical Path (สายงานวิกฤต):</strong> คือเส้นทางของงานที่ <strong>Slack = 0 ทุกตัวเชื่อมกัน</strong> และเวลารวมคือเวลาโครงการ<br>
+              • <strong>Gantt Chart vs PERT/CPM (ประเด็นข้อสอบ):</strong><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <em>Gantt Chart:</em> แผนภูมิแท่งแนวนอน เห็นปฏิทินเวลา (Timeline/Progress) ชัดเจน เหมาะนำเสนอผู้บริหาร/ลูกค้า<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <em>PERT/CPM:</em> ผังเครือข่าย คำนวณ Critical Path และ Slack ได้แม่นยำ เหมาะกับทีมวิศวกร/ควบคุมงาน<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <em>Milestone (หมุดหมายสำคัญ):</em> กิจกรรมที่มี <strong>Duration = 0</strong> ไม่ใช้ทรัพยากร มักแทนด้วยสัญลักษณ์สี่เหลี่ยมข้าวหลามตัด (Diamond ◆)
             </div>
 
-            <div style="background: rgba(255,255,255,0.03); padding: 0.75rem; border-radius: 6px; border-left: 3px solid #f43f5e;">
-              <strong style="color: #fca5a5;">2. DFD Fatal Errors & Rules:</strong><br>
-              • <strong>Black Hole:</strong> มีแต่ Input ไม่มี Output<br>
-              • <strong>Miracle:</strong> เสก Output โดยไม่มี Input เข้า<br>
-              • <strong>กฎห้ามลาก:</strong> ห้าม Entity ชน Entity, ห้าม Entity ชน Data Store, ห้าม Data Store ชน Data Store (ต้องผ่าน Process เสมอ)
+            <!-- CSC481 - Q5: DATA FLOW DIAGRAM (DFD) -->
+            <div style="background: rgba(255,255,255,0.03); padding: 0.85rem; border-radius: 6px; border-left: 3px solid #f43f5e;">
+              <strong style="color: #fca5a5; font-size: 0.95rem;">🌊 ข้อที่ 5 • Data Flow Diagram (DFD) & กฎเหล็ก [10 คะแนน ออกชัวร์ 100%]</strong><br>
+              • <strong>Context Diagram (Level 0):</strong> ภาพรวมสูงสุด มี <strong>Process 0 วงเดียว</strong> ตรงกลาง และ <strong style="color:#f43f5e;">ห้ามมี Data Store (คลังข้อมูล) เด็ดขาด!</strong><br>
+              • <strong>Diagram 0 (Level 1 Explosion):</strong> ระเบิด Process 0 แตกเป็น Process ย่อย <code>1.0, 2.0, 3.0</code> และ <strong>มี Data Store (D1, D2...) โผล่มาได้</strong><br>
+              • <strong>Level Balancing:</strong> เส้นไหลเข้า-ออกจาก External Entity ระหว่าง Context Diagram กับ Diagram 0 ต้องตรงกันเป๊ะ 100%<br>
+              • <strong>3 ข้อผิดพลาดร้ายแรง (DFD Errors):</strong><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;1. 🕳️ <strong>Black Hole:</strong> Process มีแต่ Input เข้า แต่ไม่มี Output ออก<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;2. ✨ <strong>Miracle:</strong> Process เสก Output ออกเอง โดยไม่มี Input เข้า<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;3. 🌫️ <strong>Gray Hole:</strong> ข้อมูลขาเข้าไม่เพียงพอที่จะคำนวณสร้างขาออกได้ (เช่น เข้าแค่ชื่อ แต่ออกยอดขาย)<br>
+              • <strong>กฎห้ามลากเส้นข้าม:</strong> ทุกเส้นต้องเชื่อมกับ Process เสมอ! (ห้าม Entity-Entity, ห้าม Entity-DataStore, ห้าม DataStore-DataStore)
             </div>
 
-            <div style="background: rgba(255,255,255,0.03); padding: 0.75rem; border-radius: 6px; border-left: 3px solid #a855f7;">
-              <strong style="color: #e9d5ff;">3. SDLC & Strategy Matrices:</strong><br>
-              • <strong>SDLC:</strong> Planning (Feasibility) -> Analysis (DFD/SRS) -> Design (ERD/Schema) -> Implementation (Coding/UAT) -> Maintenance<br>
-              • <strong>TOWS:</strong> SO (เชิงรุก), WO (เชิงแก้ไข), ST (เชิงป้องกัน), WT (เชิงรับ)
+            <!-- CSC481 - Q6: FISHBONE DIAGRAM -->
+            <div style="background: rgba(255,255,255,0.03); padding: 0.85rem; border-radius: 6px; border-left: 3px solid #a855f7;">
+              <strong style="color: #e9d5ff; font-size: 0.95rem;">🐟 ข้อที่ 6 • ผังก้างปลา (Fishbone / Ishikawa) & แผนแก้ [10 คะแนน]</strong><br>
+              • <strong>หัวปลา:</strong> ต้องเป็น <strong>"ปัญหาหรือผลกระทบที่เกิดขึ้นแล้ว (Effect)"</strong> เท่านั้น (เช่น ยอดขายตกต่ำ 35%) <strong style="color:#f43f5e;">ห้ามเขียนวิธีแก้ที่หัวปลาเด็ดขาด!</strong><br>
+              • <strong>ก้างหลัก (หมวดหมู่):</strong> ภาคบริการ/ธุรกิจมักใช้ <strong>4P</strong> (People, Process, Platform/Tech, Price/Policy) หรือภาคผลิตใช้ <strong>4M/6M</strong> (Man, Machine, Material, Method, Mother nature)<br>
+              • <strong>ก้างย่อย:</strong> หาสาเหตุรากเหง้า (Root Cause) โดยการถาม <strong>Why 5 ครั้ง (5 Whys Technique)</strong><br>
+              • <strong>Action Plan (แผนแก้ไข):</strong> เวลาตอบข้อสอบ ให้แบ่งตอบเป็น 4 ด้านตามก้างปลา โดยระบุทั้ง <strong>มาตรการด่วน (Immediate)</strong> และ <strong>แผนระยะยาว (Long-term)</strong>
             </div>
+
+            <!-- CSC481 - Q1, Q2, Q3: SDLC, FEASIBILITY, TOWS, FACT-FINDING -->
+            <div style="background: rgba(255,255,255,0.03); padding: 0.85rem; border-radius: 6px; border-left: 3px solid #eab308;">
+              <strong style="color: #fde047; font-size: 0.95rem;">📋 ข้อที่ 1, 2, 3 • SDLC, Feasibility, SWOT/TOWS, Fact-Finding [30 คะแนน]</strong><br>
+              • <strong>SDLC 5 ขั้นตอน:</strong> Planning (วางแผน) ➔ Analysis (วิเคราะห์ DFD/SRS) ➔ Design (ออกแบบ UI/ERD) ➔ Implementation (เขียนโค้ด/ทดสอบ UAT) ➔ Maintenance (บำรุงรักษา)<br>
+              • <strong>Waterfall vs Agile:</strong><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <em>Waterfall:</em> ลำดับตายตัว ไม่ย้อนกลับ ปรับเปลี่ยนยาก เหมาะกับงานที่สเปกนิ่งแน่นอน<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <em>Agile (Scrum):</em> แบ่งรอบ Sprint 2-4 สัปดาห์ ปรับเปลี่ยนตามความต้องการของลูกค้าได้รวดเร็ว<br>
+              • <strong>Feasibility Study (TELOS 5 ด้าน):</strong><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <strong>T:</strong> Technical (เทคโนโลยีที่มีทำได้ไหม) | <strong>E:</strong> Economic (คุ้มค่าไหม ROI, Payback Period)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <strong>L:</strong> Legal (ถูกกฎหมาย/PDPA ไหม) | <strong>O:</strong> Operational (คนในองค์กรยอมรับและใช้เป็นไหม)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <strong>S:</strong> Schedule (สร้างเสร็จทันเวลาไหม)<br>
+              • <strong>TOWS Matrix (กลยุทธ์ 4 ทิศทาง):</strong><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <strong>SO (เชิงรุก):</strong> ใช้จุดแข็ง (S) คว้าโอกาสภายนอก (O)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <strong>WO (เชิงปรับปรุง):</strong> แก้จุดอ่อน (W) เพื่อคว้าโอกาส (O)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <strong>ST (เชิงป้องกัน):</strong> ใช้จุดแข็ง (S) รับมือและหลบภัยคุกคาม (T)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <strong>WT (เชิงรับ/ถอย):</strong> ลดจุดอ่อน (W) และหลีกเลี่ยงภัยคุกคาม (T) เพื่อเอาชีวิตรอด<br>
+              • <strong>Fact-Finding Techniques (การเก็บรวบรวมข้อมูล):</strong><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <strong>Interview:</strong> ได้ข้อมูลเชิงลึก สร้างความสัมพันธ์ แต่ใช้เวลานาน<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <strong>Questionnaire:</strong> คนตอบได้เยอะ สรุปสถิติง่าย แต่ถามเจาะลึกไม่ได้<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <strong>Observation:</strong> เห็นการทำงานหน้างานจริง แต่คนทำงานอาจเกร็ง (Hawthorne Effect)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;• <strong>JAD (Joint Application Development):</strong> ประชุมระดมสมองพร้อมกันทุกฝ่าย ได้ข้อสรุปรวดเร็ว
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- GOLDEN EXAM TRAPS BANNER (5 กับดักข้อสอบที่ห้ามพลาด) -->
+      <div style="margin-top: 1.5rem; padding: 1.15rem; background: rgba(239, 68, 68, 0.08); border-radius: var(--radius-sm); border: 1.5px solid rgba(239, 68, 68, 0.35);">
+        <div style="font-weight: 800; color: #fca5a5; font-size: 1.05rem; margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem;">
+          <span>🚨</span> 5 กับดักข้อสอบที่เด็กชอบพลาดจนตกม้าตาย (ท่องจำ 30 วินาทีสุดท้ายก่อนปิดกระเป๋า):
+        </div>
+        <div class="grid-2" style="font-size: 0.86rem; color: var(--text-secondary); line-height: 1.65; gap: 1rem;">
+          <div>
+            1. ❌ <strong>สับสน MAX vs MIN ใน CPM:</strong> ขาเดินหน้าไปข้างหน้า EF ให้เลือกค่า <strong>มากสุด (MAX)</strong> แต่ขาถอยหลังกลับ LS ให้เลือกค่า <strong>น้อยสุด (MIN)</strong> เท่านั้น!<br>
+            2. ❌ <strong>ใส่ Data Store ใน Context Diagram:</strong> กฎเหล็กคือ Context Diagram มีได้แค่ <em>Entity</em> กับ <em>Process 0</em> เท่านั้น <u>ห้ามมีคลังข้อมูลเด็ดขาด</u><br>
+            3. ❌ <strong>เขียนวิธีแก้ไว้ที่หัวปลา:</strong> หัวปลาต้องเป็น <em>"ปัญหาหรือผลกระทบที่เกิดขึ้นแล้ว"</em> เท่านั้น ไม่ใช่วิธีแก้ปัญหา
+          </div>
+          <div>
+            4. ❌ <strong>ลืมตาราง Bridge ในความสัมพันธ์ M:N:</strong> ห้ามเอา PK ไปใส่โต้งๆ ในตารางเดิม ต้องตั้งตารางกลางใหม่ (เช่น <code>ASSIGNMENT</code>) และดึงแอตทริบิวต์บนเส้นลงมาด้วยเสมอ<br>
+            5. ❌ <strong>ลืมขีดเส้นใต้ Primary Key:</strong> เวลาเขียนผลลัพธ์ Normalization ส่งอาจารย์ ทุกตารางที่แตกออกมาต้องมี <u>ขีดเส้นใต้ทึบ</u> ที่ฟิลด์ Primary Key ให้ชัดเจนเสมอ
           </div>
         </div>
       </div>
+
     </section>
 
 

@@ -132,6 +132,7 @@ function switchCpmDiagram(sheet) {
   }
 
   renderCpmTable(sheet);
+  renderGanttChart(sheet);
 }
 
 function switchDfdDiagram(type) {
@@ -212,6 +213,169 @@ function renderCpmTable(sheetKey) {
       </div>
       <div>⏱️ <strong>เวลารวมโครงการ:</strong> ${dataset.totalDuration}</div>
       <div style="margin-top: 0.35rem; font-size: 0.88rem; color: var(--text-secondary);">${dataset.explanation}</div>
+    </div>
+  `;
+}
+
+// Gantt Chart Interactive Visualizer (Robust SVG Implementation)
+function renderGanttChart(sheetKey) {
+  const container = document.getElementById('ganttChartContainer');
+  if (!container) return;
+
+  const dataset = cpmDataSets[sheetKey];
+  const totalDays = sheetKey === 'sheet1' ? 21 : 26;
+  const numTasks = dataset.tasks.length;
+  const svgWidth = 960;
+  const rowHeight = 38;
+  const headerHeight = 45;
+  const footerHeight = 45;
+  const svgHeight = headerHeight + (numTasks + 1) * rowHeight + footerHeight;
+
+  const startX = 200;
+  const endX = 930;
+  const timelineW = endX - startX;
+  const dayW = timelineW / totalDays;
+
+  // Grid vertical dashed lines and day numbers
+  let gridLines = '';
+  let dayTicks = '';
+  for (let d = 0; d <= totalDays; d++) {
+    const x = (startX + d * dayW).toFixed(2);
+    dayTicks += `<text x="${x}" y="32" fill="#64748b" font-size="10" font-family="'JetBrains Mono', Consolas, monospace" text-anchor="middle">${d}</text>`;
+    gridLines += `<line x1="${x}" y1="${headerHeight}" x2="${x}" y2="${svgHeight - footerHeight}" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3,3" stroke-width="1"/>`;
+  }
+
+  // Task rows
+  let taskRowsSvg = '';
+  dataset.tasks.forEach((t, i) => {
+    const y = headerHeight + i * rowHeight;
+    const barX = (startX + t.es * dayW).toFixed(2);
+    const barW = Math.max(t.dur * dayW, 16).toFixed(2);
+
+    const zebra = i % 2 === 0 ? `<rect x="12" y="${y}" width="936" height="${rowHeight}" rx="4" fill="rgba(255,255,255,0.02)"/>` : '';
+
+    const slackSvg = t.slack > 0 ? `
+      <g>
+        <rect x="${(parseFloat(barX) + parseFloat(barW)).toFixed(2)}" y="${y + 10}" width="${(t.slack * dayW).toFixed(2)}" height="18" rx="3" fill="rgba(245, 158, 11, 0.12)" stroke="#f59e0b" stroke-dasharray="3,3" stroke-width="1.2"/>
+        <text x="${(parseFloat(barX) + parseFloat(barW) + (t.slack * dayW) / 2).toFixed(2)}" y="${y + 23}" fill="#fbbf24" font-size="10" font-weight="bold" font-family="'JetBrains Mono', monospace" text-anchor="middle">+${t.slack}d</text>
+      </g>
+    ` : '';
+
+    taskRowsSvg += `
+      <g>
+        ${zebra}
+        <!-- Task Meta -->
+        <text x="24" y="${y + 24}" fill="${t.isCrit ? '#f43f5e' : '#38bdf8'}" font-weight="bold" font-family="'JetBrains Mono', monospace" font-size="13">${t.id}</text>
+        <text x="46" y="${y + 24}" fill="#e2e8f0" font-size="12">${t.name}</text>
+        <rect x="126" y="${y + 9}" width="54" height="20" rx="4" fill="${t.isCrit ? 'rgba(244, 63, 94, 0.2)' : 'rgba(56, 189, 248, 0.15)'}"/>
+        <text x="153" y="${y + 23}" fill="${t.isCrit ? '#fca5a5' : '#7dd3fc'}" font-size="10" font-weight="bold" text-anchor="middle">${t.dur} วัน</text>
+
+        <!-- Task Bar -->
+        <rect x="${barX}" y="${y + 7}" width="${barW}" height="24" rx="5" 
+              fill="url(#gantt-${t.isCrit ? 'crit' : 'norm'})" 
+              stroke="${t.isCrit ? '#fb7185' : '#38bdf8'}" stroke-width="1.2" 
+              ${t.isCrit ? 'filter="url(#gantt-glow)"' : ''}>
+          <title>${t.name} (${t.id}) | ES: วันที่ ${t.es}, EF: วันที่ ${t.ef} | Slack: ${t.slack} วัน</title>
+        </rect>
+        <text x="${(parseFloat(barX) + parseFloat(barW) / 2).toFixed(2)}" y="${y + 23}" fill="#ffffff" font-size="11" font-weight="bold" font-family="'JetBrains Mono', monospace" text-anchor="middle" pointer-events="none">
+          ${t.id} (${t.dur}ว.)
+        </text>
+
+        <!-- Slack Float Bar -->
+        ${slackSvg}
+      </g>
+    `;
+  });
+
+  // Milestone row (Project Finish)
+  const milestoneY = headerHeight + numTasks * rowHeight;
+  const milestoneDiamondX = endX;
+  const milestoneSvg = `
+    <g>
+      <rect x="12" y="${milestoneY}" width="936" height="${rowHeight}" rx="4" fill="rgba(245, 158, 11, 0.05)" stroke="rgba(245, 158, 11, 0.25)" stroke-width="1"/>
+      <text x="24" y="${milestoneY + 24}" fill="#fbbf24" font-weight="bold" font-size="12">🏁 Milestone</text>
+      <rect x="126" y="${milestoneY + 9}" width="62" height="20" rx="4" fill="rgba(245, 158, 11, 0.2)"/>
+      <text x="157" y="${milestoneY + 23}" fill="#fde68a" font-size="10" font-weight="bold" text-anchor="middle">Dur = 0</text>
+      
+      <text x="${milestoneDiamondX - 16}" y="${milestoneY + 23}" fill="#fbbf24" font-weight="bold" font-size="11" text-anchor="end">
+        ◆ วันส่งมอบโครงการ (Day ${totalDays})
+      </text>
+      <polygon points="${milestoneDiamondX},${milestoneY + 7} ${milestoneDiamondX + 9},${milestoneY + 17} ${milestoneDiamondX},${milestoneY + 27} ${milestoneDiamondX - 9},${milestoneY + 17}" 
+               fill="#f59e0b" stroke="#fef3c7" stroke-width="2" filter="url(#gantt-glow)"/>
+    </g>
+  `;
+
+  // Final innerHTML
+  container.innerHTML = `
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.85rem;">
+      <div>
+        <h4 style="color: #fcd34d; font-size: 1.05rem; margin: 0; display: flex; align-items: center; gap: 0.4rem;">
+          <span>📊</span> แผนภูมิแกนต์จำลอง (Interactive Gantt Chart) • ${sheetKey === 'sheet1' ? 'แบบฝึกหัดที่ 1 (21 วัน)' : 'แบบฝึกหัดที่ 2 (26 วัน)'}
+        </h4>
+        <p style="font-size: 0.82rem; color: var(--text-secondary); margin: 0.2rem 0 0 0;">
+          แกนนอนแสดงไทม์ไลน์เวลา (วัน) • แท่งสีแดงคือสายงานวิกฤต (Critical Tasks) • แท่งประสีเหลืองคือเวลาลอยตัว (Slack Time)
+        </p>
+      </div>
+      <div style="display: flex; gap: 0.5rem;">
+        <button class="filter-pill ${sheetKey === 'sheet1' ? 'active' : ''}" onclick="switchCpmDiagram('sheet1')">แบบฝึกหัดที่ 1 (A-H • 21 วัน)</button>
+        <button class="filter-pill ${sheetKey === 'sheet2' ? 'active' : ''}" onclick="switchCpmDiagram('sheet2')">แบบฝึกหัดที่ 2 (A-G • 26 วัน)</button>
+      </div>
+    </div>
+
+    <div style="background: #070c18; border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem 0.5rem; overflow-x: auto; box-shadow: 0 4px 20px rgba(0,0,0,0.35);">
+      <svg viewBox="0 0 ${svgWidth} ${svgHeight}" style="width: 100%; min-width: 780px; height: auto; display: block;" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gantt-crit" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#f43f5e"/>
+            <stop offset="100%" stop-color="#be123c"/>
+          </linearGradient>
+          <linearGradient id="gantt-norm" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#0284c7"/>
+            <stop offset="100%" stop-color="#0ea5e9"/>
+          </linearGradient>
+          <filter id="gantt-glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#f43f5e" flood-opacity="0.6"/>
+          </filter>
+        </defs>
+
+        <!-- Main Background Card -->
+        <rect width="${svgWidth}" height="${svgHeight}" rx="8" fill="#080e1a" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+        <!-- Header Column -->
+        <text x="24" y="32" fill="#94a3b8" font-size="12" font-weight="bold">งาน (Activity)</text>
+        <line x1="190" y1="12" x2="190" y2="${svgHeight - footerHeight}" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+
+        <!-- Day Ticks & Vertical Grid Lines -->
+        ${dayTicks}
+        ${gridLines}
+
+        <!-- Header Separator Line -->
+        <line x1="12" y1="${headerHeight}" x2="948" y2="${headerHeight}" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+
+        <!-- Task Rows -->
+        ${taskRowsSvg}
+
+        <!-- Milestone Row -->
+        ${milestoneSvg}
+
+        <!-- Footer Separator Line -->
+        <line x1="12" y1="${svgHeight - footerHeight}" x2="948" y2="${svgHeight - footerHeight}" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+        <!-- Legend inside SVG Footer -->
+        <g transform="translate(24, ${svgHeight - 18})">
+          <rect x="0" y="-10" width="16" height="12" rx="3" fill="url(#gantt-crit)" stroke="#fb7185" stroke-width="1"/>
+          <text x="22" y="0" fill="#fecdd3" font-size="11" font-weight="bold">สายงานวิกฤต (Slack = 0 ห้ามเลื่อน)</text>
+
+          <rect x="250" y="-10" width="16" height="12" rx="3" fill="url(#gantt-norm)" stroke="#38bdf8" stroke-width="1"/>
+          <text x="272" y="0" fill="#bae6fd" font-size="11">งานทั่วไป (ยืดหยุ่นได้)</text>
+
+          <rect x="425" y="-10" width="22" height="12" rx="2" fill="rgba(245, 158, 11, 0.15)" stroke="#f59e0b" stroke-dasharray="3,3" stroke-width="1"/>
+          <text x="453" y="0" fill="#fde68a" font-size="11">เวลาลอยตัว (Slack Window เลื่อนได้ตามนี้)</text>
+
+          <polygon points="690,-4 696,-10 702,-4 696,2" fill="#f59e0b" stroke="#fef3c7" stroke-width="1.5"/>
+          <text x="708" y="0" fill="#fbbf24" font-size="11" font-weight="bold">Milestone (Duration = 0)</text>
+        </g>
+      </svg>
     </div>
   `;
 }
@@ -450,6 +614,7 @@ function showNormStep(stepNum) {
 window.addEventListener('DOMContentLoaded', () => {
   initTheme();
   renderCpmTable('sheet1');
+  renderGanttChart('sheet1');
   renderQuiz('csc362_norm', 'csc362QuizContainer');
   renderQuiz('csc481_review', 'csc481QuizContainer');
 
