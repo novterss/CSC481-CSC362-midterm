@@ -1262,7 +1262,7 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
                   </table>
                 </div>
 
-                <div style="font-size: 0.78rem; font-weight: 700; color: #fca5a5; margin-bottom: 0.2rem;">ตาราง ASSIGNMENT (เชื่อม M:N)</div>
+                <div style="font-size: 0.78rem; font-weight: 700; color: #fca5a5; margin-bottom: 0.2rem;">ตาราง ASSIGNMENT / WORKS_ON (เชื่อม M:N)</div>
                 <div class="db-table-wrapper" style="margin: 0;">
                   <table class="db-table" style="font-size: 0.75rem;">
                     <thead><tr><th class="pk-col"><u>EmpID*</u></th><th class="pk-col"><u>ProjNo*</u></th><th>AssignedHours</th></tr></thead>
@@ -1270,6 +1270,33 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
                   </table>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <!-- Q&A BOX: HOW DO WE KNOW A 4TH TABLE IS NEEDED & HOW TO NAME IT -->
+          <div style="margin-top: 1.25rem; background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.35); border-radius: var(--radius-sm); padding: 1.1rem;">
+            <div style="font-weight: 700; color: #a5b4fc; font-size: 0.98rem; margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.45rem;">
+              <span>💡</span> เจาะลึกจุดสงสัย: "เราจะรู้ได้ยังไงว่าต้องมีตารางที่ 4? และจะตั้งชื่อว่าอะไรดี?"
+            </div>
+            <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65;">
+              <p style="margin-bottom: 0.6rem;">
+                <strong style="color: #6ee7b7;">1. สูตรนับจำนวนตารางในห้องสอบ (ไม่ต้องจำ ไม่ต้องเดา):</strong><br>
+                จำสูตรลับนี้ไว้เลย: <code>จำนวนตาราง = (จำนวนกล่องสี่เหลี่ยม) + (จำนวนเพชรที่เป็น M:N)</code><br>
+                • ในรูปมีกล่องสี่เหลี่ยม 3 กล่อง (DEPARTMENT, EMPLOYEE, PROJECT) $\rightarrow$ ได้ 3 ตารางแรก<br>
+                • ในรูปมีรูปเพชรที่มีตัวอักษร <strong>M กับ N</strong> อยู่ 1 เพชร (WORKS_ON) $\rightarrow$ <strong>ต้องแตกตารางที่ 4 เสมอ 100%!</strong><br>
+                <em>(ถ้าในห้องสอบเขียนตอบแค่ 3 ตาราง แปลว่าลืมแตกตารางตรงกลางของ M:N แน่นอน)</em>
+              </p>
+              <p style="margin-bottom: 0.6rem;">
+                <strong style="color: #fca5a5;">2. จะตั้งชื่อตารางที่ 4 ว่าอะไรดี? (ในเมื่อรูป ERD ไม่มีคำว่า ASSIGNMENT):</strong><br>
+                อาจารย์ <strong>ไม่ได้บังคับ</strong> ว่าต้องชื่อ <code>ASSIGNMENT</code> ครับ! นายมี 3 ทางเลือกที่ถูกต้องและได้คะแนนเต็มเหมือนกันทั้งหมด:
+                <br>• <strong>ทางเลือกที่ 1 (ง่ายสุด & แนะนำที่สุด):</strong> เอาชื่อในรูปเพชรมาตั้งเลย $\rightarrow$ <strong><code>WORKS_ON</code></strong>
+                <br>• <strong>ทางเลือกที่ 2 (สูตรมาตรฐานสากล):</strong> เอาชื่อ 2 ตารางที่มันเชื่อมมาต่อกันด้วยขีดล่าง $\rightarrow$ <strong><code>EMPLOYEE_PROJECT</code></strong> (หรือ <code>EMP_PROJ</code>)
+                <br>• <strong>ทางเลือกที่ 3:</strong> ตั้งตามความหมายของระบบ $\rightarrow$ <strong><code>ASSIGNMENT</code></strong> (การมอบหมายงาน)
+              </p>
+              <p style="margin-bottom: 0;">
+                <strong style="color: #38bdf8;">3. แล้ว AssignedHours มาจากไหน?</strong><br>
+                กวาดสายตามองที่รูปเพชร <code>WORKS_ON</code> จะเห็นวงรี <code>AssignedHours</code> ห้อยติดอยู่กับเพชร! เมื่อเพชรตัวนี้แปลงเป็นตาราง แอตทริบิวต์ตัวนี้จึงต้องตามมาอยู่ในตารางเชื่อมนี้ด้วยโดยอัตโนมัติครับ
+              </p>
             </div>
           </div>
         </div>
