@@ -109,17 +109,29 @@ function switchCpmDiagram(sheet) {
   const d2 = document.getElementById('cpmDiagramSheet2');
   const b1 = document.getElementById('btnDiagSheet1');
   const b2 = document.getElementById('btnDiagSheet2');
+  const w1 = document.getElementById('cpmWalkthroughSheet1');
+  const w2 = document.getElementById('cpmWalkthroughSheet2');
+  const title = document.getElementById('cpmWalkthroughTitle');
+
   if (sheet === 'sheet1') {
     if (d1) d1.style.display = 'block';
     if (d2) d2.style.display = 'none';
     if (b1) b1.classList.add('active');
     if (b2) b2.classList.remove('active');
+    if (w1) w1.style.display = 'block';
+    if (w2) w2.style.display = 'none';
+    if (title) title.textContent = 'วิธีคำนวณจริงจากแบบฝึกหัดที่ 1 (Activity A -> H • รวม 21 วัน):';
   } else {
     if (d1) d1.style.display = 'none';
     if (d2) d2.style.display = 'block';
     if (b1) b1.classList.remove('active');
     if (b2) b2.classList.add('active');
+    if (w1) w1.style.display = 'none';
+    if (w2) w2.style.display = 'block';
+    if (title) title.textContent = 'วิธีคำนวณจริงจากแบบฝึกหัดที่ 2 (Activity A -> G • รวม 26 วัน):';
   }
+
+  renderCpmTable(sheet);
 }
 
 function renderCpmTable(sheetKey) {
@@ -145,8 +157,8 @@ function renderCpmTable(sheetKey) {
     <div style="margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
       <h4 style="color: #c7d2fe; font-size: 1.05rem;">📌 ${dataset.title}</h4>
       <div style="display: flex; gap: 0.5rem;">
-        <button class="filter-pill ${sheetKey === 'sheet1' ? 'active' : ''}" onclick="renderCpmTable('sheet1')">แบบฝึกหัดที่ 1 (A-H)</button>
-        <button class="filter-pill ${sheetKey === 'sheet2' ? 'active' : ''}" onclick="renderCpmTable('sheet2')">แบบฝึกหัดที่ 2 (A-G)</button>
+        <button class="filter-pill ${sheetKey === 'sheet1' ? 'active' : ''}" onclick="switchCpmDiagram('sheet1')">แบบฝึกหัดที่ 1 (A-H)</button>
+        <button class="filter-pill ${sheetKey === 'sheet2' ? 'active' : ''}" onclick="switchCpmDiagram('sheet2')">แบบฝึกหัดที่ 2 (A-G)</button>
       </div>
     </div>
 

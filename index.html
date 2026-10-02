@@ -1852,7 +1852,7 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
       <!-- SECTION 2: STEP-BY-STEP MANUAL CALCULATION (THE GOLDEN RULES) -->
       <div class="card" style="border-left: 4px solid var(--accent-emerald);">
         <span class="content-badge exam-template">✍️ ส่วนที่ 2: วิธีทดเลขในกระดาษข้อสอบทีละก้าว (Step-by-Step Walkthrough)</span>
-        <h3 style="color: var(--text-primary); margin-bottom: 0.75rem;">วิธีคำนวณจริงจากแบบฝึกหัดที่ 1 (Activity A -> H):</h3>
+        <h3 id="cpmWalkthroughTitle" style="color: var(--text-primary); margin-bottom: 0.75rem;">วิธีคำนวณจริงจากแบบฝึกหัดที่ 1 (Activity A -> H • รวม 21 วัน):</h3>
 
         <!-- VISUAL AON NETWORK DIAGRAM WITH TOGGLE -->
         <div style="margin-bottom: 1.5rem; background: #070b14; border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.15rem;">
@@ -2076,19 +2076,31 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
           <!-- DIAGRAM 2: A -> G -->
           <div id="cpmDiagramSheet2" class="diagram-container" style="display: none; padding: 0.75rem 0.25rem; background: transparent; border: none; margin: 0;">
             <svg class="diagram-svg" viewBox="0 0 940 400" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <filter id="cpm2-glow-crit" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#f43f5e" flood-opacity="0.6"/>
+                </filter>
+                <marker id="cpm2-arrow-crit" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#f43f5e" />
+                </marker>
+                <marker id="cpm2-arrow-norm" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#64748b" />
+                </marker>
+              </defs>
+
               <!-- CONNECTING ARROWS FOR SHEET 2 -->
               <!-- B -> D (CRIT) -->
-              <line x1="156" y1="200" x2="255" y2="200" stroke="#f43f5e" stroke-width="3.5" marker-end="url(#cpm-arrow-crit)"/>
+              <line x1="156" y1="200" x2="255" y2="200" stroke="#f43f5e" stroke-width="3.5" marker-end="url(#cpm2-arrow-crit)"/>
               <!-- C -> F (norm) -->
-              <line x1="156" y1="330" x2="255" y2="330" stroke="#64748b" stroke-width="2" marker-end="url(#cpm-arrow-norm)"/>
+              <line x1="156" y1="330" x2="255" y2="330" stroke="#64748b" stroke-width="2" marker-end="url(#cpm2-arrow-norm)"/>
               <!-- A -> E (norm) -->
-              <line x1="156" y1="75" x2="495" y2="138" stroke="#64748b" stroke-width="2" marker-end="url(#cpm-arrow-norm)"/>
+              <line x1="156" y1="75" x2="495" y2="138" stroke="#64748b" stroke-width="2" marker-end="url(#cpm2-arrow-norm)"/>
               <!-- D -> E (CRIT) -->
-              <line x1="386" y1="185" x2="495" y2="155" stroke="#f43f5e" stroke-width="3.5" marker-end="url(#cpm-arrow-crit)"/>
+              <line x1="386" y1="185" x2="495" y2="155" stroke="#f43f5e" stroke-width="3.5" marker-end="url(#cpm2-arrow-crit)"/>
               <!-- E -> G (CRIT) -->
-              <line x1="626" y1="160" x2="735" y2="190" stroke="#f43f5e" stroke-width="3.5" marker-end="url(#cpm-arrow-crit)"/>
+              <line x1="626" y1="160" x2="735" y2="190" stroke="#f43f5e" stroke-width="3.5" marker-end="url(#cpm2-arrow-crit)"/>
               <!-- F -> G (norm) -->
-              <line x1="386" y1="315" x2="735" y2="215" stroke="#64748b" stroke-width="2" marker-end="url(#cpm-arrow-norm)"/>
+              <line x1="386" y1="315" x2="735" y2="215" stroke="#64748b" stroke-width="2" marker-end="url(#cpm2-arrow-norm)"/>
 
               <!-- FINISH BADGE -->
               <rect x="876" y="184" width="60" height="32" rx="6" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="1.5"/>
@@ -2114,7 +2126,7 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
               </g>
 
               <!-- 2. Node B (CRITICAL) -->
-              <g transform="translate(30, 168)" filter="url(#cpm-glow-crit)">
+              <g transform="translate(30, 168)" filter="url(#cpm2-glow-crit)">
                 <rect x="0" y="0" width="126" height="64" rx="6" fill="#111827" stroke="#f43f5e" stroke-width="2.5"/>
                 <rect x="0" y="0" width="126" height="20" rx="6" fill="#881337"/>
                 <text x="63" y="14" fill="#fecdd3" font-size="11" font-weight="bold" text-anchor="middle">งาน B • วิกฤต</text>
@@ -2148,7 +2160,7 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
               </g>
 
               <!-- 4. Node D (CRITICAL) -->
-              <g transform="translate(260, 168)" filter="url(#cpm-glow-crit)">
+              <g transform="translate(260, 168)" filter="url(#cpm2-glow-crit)">
                 <rect x="0" y="0" width="126" height="64" rx="6" fill="#111827" stroke="#f43f5e" stroke-width="2.5"/>
                 <rect x="0" y="0" width="126" height="20" rx="6" fill="#881337"/>
                 <text x="63" y="14" fill="#fecdd3" font-size="11" font-weight="bold" text-anchor="middle">งาน D • วิกฤต</text>
@@ -2182,7 +2194,7 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
               </g>
 
               <!-- 6. Node E (CRITICAL) -->
-              <g transform="translate(500, 118)" filter="url(#cpm-glow-crit)">
+              <g transform="translate(500, 118)" filter="url(#cpm2-glow-crit)">
                 <rect x="0" y="0" width="126" height="64" rx="6" fill="#111827" stroke="#f43f5e" stroke-width="2.5"/>
                 <rect x="0" y="0" width="126" height="20" rx="6" fill="#881337"/>
                 <text x="63" y="14" fill="#fecdd3" font-size="11" font-weight="bold" text-anchor="middle">งาน E • วิกฤต</text>
@@ -2199,7 +2211,7 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
               </g>
 
               <!-- 7. Node G (CRITICAL) -->
-              <g transform="translate(740, 168)" filter="url(#cpm-glow-crit)">
+              <g transform="translate(740, 168)" filter="url(#cpm2-glow-crit)">
                 <rect x="0" y="0" width="126" height="64" rx="6" fill="#111827" stroke="#f43f5e" stroke-width="2.5"/>
                 <rect x="0" y="0" width="126" height="20" rx="6" fill="#881337"/>
                 <text x="63" y="14" fill="#fecdd3" font-size="11" font-weight="bold" text-anchor="middle">งาน G • วิกฤต</text>
@@ -2238,57 +2250,118 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
           </div>
         </div>
 
-        <div class="grid-2">
-          <!-- Step 1: Forward Pass -->
-          <div style="background: rgba(6, 182, 212, 0.05); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: var(--radius-sm); padding: 1.1rem;">
-            <h4 style="color: #67e8f9; margin-bottom: 0.5rem;">➡️ ขั้นที่ 1: Forward Pass (เดินหน้าจากซ้ายไปขวา)</h4>
-            <div class="code-box" style="margin-bottom: 0.5rem;">สูตร: <strong>ES + Duration = EF</strong></div>
-            <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
-              1. <strong>งานแรกสุด (A):</strong> เริ่มที่ ES = 0 -> EF = 0 + 3 = <strong>3</strong><br>
-              2. <strong>งาน B (ต่อจาก A):</strong> ES = 3 -> EF = 3 + 4 = <strong>7</strong><br>
-              3. <strong>งาน C (ต่อจาก A):</strong> ES = 3 -> EF = 3 + 6 = <strong>9</strong><br>
-              4. <strong>งาน D (ต่อจาก B):</strong> ES = 7 -> EF = 7 + 6 = <strong>13</strong><br>
-              5. <strong>งาน E (ต่อจาก B):</strong> ES = 7 -> EF = 7 + 4 = <strong>11</strong><br>
-              6. <strong>งาน F (ต่อจาก C):</strong> ES = 9 -> EF = 9 + 4 = <strong>13</strong><br>
-              7. <strong>งาน G (ต่อจาก D):</strong> ES = 13 -> EF = 13 + 6 = <strong>19</strong><br>
-              8. <strong style="color: #fcd34d;">🔥 จุดระวังงาน H (มี E และ F ส่งมาทั้งคู่):</strong><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;E มี EF = 11, F มี EF = 13<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;👉 <strong>กฎเหล็ก: เลือกค่ามากที่สุด (MAX) เสมอ!</strong><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;ดังนั้น ES ของ H = <strong>13</strong> -> EF = 13 + 8 = <strong style="color:#6ee7b7;">21 วัน (เวลารวมทั้งโครงการ)</strong>
+        <!-- WALKTHROUGH SHEET 1 (A -> H) -->
+        <div id="cpmWalkthroughSheet1">
+          <div class="grid-2">
+            <!-- Step 1: Forward Pass -->
+            <div style="background: rgba(6, 182, 212, 0.05); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: var(--radius-sm); padding: 1.1rem;">
+              <h4 style="color: #67e8f9; margin-bottom: 0.5rem;">➡️ ขั้นที่ 1: Forward Pass (เดินหน้าจากซ้ายไปขวา)</h4>
+              <div class="code-box" style="margin-bottom: 0.5rem;">สูตร: <strong>ES + Duration = EF</strong></div>
+              <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+                1. <strong>งานแรกสุด (A):</strong> เริ่มที่ ES = 0 -> EF = 0 + 3 = <strong>3</strong><br>
+                2. <strong>งาน B (ต่อจาก A):</strong> ES = 3 -> EF = 3 + 4 = <strong>7</strong><br>
+                3. <strong>งาน C (ต่อจาก A):</strong> ES = 3 -> EF = 3 + 6 = <strong>9</strong><br>
+                4. <strong>งาน D (ต่อจาก B):</strong> ES = 7 -> EF = 7 + 6 = <strong>13</strong><br>
+                5. <strong>งาน E (ต่อจาก B):</strong> ES = 7 -> EF = 7 + 4 = <strong>11</strong><br>
+                6. <strong>งาน F (ต่อจาก C):</strong> ES = 9 -> EF = 9 + 4 = <strong>13</strong><br>
+                7. <strong>งาน G (ต่อจาก D):</strong> ES = 13 -> EF = 13 + 6 = <strong>19</strong><br>
+                8. <strong style="color: #fcd34d;">🔥 จุดระวังงาน H (มี E และ F ส่งมาทั้งคู่):</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;E มี EF = 11, F มี EF = 13<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;👉 <strong>กฎเหล็ก: เลือกค่ามากที่สุด (MAX) เสมอ!</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;ดังนั้น ES ของ H = <strong>13</strong> -> EF = 13 + 8 = <strong style="color:#6ee7b7;">21 วัน (เวลารวมทั้งโครงการ)</strong>
+              </div>
+            </div>
+
+            <!-- Step 2: Backward Pass -->
+            <div style="background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: var(--radius-sm); padding: 1.1rem;">
+              <h4 style="color: #fcd34d; margin-bottom: 0.5rem;">⬅️ ขั้นที่ 2: Backward Pass (ถอยหลังจากขวาไปซ้าย)</h4>
+              <div class="code-box" style="margin-bottom: 0.5rem;">สูตร: <strong>LF - Duration = LS</strong></div>
+              <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+                1. <strong>งานสุดท้าย (H และ G):</strong> ให้ LF = 21 (เวลารวมโครงการ)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• งาน H: LF = 21 -> LS = 21 - 8 = <strong>13</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• งาน G: LF = 21 -> LS = 21 - 6 = <strong>15</strong><br>
+                2. <strong>งาน F (ส่งให้ H):</strong> LF = 13 -> LS = 13 - 4 = <strong>9</strong><br>
+                3. <strong>งาน E (ส่งให้ H):</strong> LF = 13 -> LS = 13 - 4 = <strong>9</strong><br>
+                4. <strong>งาน D (ส่งให้ G):</strong> LF = 15 -> LS = 15 - 6 = <strong>9</strong><br>
+                5. <strong>งาน C (ส่งให้ F):</strong> LF = 9 -> LS = 9 - 6 = <strong>3</strong><br>
+                6. <strong style="color: #fca5a5;">🔥 จุดระวังงาน B (ส่งให้ D และ E):</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;D มี LS = 9, E มี LS = 9 -> LF ของ B = <strong>9</strong> -> LS = 9 - 4 = <strong>5</strong><br>
+                7. <strong style="color: #fca5a5;">🔥 จุดระวังงาน A (ส่งให้ B และ C):</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;B มี LS = 5, C มี LS = 3<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;👉 <strong>กฎเหล็ก: เลือกค่าน้อยที่สุด (MIN) เสมอ!</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;ดังนั้น LF ของ A = <strong>3</strong> -> LS = 3 - 3 = <strong style="color:#6ee7b7;">0</strong>
+              </div>
             </div>
           </div>
 
-          <!-- Step 2: Backward Pass -->
-          <div style="background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: var(--radius-sm); padding: 1.1rem;">
-            <h4 style="color: #fcd34d; margin-bottom: 0.5rem;">⬅️ ขั้นที่ 2: Backward Pass (ถอยหลังจากขวาไปซ้าย)</h4>
-            <div class="code-box" style="margin-bottom: 0.5rem;">สูตร: <strong>LF - Duration = LS</strong></div>
-            <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
-              1. <strong>งานสุดท้าย (H และ G):</strong> ให้ LF = 21 (เวลารวมโครงการ)<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;• งาน H: LF = 21 -> LS = 21 - 8 = <strong>13</strong><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;• งาน G: LF = 21 -> LS = 21 - 6 = <strong>15</strong><br>
-              2. <strong>งาน F (ส่งให้ H):</strong> LF = 13 -> LS = 13 - 4 = <strong>9</strong><br>
-              3. <strong>งาน E (ส่งให้ H):</strong> LF = 13 -> LS = 13 - 4 = <strong>9</strong><br>
-              4. <strong>งาน D (ส่งให้ G):</strong> LF = 15 -> LS = 15 - 6 = <strong>9</strong><br>
-              5. <strong>งาน C (ส่งให้ F):</strong> LF = 9 -> LS = 9 - 6 = <strong>3</strong><br>
-              6. <strong style="color: #fca5a5;">🔥 จุดระวังงาน B (ส่งให้ D และ E):</strong><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;D มี LS = 9, E มี LS = 9 -> LF ของ B = <strong>9</strong> -> LS = 9 - 4 = <strong>5</strong><br>
-              7. <strong style="color: #fca5a5;">🔥 จุดระวังงาน A (ส่งให้ B และ C):</strong><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;B มี LS = 5, C มี LS = 3<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;👉 <strong>กฎเหล็ก: เลือกค่าน้อยที่สุด (MIN) เสมอ!</strong><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;ดังนั้น LF ของ A = <strong>3</strong> -> LS = 3 - 3 = <strong style="color:#6ee7b7;">0</strong>
-            </div>
+          <!-- Step 3: Slack & Summary -->
+          <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(16, 185, 129, 0.08); border-radius: var(--radius-sm); border-left: 3px solid #10b981;">
+            <h4 style="color: #6ee7b7; margin-bottom: 0.35rem;">🎯 ขั้นที่ 3: คำนวณ Slack & สรุปคำตอบลงในกระดาษข้อสอบ</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+              • สูตรหาเวลาลอยตัว: <strong>Slack = LS - ES</strong> (หรือ LF - EF)<br>
+              • เช็กตัวเลข Slack ของทุกงาน: A (0), B (2), C (0), D (2), E (2), F (0), G (2), H (0)<br>
+              • <strong>สรุปตอบคำถาม:</strong> งานที่มี Slack = 0 ทุกตัวเชื่อมต่อกันเป็นเส้นทางคือ <strong style="color: #f43f5e; font-size: 1.05rem;">A -> C -> F -> H</strong><br>
+              • <strong>ระยะเวลาโครงการรวม:</strong> <strong style="color: #6ee7b7;">21 วัน</strong>
+            </p>
           </div>
         </div>
 
-        <!-- Step 3: Slack & Summary -->
-        <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(16, 185, 129, 0.08); border-radius: var(--radius-sm); border-left: 3px solid #10b981;">
-          <h4 style="color: #6ee7b7; margin-bottom: 0.35rem;">🎯 ขั้นที่ 3: คำนวณ Slack & สรุปคำตอบลงในกระดาษข้อสอบ</h4>
-          <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
-            • สูตรหาเวลาลอยตัว: <strong>Slack = LS - ES</strong> (หรือ LF - EF)<br>
-            • เช็กตัวเลข Slack ของทุกงาน: A (0), B (2), C (0), D (2), E (2), F (0), G (2), H (0)<br>
-            • <strong>สรุปตอบคำถาม:</strong> งานที่มี Slack = 0 ทุกตัวเชื่อมต่อกันเป็นเส้นทางคือ <strong style="color: #f43f5e; font-size: 1.05rem;">A -> C -> F -> H</strong><br>
-            • <strong>ระยะเวลาโครงการรวม:</strong> <strong style="color: #6ee7b7;">21 วัน</strong>
-          </p>
+        <!-- WALKTHROUGH SHEET 2 (A -> G) -->
+        <div id="cpmWalkthroughSheet2" style="display: none;">
+          <div class="grid-2">
+            <!-- Step 1: Forward Pass -->
+            <div style="background: rgba(6, 182, 212, 0.05); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: var(--radius-sm); padding: 1.1rem;">
+              <h4 style="color: #67e8f9; margin-bottom: 0.5rem;">➡️ ขั้นที่ 1: Forward Pass (เดินหน้าจากซ้ายไปขวา)</h4>
+              <div class="code-box" style="margin-bottom: 0.5rem;">สูตร: <strong>ES + Duration = EF</strong></div>
+              <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+                1. <strong>งานเริ่มต้นพร้อมกัน 3 งาน (A, B, C):</strong> ไม่มีงานก่อนหน้า เริ่มที่ ES = 0<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• <strong>งาน A:</strong> ES = 0 -> EF = 0 + 2 = <strong>2</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• <strong>งาน B:</strong> ES = 0 -> EF = 0 + 5 = <strong>5</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• <strong>งาน C:</strong> ES = 0 -> EF = 0 + 1 = <strong>1</strong><br>
+                2. <strong>งาน D (ต่อจาก B):</strong> ES = 5 -> EF = 5 + 10 = <strong>15</strong><br>
+                3. <strong>งาน F (ต่อจาก C):</strong> ES = 1 -> EF = 1 + 6 = <strong>7</strong><br>
+                4. <strong style="color: #fcd34d;">🔥 จุดระวังงาน E (มี A และ D ส่งมาทั้งคู่):</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;A มี EF = 2, D มี EF = 15<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;👉 <strong>กฎเหล็ก: เลือกค่ามากที่สุด (MAX) เสมอ!</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;ดังนั้น ES ของ E = <strong>15</strong> -> EF = 15 + 3 = <strong>18</strong><br>
+                5. <strong style="color: #fcd34d;">🔥 จุดระวังงาน G (มี E และ F ส่งมาทั้งคู่):</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;E มี EF = 18, F มี EF = 7<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;👉 <strong>กฎเหล็ก: เลือกค่ามากที่สุด (MAX) เสมอ!</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;ดังนั้น ES ของ G = <strong>18</strong> -> EF = 18 + 8 = <strong style="color:#6ee7b7;">26 วัน (เวลารวมทั้งโครงการ)</strong>
+              </div>
+            </div>
+
+            <!-- Step 2: Backward Pass -->
+            <div style="background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: var(--radius-sm); padding: 1.1rem;">
+              <h4 style="color: #fcd34d; margin-bottom: 0.5rem;">⬅️ ขั้นที่ 2: Backward Pass (ถอยหลังจากขวาไปซ้าย)</h4>
+              <div class="code-box" style="margin-bottom: 0.5rem;">สูตร: <strong>LF - Duration = LS</strong></div>
+              <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+                1. <strong>งานสุดท้าย (G):</strong> ให้ LF = 26 (เวลารวมโครงการ)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• งาน G: LF = 26 -> LS = 26 - 8 = <strong>18</strong><br>
+                2. <strong>งานที่ส่งให้ G (มี E และ F):</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• งาน E: LF = 18 -> LS = 18 - 3 = <strong>15</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• งาน F: LF = 18 -> LS = 18 - 6 = <strong>12</strong><br>
+                3. <strong>งานที่ส่งให้ E (มี A และ D):</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• งาน A: LF = 15 -> LS = 15 - 2 = <strong>13</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• งาน D: LF = 15 -> LS = 15 - 10 = <strong>5</strong><br>
+                4. <strong>งานที่ส่งให้ D (งาน B):</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• งาน B: LF = 5 -> LS = 5 - 5 = <strong style="color:#6ee7b7;">0</strong><br>
+                5. <strong>งานที่ส่งให้ F (งาน C):</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• งาน C: LF = 12 -> LS = 12 - 1 = <strong>11</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Slack & Summary -->
+          <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(16, 185, 129, 0.08); border-radius: var(--radius-sm); border-left: 3px solid #10b981;">
+            <h4 style="color: #6ee7b7; margin-bottom: 0.35rem;">🎯 ขั้นที่ 3: คำนวณ Slack & สรุปคำตอบลงในกระดาษข้อสอบ</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+              • สูตรหาเวลาลอยตัว: <strong>Slack = LS - ES</strong> (หรือ LF - EF)<br>
+              • เช็กตัวเลข Slack ของทุกงาน: A (13), <strong style="color:#f43f5e;">B (0)</strong>, C (11), <strong style="color:#f43f5e;">D (0)</strong>, <strong style="color:#f43f5e;">E (0)</strong>, F (11), <strong style="color:#f43f5e;">G (0)</strong><br>
+              • <strong>สรุปตอบคำถาม:</strong> งานที่มี Slack = 0 ทุกตัวเชื่อมต่อกันเป็นเส้นทางคือ <strong style="color: #f43f5e; font-size: 1.05rem;">B -> D -> E -> G</strong><br>
+              • <strong>ระยะเวลาโครงการรวม:</strong> <strong style="color: #6ee7b7;">26 วัน</strong>
+            </p>
+          </div>
         </div>
       </div>
 
