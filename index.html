@@ -762,6 +762,156 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
             <text x="650" y="304" fill="#94a3b8" font-size="10" text-anchor="middle">Lname</text>
           </svg>
         </div>
+
+        <!-- CONVERT CLINIC ERD TO REAL DATABASE TABLES -->
+        <div style="margin-top: 1.5rem; background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: var(--radius-sm); padding: 1.25rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
+            <h4 style="color: #38bdf8; font-size: 1.05rem; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+              <span>📋</span> ตัวอย่างการแปลง ER Diagram ด้านบนเป็น "ตารางฐานข้อมูลจริง" (Relational Tables)
+            </h4>
+            <span style="font-size: 0.75rem; background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 0.2rem 0.6rem; border-radius: 999px; border: 1px solid rgba(56, 189, 248, 0.3);">พร้อมข้อมูลจำลองให้เห็นภาพ 100%</span>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+            จากรูปไดอะแกรม: แพทย์ (ฝั่งซ้าย) ตรวจรักษาคนไข้ (ฝั่งขวา) แบบ 1:M โดยฝั่งขวา (<code>PATIENT</code>) มีทั้ง <strong>Name (แตกกิ่ง)</strong>, <strong>DOB</strong>, <strong>Age (เส้นประ)</strong>, และ <strong>Phone (วงรี 2 ชั้น)</strong> เมื่อแปลงเป็นตารางจริงจะได้ผลลัพธ์ดังนี้:
+          </p>
+
+          <div class="grid-2" style="margin-bottom: 1rem;">
+            <!-- DOCTOR TABLE (LEFT ENTITY) -->
+            <div>
+              <div style="font-size: 0.88rem; font-weight: 700; color: #a5b4fc; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem;">
+                <span>👨‍⚕️ 1. ตาราง DOCTOR (เอนทิตีฝั่งซ้าย • ฝั่ง 1)</span>
+              </div>
+              <div class="db-table-wrapper" style="margin: 0;">
+                <table class="db-table">
+                  <thead>
+                    <tr>
+                      <th class="pk-col"><u>DoctorID (PK)</u></th>
+                      <th>DoctorName</th>
+                      <th>Specialty</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="pk-col">D01</td>
+                      <td>นพ. วีระ เก่งกล้า</td>
+                      <td>โรคหัวใจ</td>
+                    </tr>
+                    <tr>
+                      <td class="pk-col">D02</td>
+                      <td>พญ. ปรียา รักษ์ดี</td>
+                      <td>อายุรกรรม</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div style="font-size: 0.78rem; color: #94a3b8; margin-top: 0.35rem;">
+                * Strong Entity ปกติ: ใช้ <code>DoctorID</code> เป็น Primary Key
+              </div>
+            </div>
+
+            <!-- PATIENT_PHONE TABLE (MULTIVALUED ATTRIBUTE FROM RIGHT ENTITY) -->
+            <div>
+              <div style="font-size: 0.88rem; font-weight: 700; color: #67e8f9; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem;">
+                <span>📞 3. ตาราง PATIENT_PHONE (แยกจาก Phone วงรี 2 ชั้น)</span>
+              </div>
+              <div class="db-table-wrapper" style="margin: 0;">
+                <table class="db-table">
+                  <thead>
+                    <tr>
+                      <th class="pk-col"><u>PatientID* (PK, FK)</u></th>
+                      <th class="pk-col"><u>Phone (PK)</u></th>
+                      <th>ประเภทเบอร์</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="pk-col">P101</td>
+                      <td class="pk-col">081-111-2222</td>
+                      <td>มือถือหลัก (คุณสมชาย)</td>
+                    </tr>
+                    <tr>
+                      <td class="pk-col">P101</td>
+                      <td class="pk-col">02-999-8888</td>
+                      <td>เบอร์บ้าน (คุณสมชาย)</td>
+                    </tr>
+                    <tr>
+                      <td class="pk-col">P102</td>
+                      <td class="pk-col">089-333-4444</td>
+                      <td>มือถือ (คุณสมศรี)</td>
+                    </tr>
+                    <tr>
+                      <td class="pk-col">P103</td>
+                      <td class="pk-col">086-555-7777</td>
+                      <td>มือถือ (คุณมานะ)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div style="font-size: 0.78rem; color: #67e8f9; margin-top: 0.35rem;">
+                💡 <strong>หัวใจ 1NF:</strong> สมชาย (P101) มี 2 เบอร์ จึงต้องแยกตารางลูกและใช้ <code>(PatientID*, Phone)</code> เป็น Composite PK!
+              </div>
+            </div>
+          </div>
+
+          <!-- PATIENT TABLE (RIGHT ENTITY - FULL WIDTH) -->
+          <div>
+            <div style="font-size: 0.88rem; font-weight: 700; color: #fca5a5; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem;">
+              <span>🏥 2. ตาราง PATIENT (เอนทิตีฝั่งขวา • ฝั่ง M)</span>
+            </div>
+            <div class="db-table-wrapper" style="margin: 0;">
+              <table class="db-table">
+                <thead>
+                  <tr>
+                    <th class="pk-col"><u>PatientID (PK)</u></th>
+                    <th>Fname</th>
+                    <th>Lname</th>
+                    <th>DOB (วันเกิด)</th>
+                    <th class="fk-col">DoctorID* (FK)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="pk-col">P101</td>
+                    <td>สมชาย</td>
+                    <td>ใจดี</td>
+                    <td>1995-04-12</td>
+                    <td class="fk-col">D01 (นพ. วีระ)</td>
+                  </tr>
+                  <tr>
+                    <td class="pk-col">P102</td>
+                    <td>สมศรี</td>
+                    <td>สดใส</td>
+                    <td>2002-11-05</td>
+                    <td class="fk-col">D01 (นพ. วีระ)</td>
+                  </tr>
+                  <tr>
+                    <td class="pk-col">P103</td>
+                    <td>มานะ</td>
+                    <td>ขยัน</td>
+                    <td>1988-08-20</td>
+                    <td class="fk-col">D02 (พญ. ปรียา)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Deep Breakdown of Attributes in Right Entity -->
+            <div style="margin-top: 0.75rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem;">
+              <div style="background: rgba(255, 255, 255, 0.03); border-left: 3px solid #38bdf8; padding: 0.6rem 0.8rem; border-radius: 4px; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5;">
+                <strong style="color: #38bdf8;">📌 ทำไมมี DoctorID* (FK)?</strong><br>
+                เพราะเป็นความสัมพันธ์ 1:M หมอ 1 คน ตรวจคนไข้หลายคน จึงต้องยก PK ฝั่ง 1 (DoctorID) มาเป็น FK ในฝั่ง M (PATIENT)
+              </div>
+              <div style="background: rgba(255, 255, 255, 0.03); border-left: 3px solid #10b981; padding: 0.6rem 0.8rem; border-radius: 4px; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5;">
+                <strong style="color: #10b981;">📌 Name แตกเป็น Fname + Lname</strong><br>
+                เพราะใน ERD เป็น <em>Composite Attribute</em> ในตารางฐานข้อมูลจริงจึงต้องแตกย่อยออกมาเป็น 2 ฟิลด์ระดับ Atomic เสมอ
+              </div>
+              <div style="background: rgba(255, 255, 255, 0.03); border-left: 3px solid #f59e0b; padding: 0.6rem 0.8rem; border-radius: 4px; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5;">
+                <strong style="color: #fcd34d;">📌 แล้ว Age (อายุ) หายไปไหน?</strong><br>
+                เพราะ <code>Age</code> เป็น <strong>Derived Attribute (เส้นประ)</strong> คำนวณได้จาก <code>DOB</code> จึง<strong>ห้ามสร้างคอลัมน์เก็บในตาราง</strong>เด็ดขาด!
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- SECTION 4: EXAM CHECKLIST -->
@@ -802,54 +952,168 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
 
         <div class="grid-3" style="margin-top: 1rem;">
           <!-- 1:M Rule -->
-          <div style="background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: var(--radius-sm); padding: 1.1rem;">
+          <div style="background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: var(--radius-sm); padding: 1.1rem; display: flex; flex-direction: column;">
             <div style="font-weight: 700; color: #a5b4fc; font-size: 1.02rem;">1. ความสัมพันธ์ 1 : M (หนึ่งต่อกลุ่ม)</div>
             <div class="callout tip" style="margin: 0.5rem 0; padding: 0.6rem 0.8rem; font-size: 0.85rem;">
               <strong>กฎเหล็ก:</strong> เอา PK ของ <strong>ฝั่ง 1</strong> ไปเป็น Foreign Key (FK) ใน <strong>ฝั่ง M</strong> เสมอ!
             </div>
-            <p style="font-size: 0.86rem; color: var(--text-secondary); line-height: 1.5;">
+            <p style="font-size: 0.86rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">
               💡 <strong>ทำไมต้องทำแบบนี้?</strong><br>
               สมมติ แผนก 1 แผนก มีพนักงาน 20 คน ถ้าเราเอา <code>EmpID</code> (ฝั่ง M) ไปใส่ในตารางแผนก ช่องนั้นจะต้องเก็บรหัสพนักงานถึง 20 คนในช่องเดียว (กลายเป็น Repeating Group ทันที พังตั้งแต่ 1NF!)<br><br>
               แต่ถ้าเอา <code>DeptNo</code> (ฝั่ง 1) ไปใส่ในตารางพนักงาน พนักงานแต่ละคนก็แค่กรอกว่าตนเองอยู่แผนกไหน ช่องเดียว จบ สวยงาม ไร้ปัญหา!
             </p>
-            <div class="code-box" style="margin-top: 0.75rem; font-size: 0.82rem;">
-              DEPARTMENT (<span class="key-pk">DeptNo</span>, DeptName)<br><br>
+            
+            <div class="code-box" style="margin-bottom: 0.75rem; font-size: 0.8rem;">
+              DEPARTMENT (<span class="key-pk">DeptNo</span>, DeptName)<br>
               EMPLOYEE (<span class="key-pk">EmpID</span>, EmpName, <span class="key-fk">DeptNo*</span>)
+            </div>
+
+            <!-- Real Database Table Mockup 1:M -->
+            <div style="font-size: 0.82rem; font-weight: 700; color: #a5b4fc; margin-bottom: 0.35rem;">📊 หน้าตาตารางจริงในฐานข้อมูล:</div>
+            <div class="db-table-wrapper" style="margin: 0 0 0.5rem 0;">
+              <div style="padding: 0.3rem 0.6rem; font-size: 0.75rem; font-weight: 700; background: rgba(99, 102, 241, 0.2); color: #c7d2fe;">ตาราง DEPARTMENT (ฝั่ง 1)</div>
+              <table class="db-table" style="font-size: 0.78rem;">
+                <thead>
+                  <tr><th class="pk-col"><u>DeptNo (PK)</u></th><th>DeptName</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td class="pk-col">D01</td><td>IT Support</td></tr>
+                  <tr><td class="pk-col">D02</td><td>Human Resources</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="db-table-wrapper" style="margin: 0;">
+              <div style="padding: 0.3rem 0.6rem; font-size: 0.75rem; font-weight: 700; background: rgba(99, 102, 241, 0.2); color: #c7d2fe;">ตาราง EMPLOYEE (ฝั่ง M • มี FK)</div>
+              <table class="db-table" style="font-size: 0.78rem;">
+                <thead>
+                  <tr><th class="pk-col"><u>EmpID (PK)</u></th><th>EmpName</th><th class="fk-col">DeptNo* (FK)</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td class="pk-col">E01</td><td>สมชาย</td><td class="fk-col">D01</td></tr>
+                  <tr><td class="pk-col">E02</td><td>สมศรี</td><td class="fk-col">D01</td></tr>
+                  <tr><td class="pk-col">E03</td><td>วิชัย</td><td class="fk-col">D02</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.4rem;">
+              👉 สังเกต: พนักงาน E01 และ E02 ชี้ไปที่ <code>D01</code> เหมือนกันได้ ไม่เกิดช่องซ้อน (1NF ผ่านฉลุย)
             </div>
           </div>
 
           <!-- M:N Rule -->
-          <div style="background: rgba(244, 63, 94, 0.08); border: 1px solid rgba(244, 63, 94, 0.3); border-radius: var(--radius-sm); padding: 1.1rem;">
+          <div style="background: rgba(244, 63, 94, 0.08); border: 1px solid rgba(244, 63, 94, 0.3); border-radius: var(--radius-sm); padding: 1.1rem; display: flex; flex-direction: column;">
             <div style="font-weight: 700; color: #fca5a5; font-size: 1.02rem;">2. ความสัมพันธ์ M : N (กลุ่มต่อกลุ่ม)</div>
             <div class="callout danger" style="margin: 0.5rem 0; padding: 0.6rem 0.8rem; font-size: 0.85rem;">
               <strong>กฎเหล็ก:</strong> แตกตารางตรงกลาง (Bridge / Associative Table) เสมอ!
             </div>
-            <p style="font-size: 0.86rem; color: var(--text-secondary); line-height: 1.5;">
+            <p style="font-size: 0.86rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">
               💡 <strong>ทำไมต้องทำแบบนี้?</strong><br>
               นักศึกษา 1 คน เรียนได้ 10 วิชา และ 1 วิชา ก็มีนักศึกษาเรียน 100 คน ในเมื่อทั้งสองฝั่งต่างมีได้หลายค่า เราจึงไม่สามารถเอาคีย์ฝั่งไหนไปแปะอีกฝั่งได้เลย<br><br>
               ทางแก้ทางเดียวคือ <strong>สร้างตารางใหม่ตรงกลางขึ้นมา</strong> ดึง PK ของทั้งสองฝั่งมารวมกันเป็น <strong>Composite PK</strong> เพื่อทำหน้าที่จับคู่การลงทะเบียน!
             </p>
-            <div class="code-box" style="margin-top: 0.75rem; font-size: 0.82rem;">
+            
+            <div class="code-box" style="margin-bottom: 0.75rem; font-size: 0.8rem;">
               STUDENT (<span class="key-pk">StudentID</span>, Name)<br>
-              COURSE (<span class="key-pk">CourseID</span>, Title)<br><br>
+              COURSE (<span class="key-pk">CourseID</span>, Title)<br>
               ENROLL (<span class="key-pk">StudentID*</span>, <span class="key-pk">CourseID*</span>, Grade)
+            </div>
+
+            <!-- Real Database Table Mockup M:N -->
+            <div style="font-size: 0.82rem; font-weight: 700; color: #fca5a5; margin-bottom: 0.35rem;">📊 หน้าตาตารางจริงในฐานข้อมูล:</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; margin-bottom: 0.5rem;">
+              <div class="db-table-wrapper" style="margin: 0;">
+                <div style="padding: 0.25rem 0.5rem; font-size: 0.72rem; font-weight: 700; background: rgba(244, 63, 94, 0.2); color: #fecdd3;">ตาราง STUDENT</div>
+                <table class="db-table" style="font-size: 0.74rem;">
+                  <thead><tr><th class="pk-col"><u>StudentID</u></th><th>Name</th></tr></thead>
+                  <tbody>
+                    <tr><td class="pk-col">S01</td><td>สมชาย</td></tr>
+                    <tr><td class="pk-col">S02</td><td>สมศรี</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="db-table-wrapper" style="margin: 0;">
+                <div style="padding: 0.25rem 0.5rem; font-size: 0.72rem; font-weight: 700; background: rgba(244, 63, 94, 0.2); color: #fecdd3;">ตาราง COURSE</div>
+                <table class="db-table" style="font-size: 0.74rem;">
+                  <thead><tr><th class="pk-col"><u>CourseID</u></th><th>Title</th></tr></thead>
+                  <tbody>
+                    <tr><td class="pk-col">CS101</td><td>Database</td></tr>
+                    <tr><td class="pk-col">CS102</td><td>Network</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="db-table-wrapper" style="margin: 0;">
+              <div style="padding: 0.3rem 0.6rem; font-size: 0.75rem; font-weight: 700; background: rgba(244, 63, 94, 0.25); color: #fda4af;">ตาราง ENROLL (ตารางเชื่อมตรงกลาง • Composite PK)</div>
+              <table class="db-table" style="font-size: 0.78rem;">
+                <thead>
+                  <tr>
+                    <th class="pk-col"><u>StudentID* (PK, FK)</u></th>
+                    <th class="pk-col"><u>CourseID* (PK, FK)</u></th>
+                    <th>Grade</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td class="pk-col">S01</td><td class="pk-col">CS101</td><td>A</td></tr>
+                  <tr><td class="pk-col">S01</td><td class="pk-col">CS102</td><td>B+</td></tr>
+                  <tr><td class="pk-col">S02</td><td class="pk-col">CS101</td><td>B</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.4rem;">
+              👉 สังเกต: S01 เรียนได้ 2 วิชา และ CS101 มีคนเรียน 2 คน โดยใช้ตาราง ENROLL เป็นสะพานเชื่อม
             </div>
           </div>
 
-          <!-- 1:1 Rule -->
-          <div style="background: rgba(6, 182, 212, 0.08); border: 1px solid rgba(6, 182, 212, 0.3); border-radius: var(--radius-sm); padding: 1.1rem;">
+          <!-- 1:1 Rule (รูปขวา) -->
+          <div style="background: rgba(6, 182, 212, 0.08); border: 1px solid rgba(6, 182, 212, 0.3); border-radius: var(--radius-sm); padding: 1.1rem; display: flex; flex-direction: column;">
             <div style="font-weight: 700; color: #67e8f9; font-size: 1.02rem;">3. ความสัมพันธ์ 1 : 1 (หนึ่งต่อหนึ่ง)</div>
             <div class="callout info" style="margin: 0.5rem 0; padding: 0.6rem 0.8rem; font-size: 0.85rem;">
-              <strong>กฎเหล็ก:</strong> เอา PK ฝั่งไหนไปเป็น FK อีกฝั่งก็ได้ แต่ให้เลือกฝั่ง Optional
+              <strong>กฎเหล็ก:</strong> เอา PK ฝั่งไหนไปเป็น FK อีกฝั่งก็ได้ แต่<strong>ให้เลือกฝั่ง Optional เพื่อเลี่ยง NULL</strong>
             </div>
-            <p style="font-size: 0.86rem; color: var(--text-secondary); line-height: 1.5;">
+            <p style="font-size: 0.86rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">
               💡 <strong>วิธีเลือกเพื่อเลี่ยงค่าว่าง (NULL):</strong><br>
               สมมติ พนักงาน 1 คน มีที่จอดรถประจำตำแหน่งได้ 1 ช่อง แต่ไม่ใช่พนักงานทุกคนจะมีที่จอดรถ (ที่จอดรถมีจำกัด)<br><br>
               ถ้าเราเอา <code>SpaceID</code> ไปใส่ในตารางพนักงาน พนักงานที่ไม่มีที่จอดรถก็จะเป็น NULL เต็มไปหมด ดังนั้นเราควรเอา <code>EmpID</code> ไปใส่ในตารางที่จอดรถ <code>PARKING_SPACE</code> แทน!
             </p>
-            <div class="code-box" style="margin-top: 0.75rem; font-size: 0.82rem;">
-              EMPLOYEE (<span class="key-pk">EmpID</span>, EmpName)<br><br>
-              PARKING_SPACE (<span class="key-pk">SpaceID</span>, Location, <span class="key-fk">EmpID*</span>)
+            
+            <div class="code-box" style="margin-bottom: 0.75rem; font-size: 0.8rem;">
+              EMPLOYEE (<span class="key-pk">EmpID</span>, EmpName, Position)<br>
+              PARKING_SPACE (<span class="key-pk">SpaceID</span>, SlotName, <span class="key-fk">EmpID*</span>)
+            </div>
+
+            <!-- Real Database Table Mockup 1:1 -->
+            <div style="font-size: 0.82rem; font-weight: 700; color: #67e8f9; margin-bottom: 0.35rem;">📊 หน้าตาตารางจริงในฐานข้อมูล (รูปขวา):</div>
+            <div class="db-table-wrapper" style="margin: 0 0 0.5rem 0;">
+              <div style="padding: 0.3rem 0.6rem; font-size: 0.75rem; font-weight: 700; background: rgba(6, 182, 212, 0.2); color: #a5f3fc;">ตาราง EMPLOYEE (พนักงานทุกคนในบริษัท)</div>
+              <table class="db-table" style="font-size: 0.78rem;">
+                <thead>
+                  <tr><th class="pk-col"><u>EmpID (PK)</u></th><th>EmpName</th><th>Position</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td class="pk-col">E01</td><td>คุณอารยา</td><td>ผู้อำนวยการ</td></tr>
+                  <tr><td class="pk-col">E02</td><td>คุณธนินท์</td><td>ผู้จัดการ</td></tr>
+                  <tr><td class="pk-col">E03</td><td>คุณสมชาย</td><td>พนักงานทั่วไป (ไม่มีรถ)</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="db-table-wrapper" style="margin: 0;">
+              <div style="padding: 0.3rem 0.6rem; font-size: 0.75rem; font-weight: 700; background: rgba(6, 182, 212, 0.2); color: #a5f3fc;">ตาราง PARKING_SPACE (มีช่องจอดเฉพาะผู้บริหาร)</div>
+              <table class="db-table" style="font-size: 0.78rem;">
+                <thead>
+                  <tr><th class="pk-col"><u>SpaceID (PK)</u></th><th>SlotName</th><th class="fk-col">EmpID* (FK)</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td class="pk-col">P-101</td><td>ชั้น B1 โซน VIP 01</td><td class="fk-col">E01</td></tr>
+                  <tr><td class="pk-col">P-102</td><td>ชั้น B1 โซน VIP 02</td><td class="fk-col">E02</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div style="margin-top: 0.5rem; background: rgba(16, 185, 129, 0.1); border-left: 3px solid #10b981; padding: 0.45rem 0.65rem; border-radius: 4px; font-size: 0.76rem; color: #a7f3d0; line-height: 1.45;">
+              ✨ <strong>หัวใจสำคัญ:</strong> คุณสมชาย (E03) ไม่มีรถ ก็ไม่ต้องมีแถวใน PARKING_SPACE จึง <strong>ไม่มีค่า NULL เกิดขึ้นเลยแม้แต่ช่องเดียว!</strong><br>
+              <em>(ถ้าทำสลับฝั่งเอา SpaceID มาไว้ที่ EMPLOYEE ช่องของสมชายจะเป็น NULL ทันที)</em>
             </div>
           </div>
         </div>
@@ -870,6 +1134,50 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
           <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 0.5rem;">
             <em>*หมายเหตุ: ในตาราง ASSIGNMENT เป็นตารางเชื่อมความสัมพันธ์ M:N ทั้ง EmpID และ ProjNo ทำหน้าที่เป็น Composite Primary Key และเป็น Foreign Key ที่ชี้กลับไปยังตารางหลัก</em>
           </p>
+
+          <!-- Mock tables of the 4 exam relations -->
+          <div style="margin-top: 1rem; padding-top: 0.75rem; border-top: 1px dashed rgba(255, 255, 255, 0.15);">
+            <div style="font-size: 0.84rem; font-weight: 700; color: #6ee7b7; margin-bottom: 0.5rem;">
+              🔍 ภาพจำลอง 4 ตารางจริงจากสูตรที่เขียนตอบด้านบน:
+            </div>
+            <div class="grid-2" style="margin-bottom: 0;">
+              <div>
+                <div style="font-size: 0.78rem; font-weight: 700; color: #a5b4fc; margin-bottom: 0.2rem;">ตาราง DEPARTMENT (1)</div>
+                <div class="db-table-wrapper" style="margin: 0 0 0.5rem 0;">
+                  <table class="db-table" style="font-size: 0.75rem;">
+                    <thead><tr><th class="pk-col"><u>DeptNo</u></th><th>DeptName</th><th>Budget</th></tr></thead>
+                    <tbody><tr><td class="pk-col">D10</td><td>RnD</td><td>2.5M</td></tr></tbody>
+                  </table>
+                </div>
+
+                <div style="font-size: 0.78rem; font-weight: 700; color: #a5b4fc; margin-bottom: 0.2rem;">ตาราง EMPLOYEE (M - มี FK DeptNo*)</div>
+                <div class="db-table-wrapper" style="margin: 0;">
+                  <table class="db-table" style="font-size: 0.75rem;">
+                    <thead><tr><th class="pk-col"><u>EmpID</u></th><th>EmpName</th><th>Salary</th><th class="fk-col">DeptNo*</th></tr></thead>
+                    <tbody><tr><td class="pk-col">E101</td><td>สมชาย</td><td>55,000</td><td class="fk-col">D10</td></tr></tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div>
+                <div style="font-size: 0.78rem; font-weight: 700; color: #fca5a5; margin-bottom: 0.2rem;">ตาราง PROJECT (N)</div>
+                <div class="db-table-wrapper" style="margin: 0 0 0.5rem 0;">
+                  <table class="db-table" style="font-size: 0.75rem;">
+                    <thead><tr><th class="pk-col"><u>ProjNo</u></th><th>ProjName</th><th>DueDate</th></tr></thead>
+                    <tbody><tr><td class="pk-col">P901</td><td>AI Platform</td><td>2026-12-31</td></tr></tbody>
+                  </table>
+                </div>
+
+                <div style="font-size: 0.78rem; font-weight: 700; color: #fca5a5; margin-bottom: 0.2rem;">ตาราง ASSIGNMENT (เชื่อม M:N)</div>
+                <div class="db-table-wrapper" style="margin: 0;">
+                  <table class="db-table" style="font-size: 0.75rem;">
+                    <thead><tr><th class="pk-col"><u>EmpID*</u></th><th class="pk-col"><u>ProjNo*</u></th><th>AssignedHours</th></tr></thead>
+                    <tbody><tr><td class="pk-col">E101</td><td class="pk-col">P901</td><td>120 hrs</td></tr></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
