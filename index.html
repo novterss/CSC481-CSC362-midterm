@@ -1122,15 +1122,16 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
       <!-- SECTION 2: EXAM WRITING BLUEPRINT -->
       <div class="box-action">
         <span class="content-badge exam-template">✍️ ส่วนที่ 2: วิธีเขียนตอบ Relational Schema ในกระดาษข้อสอบ</span>
-        <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">รูปแบบการเขียนส่งอาจารย์ให้ได้ 15 คะแนนเต็ม:</h3>
+        <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">รูปแบบการเขียนส่งอาจารย์ให้ได้ 15 คะแนนเต็ม (โจทย์ 1 ข้อ ได้ 4 ตารางนี้ร่วมกัน):</h3>
         <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.75rem;">
-          เขียนระบุชื่อตารางตัวพิมพ์ใหญ่ เปิดวงเล็บ ขีดเส้นใต้ Primary Key และใส่เครื่องหมายดอกจัน <code>*</code> หรือกำกับ (FK) ชัดเจน:
+          💡 <strong>นี่ไม่ใช่ 4 ข้อสอบแยกกัน!</strong> แต่มันคือ <strong>คำตอบของโจทย์เพียง 1 ข้อใหญ่ (1 ระบบ)</strong> เมื่ออาจารย์ให้รูป ERD ระบบบริษัทมา 1 รูป แล้วสั่งให้แปลงเป็น Relational Schema เราจะต้องเขียนตอบ <strong>ทั้ง 4 ตารางนี้ร่วมกัน</strong> ในกระดาษคำตอบ:
         </p>
         <div class="exam-answer-paper">
-          <p>1. <strong>DEPARTMENT</strong> (<span class="highlight-pk">DeptNo</span>, DeptName, Budget)</p>
-          <p>2. <strong>EMPLOYEE</strong> (<span class="highlight-pk">EmpID</span>, EmpName, Salary, <span class="highlight-fk">DeptNo*</span>)</p>
-          <p>3. <strong>PROJECT</strong> (<span class="highlight-pk">ProjNo</span>, ProjName, DueDate)</p>
-          <p>4. <strong>ASSIGNMENT</strong> (<span class="highlight-pk">EmpID*</span>, <span class="highlight-pk">ProjNo*</span>, AssignedHours)</p>
+          <div style="font-size: 0.78rem; font-weight: 700; color: #6ee7b7; margin-bottom: 0.5rem;">📝 ชุดคำตอบสำหรับส่งอาจารย์ (เขียน 4 บรรทัดนี้ในข้อเดียวกัน):</div>
+          <p>ตารางที่ 1. <strong>DEPARTMENT</strong> (<span class="highlight-pk">DeptNo</span>, DeptName, Budget)</p>
+          <p>ตารางที่ 2. <strong>EMPLOYEE</strong> (<span class="highlight-pk">EmpID</span>, EmpName, Salary, <span class="highlight-fk">DeptNo*</span>)</p>
+          <p>ตารางที่ 3. <strong>PROJECT</strong> (<span class="highlight-pk">ProjNo</span>, ProjName, DueDate)</p>
+          <p>ตารางที่ 4. <strong>ASSIGNMENT</strong> (<span class="highlight-pk">EmpID*</span>, <span class="highlight-pk">ProjNo*</span>, AssignedHours)</p>
           <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 0.5rem;">
             <em>*หมายเหตุ: ในตาราง ASSIGNMENT เป็นตารางเชื่อมความสัมพันธ์ M:N ทั้ง EmpID และ ProjNo ทำหน้าที่เป็น Composite Primary Key และเป็น Foreign Key ที่ชี้กลับไปยังตารางหลัก</em>
           </p>
