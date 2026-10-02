@@ -134,6 +134,31 @@ function switchCpmDiagram(sheet) {
   renderCpmTable(sheet);
 }
 
+function switchDfdDiagram(type) {
+  const ctx = document.getElementById('dfdContextContainer');
+  const d0 = document.getElementById('dfdDiag0Container');
+  const bCtx = document.getElementById('btnDfdContext');
+  const bD0 = document.getElementById('btnDfdDiag0');
+  const title = document.getElementById('dfdDiagramTitle');
+  const desc = document.getElementById('dfdDiagramDesc');
+
+  if (type === 'context') {
+    if (ctx) ctx.style.display = 'block';
+    if (d0) d0.style.display = 'none';
+    if (bCtx) bCtx.classList.add('active');
+    if (bD0) bD0.classList.remove('active');
+    if (title) title.textContent = 'ผังแสดงการไหลของข้อมูล • Context Diagram (Level 0)';
+    if (desc) desc.textContent = 'ภาพรวมระดับสูงสุด: มีเพียง Process 0 วงกลมเดียวตรงกลาง เชื่อมกับ Entity ภายนอก (ห้ามมี Data Store เด็ดขาด)';
+  } else {
+    if (ctx) ctx.style.display = 'none';
+    if (d0) d0.style.display = 'block';
+    if (bCtx) bCtx.classList.remove('active');
+    if (bD0) bD0.classList.add('active');
+    if (title) title.textContent = 'ผังแสดงการไหลของข้อมูล • Diagram 0 (Level 1 Explosion)';
+    if (desc) desc.textContent = 'การระเบิดขยาย Process 0: แตกเป็น Process ย่อย 1.0, 2.0, 3.0 และเริ่มมี Data Store (D1, D2) ปรากฏขึ้นมาเก็บข้อมูล';
+  }
+}
+
 function renderCpmTable(sheetKey) {
   const container = document.getElementById('cpmTableContainer');
   if (!container) return;

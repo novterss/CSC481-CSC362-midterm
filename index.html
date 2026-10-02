@@ -2417,38 +2417,179 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
       </div>
 
       <!-- SECTION 2: WORKED CONTEXT DIAGRAM -->
+      <!-- SECTION 2: WORKED CONTEXT DIAGRAM & DIAGRAM 0 -->
       <div class="card" style="border-left: 4px solid var(--accent-indigo);">
-        <span class="content-badge example">📊 ส่วนที่ 2: ตัวอย่าง Context Diagram สมบูรณ์แบบ (ระบบสั่งอาหาร)</span>
-        <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">ผังแสดงการไหลของข้อมูล (Inputs & Outputs):</h3>
+        <span class="content-badge example">📊 ส่วนที่ 2: ตัวอย่างจริง • Context Diagram vs Diagram 0 (ระบบสั่งอาหาร)</span>
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem; margin-bottom: 0.85rem;">
+          <div>
+            <h3 id="dfdDiagramTitle" style="color: var(--text-primary); margin: 0; font-size: 1.15rem;">
+              ผังแสดงการไหลของข้อมูล • Context Diagram (Level 0)
+            </h3>
+            <p id="dfdDiagramDesc" style="font-size: 0.84rem; color: var(--text-secondary); margin: 0.2rem 0 0 0;">
+              ภาพรวมระดับสูงสุด: มีเพียง Process 0 วงกลมเดียวตรงกลาง เชื่อมกับ Entity ภายนอก (ห้ามมี Data Store เด็ดขาด)
+            </p>
+          </div>
+          <div style="display: flex; gap: 0.45rem;">
+            <button id="btnDfdContext" class="filter-pill active" onclick="switchDfdDiagram('context')">🌐 1. Context Diagram (Level 0)</button>
+            <button id="btnDfdDiag0" class="filter-pill" onclick="switchDfdDiagram('diag0')">🔍 2. Diagram 0 (Level 1 ระเบิดขยาย)</button>
+          </div>
+        </div>
 
-        <div class="diagram-container">
+        <!-- 1. CONTEXT DIAGRAM (LEVEL 0) -->
+        <div id="dfdContextContainer" class="diagram-container">
           <svg class="diagram-svg" viewBox="0 0 850 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="dfd-ctx-arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#f59e0b" />
+              </marker>
+            </defs>
+
             <!-- Entity CUSTOMER -->
-            <rect x="40" y="60" width="140" height="70" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
-            <text x="110" y="100" fill="#f8fafc" font-size="14" font-weight="bold" text-anchor="middle">Customer</text>
+            <rect x="40" y="60" width="140" height="70" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+            <rect x="40" y="60" width="140" height="20" rx="4" fill="#1e293b"/>
+            <text x="110" y="74" fill="#38bdf8" font-size="9" font-weight="bold" text-anchor="middle">EXTERNAL ENTITY</text>
+            <text x="110" y="103" fill="#f8fafc" font-size="14" font-weight="bold" text-anchor="middle">Customer</text>
+            <text x="110" y="120" fill="#94a3b8" font-size="10" text-anchor="middle">(ลูกค้า)</text>
 
             <!-- Flow to Process -->
-            <path d="M 180 80 L 335 80" stroke="#f59e0b" stroke-width="2" fill="none"/>
-            <text x="255" y="72" fill="#fcd34d" font-size="11" text-anchor="middle">Order Details -></text>
+            <path d="M 180 80 L 335 80" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#dfd-ctx-arrow)"/>
+            <text x="255" y="72" fill="#fcd34d" font-size="11" font-weight="bold" text-anchor="middle">Order Details -></text>
 
             <!-- Flow from Process -->
-            <path d="M 335 110 L 180 110" stroke="#f59e0b" stroke-width="2" fill="none"/>
-            <text x="255" y="128" fill="#fcd34d" font-size="11" text-anchor="middle"><- Receipt / Food</text>
+            <path d="M 345 115 L 190 115" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#dfd-ctx-arrow)"/>
+            <text x="260" y="132" fill="#fcd34d" font-size="11" font-weight="bold" text-anchor="middle"><- Receipt / Food</text>
 
             <!-- Process 0 -->
-            <circle cx="420" cy="95" r="75" fill="#1e293b" stroke="#6366f1" stroke-width="2.5"/>
-            <text x="420" y="80" fill="#a5b4fc" font-size="16" font-weight="bold" text-anchor="middle">0</text>
-            <text x="420" y="105" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">Food Ordering</text>
-            <text x="420" y="125" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">System</text>
+            <circle cx="425" cy="95" r="75" fill="#111827" stroke="#6366f1" stroke-width="2.5"/>
+            <text x="425" y="78" fill="#a5b4fc" font-size="16" font-weight="bold" text-anchor="middle">0</text>
+            <line x1="365" y1="86" x2="485" y2="86" stroke="#6366f1" stroke-width="1.5"/>
+            <text x="425" y="106" fill="#ffffff" font-size="13.5" font-weight="bold" text-anchor="middle">Food Ordering</text>
+            <text x="425" y="124" fill="#ffffff" font-size="13.5" font-weight="bold" text-anchor="middle">System</text>
 
             <!-- Flow to Kitchen -->
-            <path d="M 500 95 L 660 95" stroke="#f59e0b" stroke-width="2" fill="none"/>
-            <text x="580" y="85" fill="#fcd34d" font-size="11" text-anchor="middle">Order Slip -></text>
+            <path d="M 500 95 L 655 95" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#dfd-ctx-arrow)"/>
+            <text x="578" y="85" fill="#fcd34d" font-size="11" font-weight="bold" text-anchor="middle">Order Slip -></text>
 
             <!-- Entity KITCHEN -->
-            <rect x="670" y="60" width="140" height="70" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
-            <text x="740" y="100" fill="#f8fafc" font-size="14" font-weight="bold" text-anchor="middle">Kitchen</text>
+            <rect x="665" y="60" width="140" height="70" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+            <rect x="665" y="60" width="140" height="20" rx="4" fill="#1e293b"/>
+            <text x="735" y="74" fill="#38bdf8" font-size="9" font-weight="bold" text-anchor="middle">EXTERNAL ENTITY</text>
+            <text x="735" y="103" fill="#f8fafc" font-size="14" font-weight="bold" text-anchor="middle">Kitchen</text>
+            <text x="735" y="120" fill="#94a3b8" font-size="10" text-anchor="middle">(แผนกครัว)</text>
           </svg>
+        </div>
+
+        <!-- 2. DIAGRAM 0 (LEVEL 1 EXPLOSION) -->
+        <div id="dfdDiag0Container" class="diagram-container" style="display: none;">
+          <svg class="diagram-svg" viewBox="0 0 940 450" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="dfd0-arr-amber" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#f59e0b" />
+              </marker>
+              <marker id="dfd0-arr-emerald" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#10b981" />
+              </marker>
+            </defs>
+
+            <!-- ================= ENTITY 1: CUSTOMER ================= -->
+            <rect x="25" y="150" width="130" height="85" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+            <rect x="25" y="150" width="130" height="22" rx="6" fill="#1e293b"/>
+            <text x="90" y="165" fill="#38bdf8" font-size="9" font-weight="bold" text-anchor="middle">EXTERNAL ENTITY</text>
+            <text x="90" y="194" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">Customer</text>
+            <text x="90" y="215" fill="#94a3b8" font-size="10.5" text-anchor="middle">(ลูกค้า)</text>
+
+            <!-- ================= ENTITY 2: KITCHEN ================= -->
+            <rect x="785" y="65" width="130" height="85" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+            <rect x="785" y="65" width="130" height="22" rx="6" fill="#1e293b"/>
+            <text x="850" y="80" fill="#38bdf8" font-size="9" font-weight="bold" text-anchor="middle">EXTERNAL ENTITY</text>
+            <text x="850" y="109" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">Kitchen</text>
+            <text x="850" y="130" fill="#94a3b8" font-size="10.5" text-anchor="middle">(แผนกครัว)</text>
+
+            <!-- ================= PROCESS 1.0 ================= -->
+            <rect x="235" y="55" width="175" height="80" rx="8" fill="#111827" stroke="#6366f1" stroke-width="2"/>
+            <rect x="235" y="55" width="175" height="24" rx="8" fill="#312e81"/>
+            <text x="322" y="72" fill="#c7d2fe" font-size="11" font-weight="bold" text-anchor="middle">1.0 • PROCESS</text>
+            <text x="322" y="99" fill="#ffffff" font-size="13" font-weight="bold" text-anchor="middle">รับและตรวจสอบออเดอร์</text>
+            <text x="322" y="118" fill="#94a3b8" font-size="10" text-anchor="middle">(Take & Verify Order)</text>
+
+            <!-- ================= PROCESS 2.0 ================= -->
+            <rect x="525" y="65" width="175" height="80" rx="8" fill="#111827" stroke="#6366f1" stroke-width="2"/>
+            <rect x="525" y="65" width="175" height="24" rx="8" fill="#312e81"/>
+            <text x="612" y="82" fill="#c7d2fe" font-size="11" font-weight="bold" text-anchor="middle">2.0 • PROCESS</text>
+            <text x="612" y="109" fill="#ffffff" font-size="13" font-weight="bold" text-anchor="middle">ส่งรายการให้ครัว</text>
+            <text x="612" y="128" fill="#94a3b8" font-size="10" text-anchor="middle">(Send Order to Kitchen)</text>
+
+            <!-- ================= PROCESS 3.0 ================= -->
+            <rect x="365" y="315" width="195" height="80" rx="8" fill="#111827" stroke="#6366f1" stroke-width="2"/>
+            <rect x="365" y="315" width="195" height="24" rx="8" fill="#312e81"/>
+            <text x="462" y="332" fill="#c7d2fe" font-size="11" font-weight="bold" text-anchor="middle">3.0 • PROCESS</text>
+            <text x="462" y="359" fill="#ffffff" font-size="13" font-weight="bold" text-anchor="middle">คิดเงินและออกใบเสร็จ</text>
+            <text x="462" y="378" fill="#94a3b8" font-size="10" text-anchor="middle">(Process Payment & Bill)</text>
+
+            <!-- ================= DATA STORE D1: MENU ================= -->
+            <!-- D1 ID Block -->
+            <rect x="235" y="195" width="36" height="46" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+            <text x="253" y="223" fill="#6ee7b7" font-size="11" font-weight="bold" text-anchor="middle">D1</text>
+            <!-- D1 Content Block -->
+            <rect x="271" y="195" width="139" height="46" fill="rgba(6, 78, 59, 0.25)" stroke="#10b981" stroke-width="1.5"/>
+            <text x="340" y="216" fill="#ecfdf5" font-size="11" font-weight="bold" text-anchor="middle">ข้อมูลเมนูและราคา</text>
+            <text x="340" y="232" fill="#6ee7b7" font-size="9.5" text-anchor="middle">(Menu Data Store)</text>
+
+            <!-- ================= DATA STORE D2: ORDERS ================= -->
+            <!-- D2 ID Block -->
+            <rect x="525" y="195" width="36" height="46" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+            <text x="543" y="223" fill="#6ee7b7" font-size="11" font-weight="bold" text-anchor="middle">D2</text>
+            <!-- D2 Content Block -->
+            <rect x="561" y="195" width="139" height="46" fill="rgba(6, 78, 59, 0.25)" stroke="#10b981" stroke-width="1.5"/>
+            <text x="630" y="216" fill="#ecfdf5" font-size="11" font-weight="bold" text-anchor="middle">แฟ้มคำสั่งซื้อ</text>
+            <text x="630" y="232" fill="#6ee7b7" font-size="9.5" text-anchor="middle">(Orders Data Store)</text>
+
+            <!-- ================= DATA FLOWS ================= -->
+            <!-- Flow 1: Customer -> Process 1.0 -->
+            <path d="M 155 170 L 225 105" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#dfd0-arr-amber)"/>
+            <text x="180" y="130" fill="#fcd34d" font-size="10.5" font-weight="bold">Order Details</text>
+
+            <!-- Flow 2: Process 1.0 -> D1 (Check Menu) -->
+            <path d="M 295 135 L 295 188" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#dfd0-arr-emerald)"/>
+            <text x="290" y="165" fill="#6ee7b7" font-size="9.5" text-anchor="end">เช็กราคาเมนู</text>
+
+            <!-- Flow 3: Process 1.0 -> D2 (Save Order) -->
+            <path d="M 410 105 L 518 200" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#dfd0-arr-emerald)"/>
+            <text x="475" y="145" fill="#6ee7b7" font-size="10" font-weight="bold">บันทึกออเดอร์ใหม่</text>
+
+            <!-- Flow 4: D2 -> Process 2.0 (Read Order) -->
+            <path d="M 612 195 L 612 152" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#dfd0-arr-emerald)"/>
+            <text x="618" y="176" fill="#6ee7b7" font-size="9.5" text-anchor="start">ดึงรายการอาหาร</text>
+
+            <!-- Flow 5: Process 2.0 -> Kitchen (Order Slip) -->
+            <path d="M 700 105 L 778 105" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#dfd0-arr-amber)"/>
+            <text x="740" y="96" fill="#fcd34d" font-size="10.5" font-weight="bold" text-anchor="middle">Order Slip -></text>
+
+            <!-- Flow 6: Customer -> Process 3.0 (Payment) -->
+            <path d="M 130 235 Q 210 320 357 345" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#dfd0-arr-amber)"/>
+            <text x="230" y="325" fill="#fcd34d" font-size="10.5" font-weight="bold">Payment (เงินค่าอาหาร) -></text>
+
+            <!-- Flow 7: D2 -> Process 3.0 (Bill info & update) -->
+            <path d="M 570 241 L 510 310" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#dfd0-arr-emerald)"/>
+            <text x="565" y="280" fill="#6ee7b7" font-size="9.5">ยอดบิล & ปรับสถานะจ่ายแล้ว</text>
+
+            <!-- Flow 8: Process 3.0 -> Customer (Receipt / Food) -->
+            <path d="M 365 375 Q 165 415 105 242" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#dfd0-arr-amber)"/>
+            <text x="215" y="418" fill="#fcd34d" font-size="11" font-weight="bold" text-anchor="middle"><- Receipt / Food (ใบเสร็จรับเงิน & อาหาร)</text>
+          </svg>
+        </div>
+
+        <!-- LEVEL BALANCING CHECKLIST CARD -->
+        <div style="margin-top: 1rem; padding: 1rem; background: rgba(99, 102, 241, 0.08); border-radius: var(--radius-sm); border: 1px solid rgba(99, 102, 241, 0.25);">
+          <div style="font-weight: 700; color: #a5b4fc; font-size: 0.95rem; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem;">
+            <span>⚖️</span> กฎความสมดุล (Level Balancing Checklist ที่อาจารย์ใช้ตรวจข้อสอบ):
+          </div>
+          <div style="font-size: 0.86rem; color: var(--text-secondary); line-height: 1.65;">
+            • <strong>Input ขาเข้าจาก Entity:</strong> ใน Context Diagram มี <code>Order Details</code> จาก Customer $\rightarrow$ ใน Diagram 0 ก็ต้องไหลเข้า Process ย่อยครบถ้วน<br>
+            • <strong>Output ขาส่งออกไป Entity:</strong> ใน Context Diagram มี <code>Order Slip</code> ส่งให้ Kitchen และ <code>Receipt / Food</code> ส่งกลับให้ Customer $\rightarrow$ ใน Diagram 0 ต้องส่งออกให้ Entity เดิมห้ามตกหล่น!<br>
+            • <strong>สิ่งที่เพิ่มเข้ามาเฉพาะใน Diagram 0:</strong> เริ่มมีเลขกระบวนการย่อย <code>1.0, 2.0, 3.0</code> และมี <strong>Data Store</strong> <code>D1, D2</code> เพื่อจัดเก็บข้อมูล (ซึ่งใน Context Diagram ถูกซ่อนไว้ข้างใน)
+          </div>
         </div>
       </div>
 
