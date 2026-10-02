@@ -2897,124 +2897,301 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
     <!-- ========================================== -->
     <section id="tab-csc481-fishbone" class="content-section" style="display: none;">
       <div class="section-header">
-        <span class="section-tag">CSC481 • ข้อที่ 6 (10 คะแนนเต็ม)</span>
-        <h2 class="section-title">Fishbone Diagram (ผังก้างปลา) & แผนแก้ปัญหาเชิงระบบ</h2>
-        <p class="section-desc">การวิเคราะห์หาสาเหตุที่แท้จริง (Cause-and-Effect / Ishikawa) -> เทคนิค 5 Whys -> เคสศึกษา E-Commerce ตะกร้าสินค้าถูกทิ้ง -> แผน Action Plan เต็มคะแนน</p>
+        <span class="section-tag">CSC481 • ข้อที่ 6 (10 คะแนนเต็ม) • อิงจากไฟล์เอกสาร SWOT_FishBone2.pdf</span>
+        <h2 class="section-title">Fishbone Diagram (ผังก้างปลา) & การพิชิตโจทย์ข้อสอบจริง</h2>
+        <p class="section-desc">ถอดรหัสจากเอกสารสไลด์อาจารย์ (SWOT_FishBone2.pdf): วิเคราะห์ปัญหายอดขายลดลง/ทิ้งตะกร้าสินค้า -> ขุดรากเหง้าด้วย 5 Whys -> วาดผังก้างปลา -> เขียน Action Plan คะแนนเต็ม 10/10</p>
       </div>
 
-      <!-- SECTION 1: THEORY OF FISHBONE & 5 WHYS -->
-      <div class="box-read">
-        <span class="content-badge theory">📖 ส่วนที่ 1: อ่านทำความเข้าใจ • หลักการของผังก้างปลา (Ishikawa Diagram)</span>
-        <p style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 1rem;">
-          ผังก้างปลา (Cause and Effect Diagram) คิดค้นโดย Dr. Kaoru Ishikawa ใช้เพื่อ <strong>"ระดมสมองค้นหารากเหง้าของปัญหา (Root Causes)"</strong> โดยมองว่าปัญหาที่เกิดขึ้นเป็นเพียง <em>"ยอดภูเขาน้ำแข็ง"</em> ที่เกิดจากสาเหตุสะสมหลายด้าน:
-        </p>
-
-        <div class="grid-2">
-          <div style="background: rgba(6, 182, 212, 0.08); border: 1px solid rgba(6, 182, 212, 0.3); border-radius: var(--radius-sm); padding: 1rem;">
-            <h4 style="color: #67e8f9; margin-bottom: 0.4rem;">🎯 1. โครงสร้างของผังก้างปลา</h4>
-            <ul style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; padding-left: 1.2rem;">
-              <li><strong>หัวปลา (Head):</strong> คือ <em>"ปัญหาหลัก หรือผลกระทบ (Effect/Problem Statement)"</em> ที่ต้องการแก้ไข (ห้ามเขียนวิธีแก้ที่หัวปลาเด็ดขาด!)</li>
-              <li><strong>กระดูกสันหลัง (Spine):</strong> เส้นแนวนอนหลักลากพุ่งตรงไปที่หัวปลา</li>
-              <li><strong>ก้างปลาใหญ่ (Major Bones):</strong> หมวดหมู่สาเหตุหลัก เช่น คน, วิธีการ, ระบบ, สภาพแวดล้อม</li>
-              <li><strong>ก้างปลาย่อย (Sub-ribs):</strong> สาเหตุรากเหง้าที่ขุดลึกด้วยเทคนิค <strong>"5 Whys"</strong></li>
-            </ul>
+      <!-- EXAM STRATEGY BOX: HOW TO BUILD A FISHBONE FROM A GIVEN SCENARIO -->
+      <div class="box-tip" style="margin-bottom: 1.5rem;">
+        <span class="content-badge tip">🎯 หัวใจห้องสอบ • 3 สเต็ปเปลี่ยน "โจทย์ข้อสอบ 1 ย่อหน้า" เป็น "ผังก้างปลา 10 คะแนนเต็ม"</span>
+        <h3 style="color: #fcd34d; margin: 0.5rem 0 0.75rem 0; font-size: 1.05rem;">กรณีที่อาจารย์ให้โจทย์สถานการณ์ (Problem Scenario) มา ให้อ่านและทำตามลำดับนี้ทันที:</h3>
+        
+        <div class="grid-3" style="margin-top: 0.75rem; gap: 1rem;">
+          <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: var(--radius-sm); padding: 1rem;">
+            <div style="font-weight: 700; color: #f87171; margin-bottom: 0.4rem; font-size: 0.95rem;">📍 สเต็ปที่ 1: วงกลมหา "หัวปลา" (Effect)</div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+              กวาดสายตาหา <strong>"ผลกระทบสุดท้ายเชิงลบหรือตัวเลขวิกฤต"</strong> ในโจทย์ เช่น <em>ยอดขายลดลง, อัตราการซื้อสำเร็จต่ำ (Conversion Rate ต่ำ), ลูกค้าทิ้งตะกร้าสินค้า</em><br>
+              ⚠️ <strong style="color: #fca5a5;">กฎเหล็ก:</strong> ห้ามเอาวิธีแก้ (เช่น "ต้องทำระบบใหม่") ไปใส่หัวปลาเด็ดขาด! หัวปลา = ปัญหาที่เกิดขึ้นแล้วเท่านั้น
+            </p>
           </div>
 
-          <div style="background: rgba(168, 85, 247, 0.08); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: var(--radius-sm); padding: 1rem;">
-            <h4 style="color: #e9d5ff; margin-bottom: 0.4rem;">🔍 2. เทคนิคถาม 5 Whys (ทำไม 5 ครั้ง)</h4>
-            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
-              เมื่อเจอปัญหา อย่าหยุดแค่สาเหตุแรก ให้ถามต่อว่า "ทำไมถึงเกิดสิ่งนั้น?" ลึกลงไป 5 ชั้น เช่น:<br>
-              1. ทำไมลูกค้าทิ้งตะกร้าสินค้า? -> <em>เพราะขั้นตอน Checkout ซับซ้อน</em><br>
-              2. ทำไม Checkout ซับซ้อน? -> <em>เพราะบังคับกรอกข้อมูลถึง 15 ช่อง</em><br>
-              3. ทำไมต้องกรอก 15 ช่อง? -> <em>เพราะระบบต้องการข้อมูลไปทำ CRM</em><br>
-              4. ทำไมเก็บตอนซื้อ? -> <em>เพราะไม่มีนโยบาย Guest Checkout ซื้อก่อนสมัครทีหลัง</em><br>
-              💡 <strong>รากเหง้าที่แท้จริง:</strong> ขาดระบบ Guest Checkout ทางแก้จึงเป็นการตัดขั้นตอนให้ซื้อได้ทันที!
+          <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: var(--radius-sm); padding: 1rem;">
+            <div style="font-weight: 700; color: #38bdf8; margin-bottom: 0.4rem; font-size: 0.95rem;">🦴 สเต็ปที่ 2: เลือกกรอบ "ก้างใหญ่" (Major Bones)</div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+              อิงตามสไลด์อาจารย์ (SWOT_FishBone2.pdf หน้า 7-8) สำหรับโจทย์ <strong>E-Commerce / Digital Business</strong> ให้ใช้ 4-5 ด้านนี้เป็นหลัก:<br>
+              • <strong>1. ระบบและเทคโนโลยี (System & Technology)</strong><br>
+              • <strong>2. ผลิตภัณฑ์และราคา (Product & Pricing)</strong><br>
+              • <strong>3. การบริการและขนส่ง (Service & Logistics)</strong><br>
+              • <strong>4. การตลาดและการสื่อสาร (Marketing & Promotion)</strong><br>
+              • <em>(และปัจจัยภายนอก External Factors)</em>
             </p>
+          </div>
+
+          <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: var(--radius-sm); padding: 1rem;">
+            <div style="font-weight: 700; color: #34d399; margin-bottom: 0.4rem; font-size: 0.95rem;">🔍 สเต็ปที่ 3: แตก "ก้างย่อย" ด้วย 5 Whys</div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+              นำข้อความที่โจทย์บ่นหรือปัญหาที่โจทย์บอกมาแยกใส่ก้างใหญ่ แล้วถามต่อว่า <strong>"ทำไมสิ่งนี้ถึงเกิดขึ้น?"</strong> ลึกลงไป 2-3 ชั้น เพื่อหารากเหง้าเชิงระบบ เช่น เว็บโหลดช้า -> รูปใหญ่ไม่บีบอัด -> ขาด CDN กระจายโหลด นำรากเหง้านี้ไปเขียนเป็นก้างย่อย
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 1: CASE STUDY BREAKDOWN & 5 WHYS -->
+      <div class="box-read">
+        <span class="content-badge theory">📖 ส่วนที่ 1: ถอดรหัสโจทย์ข้อสอบจริง • วิเคราะห์รากเหง้าตามสไลด์อาจารย์ (SWOT_FishBone2.pdf หน้า 7)</span>
+        
+        <!-- Case Scenario Box -->
+        <div style="background: rgba(15, 23, 42, 0.85); border-left: 4px solid #6366f1; border-radius: var(--radius-sm); padding: 1.1rem 1.25rem; margin: 0.85rem 0 1.25rem 0;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem;">
+            <span style="font-size: 1.1rem;">🏢</span>
+            <strong style="color: #a5b4fc; font-size: 0.98rem;">สถานการณ์จำลองข้อสอบจริง (จากไฟล์ SWOT_FishBone2.pdf):</strong>
+          </div>
+          <p style="font-size: 0.9rem; color: #e2e8f0; line-height: 1.7; font-style: italic;">
+            "ปัญหายอดฮิตในธุรกิจ E-Commerce: ร้านค้าออนไลน์พบว่า <strong>ยอดขายลดลง และอัตราการซื้อสำเร็จต่ำ (Low Sales Conversion Rate)</strong> ลูกค้าเลือกของใส่ตะกร้าแต่กดปิดหนี (Cart Abandonment) สูง จากการวิเคราะห์พบปัญหา 4 ด้าน: หน้าเว็บโหลดช้าเกิน 3 วินาที และขั้นตอน Checkout ซับซ้อนบังคับสมัครสมาชิกก่อนซื้อ, สินค้าหมดสต็อกบ่อยและราคาแพงกว่าคู่แข่ง, ค่าจัดส่งแพงเกินไป ไม่มีเก็บเงินปลายทาง (COD) และแอดมินตอบแชตช้า, รวมถึงลูกค้าที่ทิ้งตะกร้าสินค้าไม่ได้รับการติดตามกระตุ้นให้กลับมาซื้อ"
+          </p>
+          <div style="margin-top: 0.6rem; font-size: 0.85rem; color: #94a3b8; display: flex; gap: 1.5rem; flex-wrap: wrap;">
+            <span>🎯 <strong>หัวปลา (Effect ที่สกัดได้):</strong> <span style="color: #f87171; font-weight: 700;">ยอดขายลดลง / อัตราการซื้อสำเร็จต่ำ (Conversion Rate ต่ำ)</span></span>
+            <span>🧩 <strong>กรอบการวิเคราะห์:</strong> <span style="color: #67e8f9; font-weight: 700;">4 หมวดหมู่ E-Commerce ตามสไลด์วิชา CSC481</span></span>
+          </div>
+        </div>
+
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
+          เมื่อได้ปัญหาหลักแล้ว เรานำอาการในโจทย์มาจัดหมวดหมู่และขุดลึกด้วยเทคนิค <strong>"5 Whys (ถามทำไม 5 ครั้ง)"</strong> เพื่อหารากเหง้าที่แท้จริงในแต่ละด้าน (ตรงตามสไลด์อาจารย์หน้า 7):
+        </p>
+
+        <!-- 4 Cards for 4 Categories 5 Whys -->
+        <div class="grid-2" style="gap: 1rem;">
+          <!-- Card 1: System & Technology -->
+          <div style="background: rgba(56, 189, 248, 0.06); border: 1.5px solid rgba(56, 189, 248, 0.35); border-radius: var(--radius-sm); padding: 1rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+              <h4 style="color: #38bdf8; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem;">
+                💻 1. ด้านระบบและเทคโนโลยี (System & Technology)
+              </h4>
+              <span style="font-size: 0.75rem; background: rgba(56, 189, 248, 0.2); color: #38bdf8; padding: 2px 8px; border-radius: 999px; font-weight: 600;">System / Infra</span>
+            </div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+              <p><strong>• เว็บไซต์/แอป โหลดช้า (> 3 วินาที):</strong><br>
+              <em>ทำไมช้า?</em> -> ไฟล์รูปภาพสินค้ามีขนาดใหญ่เกินไป ไม่ได้บีบอัด และไม่มี CDN แคชไฟล์<br>
+              💡 <strong>รากเหง้า:</strong> ขาด Cloudflare CDN และไม่ได้แปลงไฟล์เป็นสกุล <code>.webp</code></p>
+              
+              <p style="margin-top: 0.5rem;"><strong>• ขั้นตอนการชำระเงิน (Checkout) ซับซ้อน & บังคับสมัครสมาชิก:</strong><br>
+              <em>ทำไมลูกค้าปิดหนี?</em> -> ต้องกรอกข้อมูลหลายขั้นตอน เสียเวลารอรับรหัส OTP<br>
+              💡 <strong>รากเหง้า:</strong> ขาดระบบ <strong>One-Page Checkout</strong> และระบบ <strong>Guest Checkout</strong></p>
+            </div>
+          </div>
+
+          <!-- Card 2: Product & Pricing -->
+          <div style="background: rgba(52, 211, 153, 0.06); border: 1.5px solid rgba(52, 211, 153, 0.35); border-radius: var(--radius-sm); padding: 1rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+              <h4 style="color: #34d399; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem;">
+                📦 2. ด้านผลิตภัณฑ์และราคา (Product & Pricing)
+              </h4>
+              <span style="font-size: 0.75rem; background: rgba(52, 211, 153, 0.2); color: #34d399; padding: 2px 8px; border-radius: 999px; font-weight: 600;">Product & Value</span>
+            </div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+              <p><strong>• สินค้าหมดสต็อกบ่อย (Out of Stock) & รูปภาพไม่ชัดเจน:</strong><br>
+              <em>ทำไมของหมดไม่รู้ตัว?</em> -> สต็อกหน้าร้านกับออนไลน์ไม่ซิงค์กัน ขาดระบบตัดสต็อก Real-time<br>
+              💡 <strong>รากเหง้า:</strong> ขาดระบบเชื่อมโยงคลังสินค้า ERP/WMS และขาดรีวิวจากผู้ใช้จริง</p>
+
+              <p style="margin-top: 0.5rem;"><strong>• ราคาสูงกว่าคู่แข่ง:</strong><br>
+              <em>ทำไมลูกค้าไปซื้อร้านอื่น?</em> -> ขาดความคุ้มค่าที่แตกต่างเมื่อเทียบกับราคาที่ต้องจ่าย<br>
+              💡 <strong>รากเหง้า:</strong> ขาดการจัดเซ็ตสินค้าสุดคุ้ม (Product Bundling) เพื่อชูคุณค่าแทนการตัดราคา</p>
+            </div>
+          </div>
+
+          <!-- Card 3: Service & Logistics -->
+          <div style="background: rgba(192, 132, 252, 0.06); border: 1.5px solid rgba(192, 132, 252, 0.35); border-radius: var(--radius-sm); padding: 1rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+              <h4 style="color: #c084fc; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem;">
+                🚚 3. ด้านการบริการและขนส่ง (Service & Logistics)
+              </h4>
+              <span style="font-size: 0.75rem; background: rgba(192, 132, 252, 0.2); color: #c084fc; padding: 2px 8px; border-radius: 999px; font-weight: 600;">Service & Trust</span>
+            </div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+              <p><strong>• ค่าจัดส่งแพงเกินไป & ไม่มีเก็บเงินปลายทาง (COD):</strong><br>
+              <em>ทำไมลูกค้าทิ้งตะกร้า?</em> -> <strong>สาเหตุหลักอันดับ 1 ของ Cart Abandonment</strong> คือเจอบวกค่าส่งแพง และลูกค้าใหม่ไม่กล้าโอนเงินก่อน<br>
+              💡 <strong>รากเหง้า:</strong> ขาดโปรโมชันส่งฟรี และขาดช่องทางชำระเงินปลายทาง (COD)</p>
+
+              <p style="margin-top: 0.5rem;"><strong>• แอดมินตอบแชตช้า:</strong><br>
+              <em>ทำไมตอบช้า?</em> -> ลูกค้าทักถามพร้อมกันจำนวนมากในคำถามซ้ำๆ (ของพร้อมส่งไหม, ค่าส่งเท่าไร)<br>
+              💡 <strong>รากเหง้า:</strong> ขาดระบบ AI Chatbot คอยตอบคำถามอัตโนมัติ 24 ชม.</p>
+            </div>
+          </div>
+
+          <!-- Card 4: Marketing & Promotion -->
+          <div style="background: rgba(251, 191, 36, 0.06); border: 1.5px solid rgba(251, 191, 36, 0.35); border-radius: var(--radius-sm); padding: 1rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+              <h4 style="color: #fbbf24; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem;">
+                📢 4. ด้านการตลาดและการสื่อสาร (Marketing & Promotion)
+              </h4>
+              <span style="font-size: 0.75rem; background: rgba(251, 191, 36, 0.2); color: #fbbf24; padding: 2px 8px; border-radius: 999px; font-weight: 600;">Marketing & Retargeting</span>
+            </div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+              <p><strong>• ขาดการทำ Retargeting (ไม่ติดตามลูกค้าที่ทิ้งตะกร้า):</strong><br>
+              <em>ทำไมยอดขายหลุดลอย?</em> -> ลูกค้าเลือกของใส่ตะกร้าไว้แล้วหลุดไป แต่ร้านค้าไม่มีการส่งข้อความเตือน<br>
+              💡 <strong>รากเหง้า:</strong> ขาดระบบ <strong>Abandoned Cart Retargeting</strong> บรอดแคสต์เตือนพร้อมโค้ดส่วนลด</p>
+
+              <p style="margin-top: 0.5rem;"><strong>• การยิงโฆษณาไม่ตรงกลุ่มเป้าหมาย & โปรโมชันไม่ดึงดูด:</strong><br>
+              <em>ทำไมคนเข้าเว็บเยอะแต่ไม่ซื้อ?</em> -> ดึงดูดได้เฉพาะ Traffic ที่ไม่มีความสนใจซื้อจริง<br>
+              💡 <strong>รากเหง้า:</strong> ขาดการใช้ Custom / Lookalike Audience ในการยิงแอด</p>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- SECTION 2: FISHBONE VISUAL DIAGRAM -->
       <div class="box-read">
-        <span class="content-badge example">📊 ส่วนที่ 2: ตัวอย่างผังก้างปลาข้อสอบจริง (เคส E-Commerce ยอดขายตก & ทิ้งตะกร้าสินค้า)</span>
+        <span class="content-badge example">📊 ส่วนที่ 2: ผังก้างปลาที่สมบูรณ์ (Visual Fishbone Diagram จากสไลด์อาจารย์ หน้า 8)</span>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
+          จำลองกราฟิกผังก้างปลาจากเอกสารประกอบการสอน <strong>SWOT_FishBone2.pdf (หน้า 8)</strong> อย่างครบถ้วนทุกก้างและก้างย่อย โดยคุมโค้ดสีตรงกับส่วนที่ 1 และหัวปลาชี้ทางขวา:
+        </p>
         
-        <div class="diagram-container">
-          <svg class="diagram-svg" viewBox="0 0 920 250" xmlns="http://www.w3.org/2000/svg">
-            <!-- Main Spine -->
-            <line x1="40" y1="125" x2="700" y2="125" stroke="#f59e0b" stroke-width="4.5"/>
+        <div class="diagram-container" style="background: rgba(10, 15, 26, 0.95); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--radius-md); padding: 1.25rem 0.5rem; overflow-x: auto;">
+          <svg class="diagram-svg" viewBox="0 0 940 300" xmlns="http://www.w3.org/2000/svg" style="min-width: 820px; width: 100%; height: auto; display: block; margin: 0 auto;">
+            <!-- Main Horizontal Spine -->
+            <line x1="40" y1="150" x2="710" y2="150" stroke="#f59e0b" stroke-width="4.5" stroke-linecap="round"/>
             
-            <!-- Fish Head -->
-            <polygon points="700,75 890,125 700,175" fill="#dc2626" stroke="#ef4444" stroke-width="2"/>
-            <text x="780" y="115" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">ปัญหาหลัก:</text>
-            <text x="780" y="138" fill="#ffffff" font-size="12" text-anchor="middle">ยอดขายตก 35% / ทิ้งตะกร้า</text>
+            <!-- Fish Head Triangle -->
+            <polygon points="710,75 920,150 710,225" fill="#ef4444" stroke="#f87171" stroke-width="2.5" filter="drop-shadow(0 4px 8px rgba(239, 68, 68, 0.35))"/>
+            <text x="795" y="125" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="0.5">🎯 ปัญหาหลัก (EFFECT):</text>
+            <text x="795" y="152" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">ยอดขายลดลง</text>
+            <text x="795" y="174" fill="#fee2e2" font-size="11.5" font-weight="500" text-anchor="middle">&amp; Conversion Rate ต่ำ</text>
 
-            <!-- Top Left Bone: Platform / Tech -->
-            <line x1="200" y1="30" x2="270" y2="125" stroke="#38bdf8" stroke-width="3"/>
-            <rect x="110" y="10" width="180" height="34" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-            <text x="200" y="32" fill="#67e8f9" font-size="12" font-weight="bold" text-anchor="middle">1. เทคโนโลยี & ระบบ (Platform)</text>
-            <text x="160" y="70" fill="#cbd5e1" font-size="11">• เว็บโหลดช้า (> 4 วิ)</text>
-            <text x="160" y="88" fill="#cbd5e1" font-size="11">• ระบบจ่ายเงินตัดบัตร Error</text>
+            <!-- ================= TOP LEFT: 1. SYSTEM & TECH (CYAN) ================= -->
+            <line x1="180" y1="38" x2="260" y2="150" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"/>
+            <!-- Box Header -->
+            <rect x="70" y="8" width="220" height="34" rx="6" fill="#0b1329" stroke="#38bdf8" stroke-width="1.8"/>
+            <text x="180" y="30" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">💻 1. ระบบและเทคโนโลยี (System)</text>
+            <!-- Sub-rib 1 -->
+            <line x1="130" y1="75" x2="207" y2="75" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3,3"/>
+            <text x="125" y="71" fill="#e2e8f0" font-size="11" text-anchor="end">• เว็บโหลดช้า > 3s (รูปใหญ่/ไร้ CDN)</text>
+            <!-- Sub-rib 2 -->
+            <line x1="165" y1="112" x2="233" y2="112" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3,3"/>
+            <text x="160" y="108" fill="#e2e8f0" font-size="11" text-anchor="end">• Checkout ซับซ้อน/บังคับสมัครสมาชิก</text>
 
-            <!-- Top Right Bone: Process / Checkout -->
-            <line x1="450" y1="30" x2="520" y2="125" stroke="#38bdf8" stroke-width="3"/>
-            <rect x="370" y="10" width="170" height="34" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-            <text x="455" y="32" fill="#67e8f9" font-size="12" font-weight="bold" text-anchor="middle">2. ขั้นตอนการทำงาน (Process)</text>
-            <text x="420" y="70" fill="#cbd5e1" font-size="11">• Checkout ซ้ำซ้อน 5 หน้า</text>
-            <text x="420" y="88" fill="#cbd5e1" font-size="11">• บังคับสมัครสมาชิกก่อนซื้อ</text>
+            <!-- ================= TOP RIGHT: 2. PRODUCT & PRICING (EMERALD) ================= -->
+            <line x1="450" y1="38" x2="530" y2="150" stroke="#34d399" stroke-width="3" stroke-linecap="round"/>
+            <!-- Box Header -->
+            <rect x="340" y="8" width="220" height="34" rx="6" fill="#0b1b1a" stroke="#34d399" stroke-width="1.8"/>
+            <text x="450" y="30" fill="#34d399" font-size="12" font-weight="700" text-anchor="middle">📦 2. ผลิตภัณฑ์และราคา (Product)</text>
+            <!-- Sub-rib 1 -->
+            <line x1="395" y1="75" x2="477" y2="75" stroke="#34d399" stroke-width="1.5" stroke-dasharray="3,3"/>
+            <text x="390" y="71" fill="#e2e8f0" font-size="11" text-anchor="end">• สินค้าหมดสต็อกบ่อย (Out of Stock)</text>
+            <!-- Sub-rib 2 -->
+            <line x1="430" y1="112" x2="503" y2="112" stroke="#34d399" stroke-width="1.5" stroke-dasharray="3,3"/>
+            <text x="425" y="108" fill="#e2e8f0" font-size="11" text-anchor="end">• ราคาสูงกว่าคู่แข่ง/ขาดรีวิวผู้ใช้จริง</text>
 
-            <!-- Bottom Left Bone: People / Support -->
-            <line x1="270" y1="125" x2="200" y2="220" stroke="#a855f7" stroke-width="3"/>
-            <rect x="110" y="205" width="180" height="34" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
-            <text x="200" y="227" fill="#e9d5ff" font-size="12" font-weight="bold" text-anchor="middle">3. บุคลากร & บริการ (People)</text>
-            <text x="160" y="155" fill="#cbd5e1" font-size="11">• แอดมินตอบแชตช้าเกิน 1 ชม.</text>
-            <text x="160" y="173" fill="#cbd5e1" font-size="11">• ขาดทักษะแก้ปัญหาลูกค้า</text>
+            <!-- ================= BOTTOM LEFT: 3. SERVICE & LOGISTICS (PURPLE) ================= -->
+            <line x1="180" y1="262" x2="260" y2="150" stroke="#c084fc" stroke-width="3" stroke-linecap="round"/>
+            <!-- Box Header -->
+            <rect x="70" y="258" width="220" height="34" rx="6" fill="#180e29" stroke="#c084fc" stroke-width="1.8"/>
+            <text x="180" y="280" fill="#c084fc" font-size="12" font-weight="700" text-anchor="middle">🚚 3. การบริการและขนส่ง (Service)</text>
+            <!-- Sub-rib 1 -->
+            <line x1="165" y1="188" x2="233" y2="188" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="3,3"/>
+            <text x="160" y="198" fill="#e2e8f0" font-size="11" text-anchor="end">• ค่าจัดส่งแพงเกินไป (ทำคนทิ้งตะกร้า)</text>
+            <!-- Sub-rib 2 -->
+            <line x1="130" y1="225" x2="207" y2="225" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="3,3"/>
+            <text x="125" y="235" fill="#e2e8f0" font-size="11" text-anchor="end">• ไม่มีเก็บเงินปลายทาง (COD)/แอดมินตอบช้า</text>
 
-            <!-- Bottom Right Bone: Price & Policy -->
-            <line x1="520" y1="125" x2="450" y2="220" stroke="#a855f7" stroke-width="3"/>
-            <rect x="370" y="205" width="170" height="34" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
-            <text x="455" y="227" fill="#e9d5ff" font-size="12" font-weight="bold" text-anchor="middle">4. ราคา & นโยบาย (Price/Policy)</text>
-            <text x="420" y="155" fill="#cbd5e1" font-size="11">• แอบบวกค่าส่งแพงหน้าสุดท้าย</text>
-            <text x="420" y="173" fill="#cbd5e1" font-size="11">• ไม่มีเก็บเงินปลายทาง (COD)</text>
+            <!-- ================= BOTTOM RIGHT: 4. MARKETING & PROMO (AMBER) ================= -->
+            <line x1="450" y1="262" x2="530" y2="150" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+            <!-- Box Header -->
+            <rect x="340" y="258" width="220" height="34" rx="6" fill="#241a0b" stroke="#fbbf24" stroke-width="1.8"/>
+            <text x="450" y="280" fill="#fbbf24" font-size="12" font-weight="700" text-anchor="middle">📢 4. การตลาด &amp; สื่อสาร (Marketing)</text>
+            <!-- Sub-rib 1 -->
+            <line x1="430" y1="188" x2="503" y2="188" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,3"/>
+            <text x="425" y="198" fill="#e2e8f0" font-size="11" text-anchor="end">• ไม่ทำ Retargeting ตามกู้ตะกร้าที่ถูกทิ้ง</text>
+            <!-- Sub-rib 2 -->
+            <line x1="395" y1="225" x2="477" y2="225" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,3"/>
+            <text x="390" y="235" fill="#e2e8f0" font-size="11" text-anchor="end">• ยิงแอดไม่ตรงกลุ่ม/โปรโมชันไม่ดึงดูดใจ</text>
           </svg>
+        </div>
+
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; font-size: 0.82rem; color: var(--text-secondary);">
+          <span style="display: flex; align-items: center; gap: 0.4rem;"><span style="width: 12px; height: 12px; border-radius: 3px; background: #38bdf8;"></span> 1. ระบบและเทคโนโลยี (ฟ้า)</span>
+          <span style="display: flex; align-items: center; gap: 0.4rem;"><span style="width: 12px; height: 12px; border-radius: 3px; background: #34d399;"></span> 2. ผลิตภัณฑ์และราคา (เขียว)</span>
+          <span style="display: flex; align-items: center; gap: 0.4rem;"><span style="width: 12px; height: 12px; border-radius: 3px; background: #c084fc;"></span> 3. การบริการและขนส่ง (ม่วง)</span>
+          <span style="display: flex; align-items: center; gap: 0.4rem;"><span style="width: 12px; height: 12px; border-radius: 3px; background: #fbbf24;"></span> 4. การตลาดและการสื่อสาร (ส้มทอง)</span>
+          <span style="display: flex; align-items: center; gap: 0.4rem;"><span style="width: 12px; height: 12px; border-radius: 3px; background: #ef4444;"></span> ปัญหาหลัก (แดง)</span>
         </div>
       </div>
 
       <!-- SECTION 3: EXAM ANSWER BLUEPRINT (ACTION PLAN) -->
       <div class="box-action">
-        <span class="content-badge exam-template">✍️ ส่วนที่ 3: วิธีเขียนตอบในห้องสอบ (Exam Action Plan Blueprint)</span>
+        <span class="content-badge exam-template">✍️ ส่วนที่ 3: วิธีเขียนตอบในห้องสอบ (Exam Action Plan Blueprint จากสไลด์หน้า 12-13)</span>
         <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">กระดาษคำตอบแผนปฏิบัติการแก้ไขปัญหา (Action Plan) ที่ได้คะแนนเต็ม 10/10:</h3>
         <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1rem;">
-          เมื่อวาดผังก้างปลาเสร็จ อาจารย์มักจะให้เขียน <strong>"แนวทางการแก้ไขปัญหา (Solutions & Action Plan)"</strong> ให้แบ่งตอบเป็น 4 ด้านตามก้างปลา โดยระบุทั้งมาตรการเร่งด่วนและระยะยาว:
+          เมื่อวาดผังก้างปลาเสร็จ อาจารย์มักจะให้เขียน <strong>"แนวทางการแก้ไขปัญหา (Solutions & Action Plan)"</strong> ให้แบ่งตอบตรงตามหมวดหมู่ก้างปลา โดยระบุเครื่องมือและวิธีแก้ที่ชัดเจน (ถอดรหัสจากสไลด์อาจารย์หน้า 12-13):
         </p>
 
+        <!-- Exam Answer Paper Container -->
         <div class="exam-answer-paper">
-          <p><strong>1. ด้านระบบและเทคโนโลยี (Platform):</strong><br>
-          • <em>แก้ด่วน:</em> บีบอัดรูปภาพสินค้าทั้งหมดเป็นสกุลไฟล์ <code>.webp</code> และเชื่อมต่อ Cloudflare CDN เพื่อลดระยะเวลาโหลดหน้าเว็บให้ต่ำกว่า 2 วินาที<br>
-          • <em>ระยะยาว:</em> ผสาน Payment Gateway สำรอง (Fallback Gateway) เช่น หากระบบ PromptPay ธนาคารหลักล่ม ให้สลับไปตัดบัตรเครดิตหรือ TrueMoney Wallet อัตโนมัติ</p>
+          <!-- 1. System & Technology -->
+          <div style="margin-bottom: 1.1rem; padding-bottom: 0.9rem; border-bottom: 1px dashed rgba(255, 255, 255, 0.1);">
+            <div style="font-weight: 700; color: #38bdf8; font-size: 0.95rem; margin-bottom: 0.4rem;">
+              💻 1. แก้ไขด้านระบบและเทคโนโลยี (System & Technology):
+            </div>
+            <ul style="padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.65; color: #e2e8f0;">
+              <li><strong>⚡ ลดเวลาโหลดเว็บ/แอป:</strong> บีบอัดขนาดไฟล์ภาพ (ใช้ไฟล์ <code>.webp</code> แทน <code>.png/jpeg</code>) และใช้ CDN (Content Delivery Network) ช่วยกระจายการโหลด ให้เปิดหน้าสินค้าได้ภายใน 1-2 วินาที</li>
+              <li><strong>⚡ ปรับเป็น One-Page Checkout:</strong> ลดขั้นตอนการสั่งซื้อให้ลูกค้าชำระเงินในหน้าเดียว และเปิดระบบ <strong>Guest Checkout</strong> ซื้อได้ทันทีโดยไม่ต้องบังคับลงทะเบียนหรือยืนยัน OTP ซ้ำซ้อน</li>
+              <li><strong>🚀 อัปเกรด Server รองรับ Flash Sale:</strong> ใช้ Cloud Server ที่ปรับขนาดทรัพยากรอัตโนมัติ (Auto-scaling) เพื่อรองรับทราฟฟิกช่วงแคมเปญใหญ่</li>
+            </ul>
+          </div>
 
-          <p style="margin-top: 0.75rem;"><strong>2. ด้านขั้นตอนการสั่งซื้อ (Process):</strong><br>
-          • <em>แก้ด่วน:</em> เพิ่มฟังก์ชัน <strong>One-Page Guest Checkout</strong> ให้ลูกค้าพิมพ์แค่ชื่อ-ที่อยู่-เบอร์โทร แล้วกดสั่งซื้อได้ทันที ไม่ต้องบังคับลงทะเบียนหรือยืนยัน OTP ซ้ำซ้อน<br>
-          • <em>ระยะยาว:</em> ทำ Auto-fill ที่อยู่จากรหัสไปรษณีย์ และรองรับการสั่งซื้อผ่าน Social Login (Line / Google Account)</p>
+          <!-- 2. Product & Pricing -->
+          <div style="margin-bottom: 1.1rem; padding-bottom: 0.9rem; border-bottom: 1px dashed rgba(255, 255, 255, 0.1);">
+            <div style="font-weight: 700; color: #34d399; font-size: 0.95rem; margin-bottom: 0.4rem;">
+              📦 2. แก้ไขด้านผลิตภัณฑ์และราคา (Product & Pricing):
+            </div>
+            <ul style="padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.65; color: #e2e8f0;">
+              <li><strong>⚡ จัดการสต็อกด้วยระบบ Real-time:</strong> ใช้ระบบ ERP/WMS เชื่อมสต็อกทุกช่องทาง ป้องกันสินค้าหมดสต็อก และเพิ่มระบบ "แจ้งเตือนเมื่อมีสินค้า" (Back in Stock Alert)</li>
+              <li><strong>⚡ ชูคุณค่าแทนการตัดราคา:</strong> หากลดราคาไม่ได้ ให้จัดเซ็ตสุดคุ้ม (Product Bundling), แถมของขวัญ หรือให้สะสมแต้มเพื่อสร้าง Value for Money</li>
+              <li><strong>🚀 PDP Optimization & Social Proof:</strong> ใช้รูปภาพความละเอียดสูง วิดีโอรีวิวการใช้งานจริง ใส่ Size Chart ชัดเจน และแสดงรีวิวจากผู้ใช้จริงติดป้าย "ของแท้ 100%"</li>
+            </ul>
+          </div>
 
-          <p style="margin-top: 0.75rem;"><strong>3. ด้านบุคลากรและการบริการ (People):</strong><br>
-          • <em>แก้ด่วน:</em> ติดตั้ง Chatbot อัจฉริยะ (AI / Auto-Reply) เพื่อตอบคำถามพื้นฐาน (เช่น สินค้ามีพร้อมส่งไหม, ค่าส่งเท่าไร) ภายใน 5 วินาทีตลอด 24 ชั่วโมง<br>
-          • <em>ระยะยาว:</em> อบรมฝ่าย Customer Support ให้มี KPI ตอบแชตภายใน 5 นาทีในเวลาทำการ และมีแบบประเมินความพึงพอใจ</p>
+          <!-- 3. Service & Logistics -->
+          <div style="margin-bottom: 1.1rem; padding-bottom: 0.9rem; border-bottom: 1px dashed rgba(255, 255, 255, 0.1);">
+            <div style="font-weight: 700; color: #c084fc; font-size: 0.95rem; margin-bottom: 0.4rem;">
+              🚚 3. แก้ไขด้านการบริการและขนส่ง (Service & Logistics):
+            </div>
+            <ul style="padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.65; color: #e2e8f0;">
+              <li><strong>⚡ แก้ปัญหาค่าส่งด้วยโปรโมชัน:</strong> กำหนดเกณฑ์ <strong>"ส่งฟรีเมื่อซื้อครบ X บาท" (Free Shipping Threshold)</strong> เพื่อกระตุ้นยอดซื้อต่อบิล (AOV) และลดอัตราการทิ้งตะกร้าสินค้า</li>
+              <li><strong>⚡ เพิ่มช่องทางชำระเงินให้ครอบคลุม:</strong> เปิดรับบริการ <strong>เก็บเงินปลายทาง (COD)</strong>, ผ่อนชำระ 0%, และ Buy Now Pay Later (BNPL) เพื่อสร้างความมั่นใจให้ผู้ซื้อหน้าใหม่</li>
+              <li><strong>🚀 ใช้งาน Chatbot ช่วยแอดมิน:</strong> ติดตั้ง AI Chatbot ตอบคำถามยอดฮิต (FAQ) อัตโนมัติ 24 ชม. และใช้ระบบแจ้งเตือนให้แอดมินตอบแชตเคสพิเศษได้เร็วที่สุดภายใน 3-5 นาที</li>
+            </ul>
+          </div>
 
-          <p style="margin-top: 0.75rem;"><strong>4. ด้านราคาและนโยบาย (Price & Policy):</strong><br>
-          • <em>แก้ด่วน:</em> แสดงค่าจัดส่งอย่างโปร่งใสตั้งแต่หน้ารายการสินค้า ไม่ซ่อนค่าใช้จ่ายแอบแฝง (No Hidden Fees) เพื่อสร้างความเชื่อมั่น<br>
-          • <em>ระยะยาว:</em> จัดแคมเปญ <strong>Free Shipping Threshold</strong> (เช่น ส่งฟรีเมื่อซื้อครบ 500 บาท) เพื่อจูงใจให้ลูกค้าเพิ่มสินค้าลงตะกร้า ดันยอดสั่งซื้อเฉลี่ย (AOV) ให้สูงขึ้น</p>
+          <!-- 4. Marketing & Promotion -->
+          <div>
+            <div style="font-weight: 700; color: #fbbf24; font-size: 0.95rem; margin-bottom: 0.4rem;">
+              📢 4. แก้ไขด้านการตลาดและการสื่อสาร (Marketing & Promotion):
+            </div>
+            <ul style="padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.65; color: #e2e8f0;">
+              <li><strong>⚡ ทำ Abandoned Cart Retargeting:</strong> ส่งข้อความบรอดแคสต์หรือยิงโฆษณาเตือนคนที่ทิ้งตะกร้าสินค้าค้างไว้ พร้อมมอบโค้ดส่วนลดพิเศษเพื่อปิดการขายทันที</li>
+              <li><strong>🚀 ปรับ Targeting ด้วย Custom/Lookalike Audience:</strong> ยิงโฆษณาหาคนที่เคยซื้อสินค้า หรือคนที่กำลังมองหาสินค้าประเภทเดียวกัน เพื่อดึง Traffic คุณภาพสูงที่มีกำลังซื้อจริง</li>
+            </ul>
+          </div>
         </div>
       </div>
 
       <!-- SECTION 4: EXAM TRAPS -->
       <div class="box-trap">
-        <span class="content-badge trap">⚠️ ส่วนที่ 4: กับดักข้อสอบ & จุดที่นักศึกษาชอบทำผิด</span>
-        <div style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7;">
-          <p>❌ <strong>จุดผิดที่ 1: เขียน "วิธีแก้" ไว้ที่หัวปลา!</strong><br>
-          นักศึกษาหลายคนเขียนที่หัวปลาว่า <em>"ต้องปรับปรุงเว็บไซต์ให้เร็วขึ้น"</em> — <strong>ผิดหลักการทันที!</strong><br>
-          หัวปลาต้องเป็น <strong>"ปัญหาหรือผลกระทบที่เกิดขึ้นแล้ว (Effect)"</strong> เท่านั้น เช่น <em>"เว็บไซต์โหลดช้า / ยอดขายตกต่ำ 30%"</em></p>
-          <p>❌ <strong>จุดผิดที่ 2: ก้างหลักและก้างย่อยไม่สอดคล้องกัน</strong><br>
-          เช่น เอาก้างย่อยเรื่อง "แอดมินตอบช้า" ไปใส่ไว้ใต้ก้างหลัก "เทคโนโลยีและระบบ" (ซึ่งจริงๆ ควรอยู่ใต้หมวด "คน/บุคลากร") ตรวจสอบให้ตรงหมวดหมู่อยู่เสมอ</p>
+        <span class="content-badge trap">⚠️ ส่วนที่ 4: กับดักข้อสอบ & จุดที่นักศึกษาชอบทำผิด (จุดหักแต้มยอดฮิต)</span>
+        <div style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-top: 0.5rem;">
+          <p>❌ <strong>จุดผิดที่ 1: เขียน "วิธีแก้" ไว้ที่หัวปลา! (โดนหัก 0 ทันที)</strong><br>
+          นักศึกษาหลายคนเผลอเขียนที่หัวปลาว่า <em>"ต้องปรับปรุงเว็บไซต์ให้เร็วขึ้น"</em> หรือ <em>"ต้องเพิ่มระบบ One-Page Checkout"</em> — <strong>ผิดหลักการอย่างรุนแรง!</strong><br>
+          จำไว้เสมอ: หัวปลาต้องเป็น <strong>"ปัญหาหรือผลกระทบเชิงลบที่เกิดขึ้นแล้ว (Effect)"</strong> เท่านั้น เช่น <em>"ยอดขายลดลง / อัตราการซื้อสำเร็จต่ำ"</em></p>
+
+          <p style="margin-top: 0.75rem;">❌ <strong>จุดผิดที่ 2: นำกรอบ 4M โรงงานมาฝืนใช้กับระบบ IT</strong><br>
+          โจทย์ระบบสารสนเทศ / เว็บไซต์ / ซอฟต์แวร์ ถ้าไปใช้ Man, Machine, Material, Method จะไม่มีช่องสำหรับเรื่อง <strong>ราคา & นโยบาย (Price/Policy)</strong> และ <strong>ระบบไอที (Platform)</strong> ทำให้นักศึกษาเสียคะแนนการวิเคราะห์ไปฟรีๆ</p>
+
+          <p style="margin-top: 0.75rem;">❌ <strong>จุดผิดที่ 3: ก้างหลักและก้างย่อยไม่สอดคล้องกัน (Misclassification)</strong><br>
+          เช่น นำเรื่อง "แอดมินตอบแชตช้า" ไปใส่ไว้ใต้ก้าง "ระบบและเทคโนโลยี" (ทั้งที่เป็นเรื่องของ "การบริการ") ตรวจสอบให้ตรงหมวดหมู่อยู่เสมอ</p>
+
+          <p style="margin-top: 0.75rem;">❌ <strong>จุดผิดที่ 4: ใน Action Plan เขียนวิธีแก้แบบกว้างๆ ลอยๆ</strong><br>
+          เช่น เขียนแค่ว่า "พัฒนาระบบให้ดีขึ้น" หรือ "ตั้งใจบริการลูกค้า" แบบนี้อาจารย์ไม่ให้คะแนน! ต้องระบุแนวทางเชิงเทคนิคหรือขั้นตอนปฏิบัติที่จับต้องได้ เช่น <em>"บีบอัดภาพเป็น .webp + ทำ Cloudflare CDN"</em>, <em>"เพิ่ม One-Page Guest Checkout"</em>, <em>"ทำ Abandoned Cart Retargeting"</em></p>
         </div>
       </div>
     </section>
