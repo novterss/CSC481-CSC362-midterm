@@ -1123,9 +1123,102 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
       <div class="box-action">
         <span class="content-badge exam-template">✍️ ส่วนที่ 2: วิธีเขียนตอบ Relational Schema ในกระดาษข้อสอบ</span>
         <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">รูปแบบการเขียนส่งอาจารย์ให้ได้ 15 คะแนนเต็ม (โจทย์ 1 ข้อ ได้ 4 ตารางนี้ร่วมกัน):</h3>
-        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.75rem;">
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
           💡 <strong>นี่ไม่ใช่ 4 ข้อสอบแยกกัน!</strong> แต่มันคือ <strong>คำตอบของโจทย์เพียง 1 ข้อใหญ่ (1 ระบบ)</strong> เมื่ออาจารย์ให้รูป ERD ระบบบริษัทมา 1 รูป แล้วสั่งให้แปลงเป็น Relational Schema เราจะต้องเขียนตอบ <strong>ทั้ง 4 ตารางนี้ร่วมกัน</strong> ในกระดาษคำตอบ:
         </p>
+
+        <!-- SVG EXAM ERD DIAGRAM -->
+        <div style="margin-bottom: 1.25rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <div style="font-weight: 700; color: #38bdf8; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem;">
+              <span>🖼️</span> ภาพตัวอย่างโจทย์ ER Diagram ที่อาจารย์ให้มาในกระดาษข้อสอบ:
+            </div>
+            <span style="font-size: 0.75rem; background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 0.2rem 0.6rem; border-radius: 999px; border: 1px solid rgba(56, 189, 248, 0.3);">โจทย์ 1 ข้อใหญ่ • ระบบบริหารบริษัท</span>
+          </div>
+          
+          <div class="diagram-container" style="padding: 1rem 0.5rem; background: #070b14; border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+            <svg class="diagram-svg" viewBox="0 0 940 300" xmlns="http://www.w3.org/2000/svg">
+              <!-- Connecting lines: DEPARTMENT attributes -->
+              <line x1="85" y1="70" x2="105" y2="135" stroke="#64748b" stroke-width="1.5"/>
+              <line x1="175" y1="70" x2="155" y2="135" stroke="#64748b" stroke-width="1.5"/>
+              <line x1="130" y1="185" x2="130" y2="230" stroke="#64748b" stroke-width="1.5"/>
+
+              <!-- Connecting lines: HAS relationship -->
+              <line x1="210" y1="160" x2="245" y2="160" stroke="#94a3b8" stroke-width="2"/>
+              <line x1="315" y1="160" x2="350" y2="160" stroke="#94a3b8" stroke-width="2"/>
+
+              <!-- Connecting lines: EMPLOYEE attributes -->
+              <line x1="385" y1="70" x2="405" y2="135" stroke="#64748b" stroke-width="1.5"/>
+              <line x1="475" y1="70" x2="455" y2="135" stroke="#64748b" stroke-width="1.5"/>
+              <line x1="430" y1="185" x2="430" y2="230" stroke="#64748b" stroke-width="1.5"/>
+
+              <!-- Connecting lines: WORKS_ON relationship -->
+              <line x1="510" y1="160" x2="545" y2="160" stroke="#94a3b8" stroke-width="2"/>
+              <line x1="645" y1="160" x2="680" y2="160" stroke="#94a3b8" stroke-width="2"/>
+              <!-- WORKS_ON attribute: AssignedHours -->
+              <line x1="595" y1="190" x2="595" y2="230" stroke="#a855f7" stroke-width="1.5"/>
+
+              <!-- Connecting lines: PROJECT attributes -->
+              <line x1="715" y1="70" x2="735" y2="135" stroke="#64748b" stroke-width="1.5"/>
+              <line x1="805" y1="70" x2="785" y2="135" stroke="#64748b" stroke-width="1.5"/>
+              <line x1="760" y1="185" x2="760" y2="230" stroke="#64748b" stroke-width="1.5"/>
+
+              <!-- 1. DEPARTMENT Entity -->
+              <rect x="50" y="135" width="160" height="50" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+              <text x="130" y="166" fill="#f8fafc" font-size="14" font-weight="bold" text-anchor="middle">DEPARTMENT</text>
+              <!-- Dept Attributes -->
+              <ellipse cx="85" cy="55" rx="50" ry="20" fill="#0f172a" stroke="#f43f5e" stroke-width="2"/>
+              <text x="85" y="60" fill="#f43f5e" font-size="11" font-weight="bold" text-anchor="middle" text-decoration="underline">DeptNo (PK)</text>
+              <ellipse cx="180" cy="55" rx="42" ry="18" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+              <text x="180" y="59" fill="#cbd5e1" font-size="11" text-anchor="middle">DeptName</text>
+              <ellipse cx="130" cy="245" rx="42" ry="18" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+              <text x="130" y="249" fill="#cbd5e1" font-size="11" text-anchor="middle">Budget</text>
+
+              <!-- HAS Relationship (1:M) -->
+              <polygon points="245,160 280,130 315,160 280,190" fill="#1e293b" stroke="#38bdf8" stroke-width="1.8"/>
+              <text x="280" y="164" fill="#7dd3fc" font-size="11" font-weight="bold" text-anchor="middle">HAS</text>
+              <text x="220" y="152" fill="#38bdf8" font-size="14" font-weight="bold">1</text>
+              <text x="332" y="152" fill="#38bdf8" font-size="14" font-weight="bold">M</text>
+
+              <!-- 2. EMPLOYEE Entity -->
+              <rect x="350" y="135" width="160" height="50" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+              <text x="430" y="166" fill="#f8fafc" font-size="14" font-weight="bold" text-anchor="middle">EMPLOYEE</text>
+              <!-- Emp Attributes -->
+              <ellipse cx="385" cy="55" rx="50" ry="20" fill="#0f172a" stroke="#f43f5e" stroke-width="2"/>
+              <text x="385" y="60" fill="#f43f5e" font-size="11" font-weight="bold" text-anchor="middle" text-decoration="underline">EmpID (PK)</text>
+              <ellipse cx="480" cy="55" rx="42" ry="18" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+              <text x="480" y="59" fill="#cbd5e1" font-size="11" text-anchor="middle">EmpName</text>
+              <ellipse cx="430" cy="245" rx="42" ry="18" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+              <text x="430" y="249" fill="#cbd5e1" font-size="11" text-anchor="middle">Salary</text>
+
+              <!-- WORKS_ON Relationship (M:N) -->
+              <polygon points="545,160 595,125 645,160 595,195" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
+              <text x="595" y="164" fill="#d8b4fe" font-size="11" font-weight="bold" text-anchor="middle">WORKS_ON</text>
+              <text x="522" y="152" fill="#f43f5e" font-size="14" font-weight="bold">M</text>
+              <text x="660" y="152" fill="#f43f5e" font-size="14" font-weight="bold">N</text>
+
+              <!-- WORKS_ON Attribute: AssignedHours -->
+              <ellipse cx="595" cy="248" rx="58" ry="19" fill="#0f172a" stroke="#a855f7" stroke-width="1.5"/>
+              <text x="595" y="252" fill="#e9d5ff" font-size="10" font-weight="bold" text-anchor="middle">AssignedHours</text>
+
+              <!-- 3. PROJECT Entity -->
+              <rect x="680" y="135" width="160" height="50" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+              <text x="760" y="166" fill="#f8fafc" font-size="14" font-weight="bold" text-anchor="middle">PROJECT</text>
+              <!-- Proj Attributes -->
+              <ellipse cx="715" cy="55" rx="50" ry="20" fill="#0f172a" stroke="#f43f5e" stroke-width="2"/>
+              <text x="715" y="60" fill="#f43f5e" font-size="11" font-weight="bold" text-anchor="middle" text-decoration="underline">ProjNo (PK)</text>
+              <ellipse cx="810" cy="55" rx="42" ry="18" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+              <text x="810" y="59" fill="#cbd5e1" font-size="11" text-anchor="middle">ProjName</text>
+              <ellipse cx="760" cy="245" rx="42" ry="18" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+              <text x="760" y="249" fill="#cbd5e1" font-size="11" text-anchor="middle">DueDate</text>
+            </svg>
+          </div>
+          <div style="font-size: 0.82rem; color: #94a3b8; margin-top: 0.45rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.4rem;">
+            <span>📌 <strong>วิเคราะห์ภาพ:</strong> มี 3 เอนทิตีหลัก + ความสัมพันธ์ 1:M (แผนกกับพนักงาน) + ความสัมพันธ์ M:N ที่มีแอตทริบิวต์ <code>AssignedHours</code></span>
+            <span style="color: #6ee7b7; font-weight: 700;">👇 เมื่อแปลงภาพนี้ จะได้คำตอบ 4 ตารางด้านล่าง:</span>
+          </div>
+        </div>
+
         <div class="exam-answer-paper">
           <div style="font-size: 0.78rem; font-weight: 700; color: #6ee7b7; margin-bottom: 0.5rem;">📝 ชุดคำตอบสำหรับส่งอาจารย์ (เขียน 4 บรรทัดนี้ในข้อเดียวกัน):</div>
           <p>ตารางที่ 1. <strong>DEPARTMENT</strong> (<span class="highlight-pk">DeptNo</span>, DeptName, Budget)</p>
