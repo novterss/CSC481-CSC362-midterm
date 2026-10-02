@@ -1854,6 +1854,390 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
         <span class="content-badge exam-template">✍️ ส่วนที่ 2: วิธีทดเลขในกระดาษข้อสอบทีละก้าว (Step-by-Step Walkthrough)</span>
         <h3 style="color: var(--text-primary); margin-bottom: 0.75rem;">วิธีคำนวณจริงจากแบบฝึกหัดที่ 1 (Activity A -> H):</h3>
 
+        <!-- VISUAL AON NETWORK DIAGRAM WITH TOGGLE -->
+        <div style="margin-bottom: 1.5rem; background: #070b14; border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1.15rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.85rem;">
+            <div>
+              <h4 style="color: #6ee7b7; font-size: 1.05rem; margin: 0; display: flex; align-items: center; gap: 0.45rem;">
+                <span>🖼️</span> แผนผังเครือข่ายจำลอง (AON Network Diagram):
+              </h4>
+              <p style="font-size: 0.82rem; color: var(--text-secondary); margin: 0.2rem 0 0 0;">
+                ดูกล่องโหนด 6 ช่องและสายงานวิกฤตเส้นสีแดงเรืองแสงชัดเจน เข้าใจขั้นตอนทันที:
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.45rem;">
+              <button id="btnDiagSheet1" class="filter-pill active" onclick="switchCpmDiagram('sheet1')">แบบฝึกหัดที่ 1 (A-H • 21 วัน)</button>
+              <button id="btnDiagSheet2" class="filter-pill" onclick="switchCpmDiagram('sheet2')">แบบฝึกหัดที่ 2 (A-G • 26 วัน)</button>
+            </div>
+          </div>
+
+          <!-- DIAGRAM 1: A -> H -->
+          <div id="cpmDiagramSheet1" class="diagram-container" style="padding: 0.75rem 0.25rem; background: transparent; border: none; margin: 0;">
+            <svg class="diagram-svg" viewBox="0 0 940 430" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <filter id="cpm-glow-crit" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#f43f5e" flood-opacity="0.6"/>
+                </filter>
+                <marker id="cpm-arrow-crit" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#f43f5e" />
+                </marker>
+                <marker id="cpm-arrow-norm" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#64748b" />
+                </marker>
+              </defs>
+
+              <!-- START LABEL -->
+              <rect x="2" y="196" width="22" height="28" rx="4" fill="#38bdf8" opacity="0.15" stroke="#38bdf8" stroke-width="1"/>
+              <text x="13" y="214" fill="#38bdf8" font-size="10" font-weight="bold" text-anchor="middle">S</text>
+              <line x1="24" y1="210" x2="30" y2="210" stroke="#38bdf8" stroke-width="2"/>
+
+              <!-- CONNECTING ARROWS -->
+              <!-- A -> B (norm) -->
+              <line x1="156" y1="190" x2="225" y2="128" stroke="#64748b" stroke-width="2" marker-end="url(#cpm-arrow-norm)"/>
+              <!-- A -> C (CRIT) -->
+              <line x1="156" y1="230" x2="225" y2="292" stroke="#f43f5e" stroke-width="3.5" marker-end="url(#cpm-arrow-crit)"/>
+
+              <!-- B -> D (norm) -->
+              <line x1="356" y1="108" x2="445" y2="76" stroke="#64748b" stroke-width="2" marker-end="url(#cpm-arrow-norm)"/>
+              <!-- B -> E (norm) -->
+              <line x1="356" y1="132" x2="445" y2="184" stroke="#64748b" stroke-width="2" marker-end="url(#cpm-arrow-norm)"/>
+
+              <!-- C -> F (CRIT) -->
+              <line x1="356" y1="305" x2="445" y2="318" stroke="#f43f5e" stroke-width="3.5" marker-end="url(#cpm-arrow-crit)"/>
+
+              <!-- D -> G (norm) -->
+              <line x1="576" y1="70" x2="715" y2="70" stroke="#64748b" stroke-width="2" marker-end="url(#cpm-arrow-norm)"/>
+
+              <!-- E -> H (norm) -->
+              <line x1="576" y1="200" x2="715" y2="258" stroke="#64748b" stroke-width="2" marker-end="url(#cpm-arrow-norm)"/>
+              <!-- F -> H (CRIT) -->
+              <line x1="576" y1="310" x2="715" y2="282" stroke="#f43f5e" stroke-width="3.5" marker-end="url(#cpm-arrow-crit)"/>
+
+              <!-- FINISH BADGE -->
+              <rect x="856" y="254" width="76" height="32" rx="6" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="1.5"/>
+              <text x="894" y="274" fill="#6ee7b7" font-size="11" font-weight="bold" text-anchor="middle">FINISH (21)</text>
+              <line x1="846" y1="270" x2="856" y2="270" stroke="#10b981" stroke-width="2"/>
+
+              <!-- 8 NODES -->
+              <!-- 1. NODE A (CRITICAL) -->
+              <g transform="translate(30, 178)" filter="url(#cpm-glow-crit)">
+                <rect x="0" y="0" width="126" height="64" rx="6" fill="#111827" stroke="#f43f5e" stroke-width="2.5"/>
+                <rect x="0" y="0" width="126" height="20" rx="6" fill="#881337"/>
+                <text x="63" y="14" fill="#fecdd3" font-size="11" font-weight="bold" text-anchor="middle">งาน A • วิกฤต</text>
+                <line x1="0" y1="20" x2="126" y2="20" stroke="#f43f5e" stroke-width="1"/>
+                <line x1="0" y1="42" x2="126" y2="42" stroke="#334155" stroke-width="1"/>
+                <line x1="42" y1="20" x2="42" y2="64" stroke="#334155" stroke-width="1"/>
+                <line x1="84" y1="20" x2="84" y2="64" stroke="#334155" stroke-width="1"/>
+                <!-- Row 1: ES | Dur | EF -->
+                <text x="21" y="35" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">0</text>
+                <text x="63" y="35" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle">d=3</text>
+                <text x="105" y="35" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">3</text>
+                <!-- Row 2: LS | Slack | LF -->
+                <text x="21" y="56" fill="#fcd34d" font-size="11" font-weight="bold" text-anchor="middle">0</text>
+                <text x="63" y="56" fill="#f43f5e" font-size="10" font-weight="bold" text-anchor="middle">s=0</text>
+                <text x="105" y="56" fill="#fcd34d" font-size="11" font-weight="bold" text-anchor="middle">3</text>
+              </g>
+
+              <!-- 2. NODE B (NORM) -->
+              <g transform="translate(230, 88)">
+                <rect x="0" y="0" width="126" height="64" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1.5"/>
+                <rect x="0" y="0" width="126" height="20" rx="6" fill="#1e293b"/>
+                <text x="63" y="14" fill="#cbd5e1" font-size="11" font-weight="bold" text-anchor="middle">งาน B</text>
+                <line x1="0" y1="20" x2="126" y2="20" stroke="#475569" stroke-width="1"/>
+                <line x1="0" y1="42" x2="126" y2="42" stroke="#334155" stroke-width="1"/>
+                <line x1="42" y1="20" x2="42" y2="64" stroke="#334155" stroke-width="1"/>
+                <line x1="84" y1="20" x2="84" y2="64" stroke="#334155" stroke-width="1"/>
+                <!-- Row 1 -->
+                <text x="21" y="35" fill="#38bdf8" font-size="11" text-anchor="middle">3</text>
+                <text x="63" y="35" fill="#cbd5e1" font-size="10" text-anchor="middle">d=4</text>
+                <text x="105" y="35" fill="#38bdf8" font-size="11" text-anchor="middle">7</text>
+                <!-- Row 2 -->
+                <text x="21" y="56" fill="#fcd34d" font-size="11" text-anchor="middle">5</text>
+                <text x="63" y="56" fill="#10b981" font-size="10" font-weight="bold" text-anchor="middle">s=2</text>
+                <text x="105" y="56" fill="#fcd34d" font-size="11" text-anchor="middle">9</text>
+              </g>
+
+              <!-- 3. NODE C (CRITICAL) -->
+              <g transform="translate(230, 268)" filter="url(#cpm-glow-crit)">
+                <rect x="0" y="0" width="126" height="64" rx="6" fill="#111827" stroke="#f43f5e" stroke-width="2.5"/>
+                <rect x="0" y="0" width="126" height="20" rx="6" fill="#881337"/>
+                <text x="63" y="14" fill="#fecdd3" font-size="11" font-weight="bold" text-anchor="middle">งาน C • วิกฤต</text>
+                <line x1="0" y1="20" x2="126" y2="20" stroke="#f43f5e" stroke-width="1"/>
+                <line x1="0" y1="42" x2="126" y2="42" stroke="#334155" stroke-width="1"/>
+                <line x1="42" y1="20" x2="42" y2="64" stroke="#334155" stroke-width="1"/>
+                <line x1="84" y1="20" x2="84" y2="64" stroke="#334155" stroke-width="1"/>
+                <!-- Row 1 -->
+                <text x="21" y="35" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">3</text>
+                <text x="63" y="35" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle">d=6</text>
+                <text x="105" y="35" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">9</text>
+                <!-- Row 2 -->
+                <text x="21" y="56" fill="#fcd34d" font-size="11" font-weight="bold" text-anchor="middle">3</text>
+                <text x="63" y="56" fill="#f43f5e" font-size="10" font-weight="bold" text-anchor="middle">s=0</text>
+                <text x="105" y="56" fill="#fcd34d" font-size="11" font-weight="bold" text-anchor="middle">9</text>
+              </g>
+
+              <!-- 4. NODE D (NORM) -->
+              <g transform="translate(450, 38)">
+                <rect x="0" y="0" width="126" height="64" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1.5"/>
+                <rect x="0" y="0" width="126" height="20" rx="6" fill="#1e293b"/>
+                <text x="63" y="14" fill="#cbd5e1" font-size="11" font-weight="bold" text-anchor="middle">งาน D</text>
+                <line x1="0" y1="20" x2="126" y2="20" stroke="#475569" stroke-width="1"/>
+                <line x1="0" y1="42" x2="126" y2="42" stroke="#334155" stroke-width="1"/>
+                <line x1="42" y1="20" x2="42" y2="64" stroke="#334155" stroke-width="1"/>
+                <line x1="84" y1="20" x2="84" y2="64" stroke="#334155" stroke-width="1"/>
+                <!-- Row 1 -->
+                <text x="21" y="35" fill="#38bdf8" font-size="11" text-anchor="middle">7</text>
+                <text x="63" y="35" fill="#cbd5e1" font-size="10" text-anchor="middle">d=6</text>
+                <text x="105" y="35" fill="#38bdf8" font-size="11" text-anchor="middle">13</text>
+                <!-- Row 2 -->
+                <text x="21" y="56" fill="#fcd34d" font-size="11" text-anchor="middle">9</text>
+                <text x="63" y="56" fill="#10b981" font-size="10" font-weight="bold" text-anchor="middle">s=2</text>
+                <text x="105" y="56" fill="#fcd34d" font-size="11" text-anchor="middle">15</text>
+              </g>
+
+              <!-- 5. NODE E (NORM) -->
+              <g transform="translate(450, 158)">
+                <rect x="0" y="0" width="126" height="64" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1.5"/>
+                <rect x="0" y="0" width="126" height="20" rx="6" fill="#1e293b"/>
+                <text x="63" y="14" fill="#cbd5e1" font-size="11" font-weight="bold" text-anchor="middle">งาน E</text>
+                <line x1="0" y1="20" x2="126" y2="20" stroke="#475569" stroke-width="1"/>
+                <line x1="0" y1="42" x2="126" y2="42" stroke="#334155" stroke-width="1"/>
+                <line x1="42" y1="20" x2="42" y2="64" stroke="#334155" stroke-width="1"/>
+                <line x1="84" y1="20" x2="84" y2="64" stroke="#334155" stroke-width="1"/>
+                <!-- Row 1 -->
+                <text x="21" y="35" fill="#38bdf8" font-size="11" text-anchor="middle">7</text>
+                <text x="63" y="35" fill="#cbd5e1" font-size="10" text-anchor="middle">d=4</text>
+                <text x="105" y="35" fill="#38bdf8" font-size="11" text-anchor="middle">11</text>
+                <!-- Row 2 -->
+                <text x="21" y="56" fill="#fcd34d" font-size="11" text-anchor="middle">9</text>
+                <text x="63" y="56" fill="#10b981" font-size="10" font-weight="bold" text-anchor="middle">s=2</text>
+                <text x="105" y="56" fill="#fcd34d" font-size="11" text-anchor="middle">13</text>
+              </g>
+
+              <!-- 6. NODE F (CRITICAL) -->
+              <g transform="translate(450, 288)" filter="url(#cpm-glow-crit)">
+                <rect x="0" y="0" width="126" height="64" rx="6" fill="#111827" stroke="#f43f5e" stroke-width="2.5"/>
+                <rect x="0" y="0" width="126" height="20" rx="6" fill="#881337"/>
+                <text x="63" y="14" fill="#fecdd3" font-size="11" font-weight="bold" text-anchor="middle">งาน F • วิกฤต</text>
+                <line x1="0" y1="20" x2="126" y2="20" stroke="#f43f5e" stroke-width="1"/>
+                <line x1="0" y1="42" x2="126" y2="42" stroke="#334155" stroke-width="1"/>
+                <line x1="42" y1="20" x2="42" y2="64" stroke="#334155" stroke-width="1"/>
+                <line x1="84" y1="20" x2="84" y2="64" stroke="#334155" stroke-width="1"/>
+                <!-- Row 1 -->
+                <text x="21" y="35" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">9</text>
+                <text x="63" y="35" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle">d=4</text>
+                <text x="105" y="35" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">13</text>
+                <!-- Row 2 -->
+                <text x="21" y="56" fill="#fcd34d" font-size="11" font-weight="bold" text-anchor="middle">9</text>
+                <text x="63" y="56" fill="#f43f5e" font-size="10" font-weight="bold" text-anchor="middle">s=0</text>
+                <text x="105" y="56" fill="#fcd34d" font-size="11" font-weight="bold" text-anchor="middle">13</text>
+              </g>
+
+              <!-- 7. NODE G (NORM) -->
+              <g transform="translate(720, 38)">
+                <rect x="0" y="0" width="126" height="64" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1.5"/>
+                <rect x="0" y="0" width="126" height="20" rx="6" fill="#1e293b"/>
+                <text x="63" y="14" fill="#cbd5e1" font-size="11" font-weight="bold" text-anchor="middle">งาน G</text>
+                <line x1="0" y1="20" x2="126" y2="20" stroke="#475569" stroke-width="1"/>
+                <line x1="0" y1="42" x2="126" y2="42" stroke="#334155" stroke-width="1"/>
+                <line x1="42" y1="20" x2="42" y2="64" stroke="#334155" stroke-width="1"/>
+                <line x1="84" y1="20" x2="84" y2="64" stroke="#334155" stroke-width="1"/>
+                <!-- Row 1 -->
+                <text x="21" y="35" fill="#38bdf8" font-size="11" text-anchor="middle">13</text>
+                <text x="63" y="35" fill="#cbd5e1" font-size="10" text-anchor="middle">d=6</text>
+                <text x="105" y="35" fill="#38bdf8" font-size="11" text-anchor="middle">19</text>
+                <!-- Row 2 -->
+                <text x="21" y="56" fill="#fcd34d" font-size="11" text-anchor="middle">15</text>
+                <text x="63" y="56" fill="#10b981" font-size="10" font-weight="bold" text-anchor="middle">s=2</text>
+                <text x="105" y="56" fill="#fcd34d" font-size="11" text-anchor="middle">21</text>
+              </g>
+
+              <!-- 8. NODE H (CRITICAL) -->
+              <g transform="translate(720, 238)" filter="url(#cpm-glow-crit)">
+                <rect x="0" y="0" width="126" height="64" rx="6" fill="#111827" stroke="#f43f5e" stroke-width="2.5"/>
+                <rect x="0" y="0" width="126" height="20" rx="6" fill="#881337"/>
+                <text x="63" y="14" fill="#fecdd3" font-size="11" font-weight="bold" text-anchor="middle">งาน H • วิกฤต</text>
+                <line x1="0" y1="20" x2="126" y2="20" stroke="#f43f5e" stroke-width="1"/>
+                <line x1="0" y1="42" x2="126" y2="42" stroke="#334155" stroke-width="1"/>
+                <line x1="42" y1="20" x2="42" y2="64" stroke="#334155" stroke-width="1"/>
+                <line x1="84" y1="20" x2="84" y2="64" stroke="#334155" stroke-width="1"/>
+                <!-- Row 1 -->
+                <text x="21" y="35" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">13</text>
+                <text x="63" y="35" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle">d=8</text>
+                <text x="105" y="35" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">21</text>
+                <!-- Row 2 -->
+                <text x="21" y="56" fill="#fcd34d" font-size="11" font-weight="bold" text-anchor="middle">13</text>
+                <text x="63" y="56" fill="#f43f5e" font-size="10" font-weight="bold" text-anchor="middle">s=0</text>
+                <text x="105" y="56" fill="#fcd34d" font-size="11" font-weight="bold" text-anchor="middle">21</text>
+              </g>
+            </svg>
+          </div>
+
+          <!-- DIAGRAM 2: A -> G -->
+          <div id="cpmDiagramSheet2" class="diagram-container" style="display: none; padding: 0.75rem 0.25rem; background: transparent; border: none; margin: 0;">
+            <svg class="diagram-svg" viewBox="0 0 940 400" xmlns="http://www.w3.org/2000/svg">
+              <!-- CONNECTING ARROWS FOR SHEET 2 -->
+              <!-- B -> D (CRIT) -->
+              <line x1="156" y1="200" x2="255" y2="200" stroke="#f43f5e" stroke-width="3.5" marker-end="url(#cpm-arrow-crit)"/>
+              <!-- C -> F (norm) -->
+              <line x1="156" y1="330" x2="255" y2="330" stroke="#64748b" stroke-width="2" marker-end="url(#cpm-arrow-norm)"/>
+              <!-- A -> E (norm) -->
+              <line x1="156" y1="75" x2="495" y2="138" stroke="#64748b" stroke-width="2" marker-end="url(#cpm-arrow-norm)"/>
+              <!-- D -> E (CRIT) -->
+              <line x1="386" y1="185" x2="495" y2="155" stroke="#f43f5e" stroke-width="3.5" marker-end="url(#cpm-arrow-crit)"/>
+              <!-- E -> G (CRIT) -->
+              <line x1="626" y1="160" x2="735" y2="190" stroke="#f43f5e" stroke-width="3.5" marker-end="url(#cpm-arrow-crit)"/>
+              <!-- F -> G (norm) -->
+              <line x1="386" y1="315" x2="735" y2="215" stroke="#64748b" stroke-width="2" marker-end="url(#cpm-arrow-norm)"/>
+
+              <!-- FINISH BADGE -->
+              <rect x="876" y="184" width="60" height="32" rx="6" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="1.5"/>
+              <text x="906" y="204" fill="#6ee7b7" font-size="11" font-weight="bold" text-anchor="middle">FINISH (26)</text>
+              <line x1="866" y1="200" x2="876" y2="200" stroke="#10b981" stroke-width="2"/>
+
+              <!-- 7 NODES SHEET 2 -->
+              <!-- 1. Node A (NORM) -->
+              <g transform="translate(30, 38)">
+                <rect x="0" y="0" width="126" height="64" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1.5"/>
+                <rect x="0" y="0" width="126" height="20" rx="6" fill="#1e293b"/>
+                <text x="63" y="14" fill="#cbd5e1" font-size="11" font-weight="bold" text-anchor="middle">งาน A</text>
+                <line x1="0" y1="20" x2="126" y2="20" stroke="#475569" stroke-width="1"/>
+                <line x1="0" y1="42" x2="126" y2="42" stroke="#334155" stroke-width="1"/>
+                <line x1="42" y1="20" x2="42" y2="64" stroke="#334155" stroke-width="1"/>
+                <line x1="84" y1="20" x2="84" y2="64" stroke="#334155" stroke-width="1"/>
+                <text x="21" y="35" fill="#38bdf8" font-size="11" text-anchor="middle">0</text>
+                <text x="63" y="35" fill="#cbd5e1" font-size="10" text-anchor="middle">d=2</text>
+                <text x="105" y="35" fill="#38bdf8" font-size="11" text-anchor="middle">2</text>
+                <text x="21" y="56" fill="#fcd34d" font-size="11" text-anchor="middle">13</text>
+                <text x="63" y="56" fill="#10b981" font-size="10" font-weight="bold" text-anchor="middle">s=13</text>
+                <text x="105" y="56" fill="#fcd34d" font-size="11" text-anchor="middle">15</text>
+              </g>
+
+              <!-- 2. Node B (CRITICAL) -->
+              <g transform="translate(30, 168)" filter="url(#cpm-glow-crit)">
+                <rect x="0" y="0" width="126" height="64" rx="6" fill="#111827" stroke="#f43f5e" stroke-width="2.5"/>
+                <rect x="0" y="0" width="126" height="20" rx="6" fill="#881337"/>
+                <text x="63" y="14" fill="#fecdd3" font-size="11" font-weight="bold" text-anchor="middle">งาน B • วิกฤต</text>
+                <line x1="0" y1="20" x2="126" y2="20" stroke="#f43f5e" stroke-width="1"/>
+                <line x1="0" y1="42" x2="126" y2="42" stroke="#334155" stroke-width="1"/>
+                <line x1="42" y1="20" x2="42" y2="64" stroke="#334155" stroke-width="1"/>
+                <line x1="84" y1="20" x2="84" y2="64" stroke="#334155" stroke-width="1"/>
+                <text x="21" y="35" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">0</text>
+                <text x="63" y="35" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle">d=5</text>
+                <text x="105" y="35" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">5</text>
+                <text x="21" y="56" fill="#fcd34d" font-size="11" font-weight="bold" text-anchor="middle">0</text>
+                <text x="63" y="56" fill="#f43f5e" font-size="10" font-weight="bold" text-anchor="middle">s=0</text>
+                <text x="105" y="56" fill="#fcd34d" font-size="11" font-weight="bold" text-anchor="middle">5</text>
+              </g>
+
+              <!-- 3. Node C (NORM) -->
+              <g transform="translate(30, 298)">
+                <rect x="0" y="0" width="126" height="64" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1.5"/>
+                <rect x="0" y="0" width="126" height="20" rx="6" fill="#1e293b"/>
+                <text x="63" y="14" fill="#cbd5e1" font-size="11" font-weight="bold" text-anchor="middle">งาน C</text>
+                <line x1="0" y1="20" x2="126" y2="20" stroke="#475569" stroke-width="1"/>
+                <line x1="0" y1="42" x2="126" y2="42" stroke="#334155" stroke-width="1"/>
+                <line x1="42" y1="20" x2="42" y2="64" stroke="#334155" stroke-width="1"/>
+                <line x1="84" y1="20" x2="84" y2="64" stroke="#334155" stroke-width="1"/>
+                <text x="21" y="35" fill="#38bdf8" font-size="11" text-anchor="middle">0</text>
+                <text x="63" y="35" fill="#cbd5e1" font-size="10" text-anchor="middle">d=1</text>
+                <text x="105" y="35" fill="#38bdf8" font-size="11" text-anchor="middle">1</text>
+                <text x="21" y="56" fill="#fcd34d" font-size="11" text-anchor="middle">11</text>
+                <text x="63" y="56" fill="#10b981" font-size="10" font-weight="bold" text-anchor="middle">s=11</text>
+                <text x="105" y="56" fill="#fcd34d" font-size="11" text-anchor="middle">12</text>
+              </g>
+
+              <!-- 4. Node D (CRITICAL) -->
+              <g transform="translate(260, 168)" filter="url(#cpm-glow-crit)">
+                <rect x="0" y="0" width="126" height="64" rx="6" fill="#111827" stroke="#f43f5e" stroke-width="2.5"/>
+                <rect x="0" y="0" width="126" height="20" rx="6" fill="#881337"/>
+                <text x="63" y="14" fill="#fecdd3" font-size="11" font-weight="bold" text-anchor="middle">งาน D • วิกฤต</text>
+                <line x1="0" y1="20" x2="126" y2="20" stroke="#f43f5e" stroke-width="1"/>
+                <line x1="0" y1="42" x2="126" y2="42" stroke="#334155" stroke-width="1"/>
+                <line x1="42" y1="20" x2="42" y2="64" stroke="#334155" stroke-width="1"/>
+                <line x1="84" y1="20" x2="84" y2="64" stroke="#334155" stroke-width="1"/>
+                <text x="21" y="35" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">5</text>
+                <text x="63" y="35" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle">d=10</text>
+                <text x="105" y="35" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">15</text>
+                <text x="21" y="56" fill="#fcd34d" font-size="11" font-weight="bold" text-anchor="middle">5</text>
+                <text x="63" y="56" fill="#f43f5e" font-size="10" font-weight="bold" text-anchor="middle">s=0</text>
+                <text x="105" y="56" fill="#fcd34d" font-size="11" font-weight="bold" text-anchor="middle">15</text>
+              </g>
+
+              <!-- 5. Node F (NORM) -->
+              <g transform="translate(260, 298)">
+                <rect x="0" y="0" width="126" height="64" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1.5"/>
+                <rect x="0" y="0" width="126" height="20" rx="6" fill="#1e293b"/>
+                <text x="63" y="14" fill="#cbd5e1" font-size="11" font-weight="bold" text-anchor="middle">งาน F</text>
+                <line x1="0" y1="20" x2="126" y2="20" stroke="#475569" stroke-width="1"/>
+                <line x1="0" y1="42" x2="126" y2="42" stroke="#334155" stroke-width="1"/>
+                <line x1="42" y1="20" x2="42" y2="64" stroke="#334155" stroke-width="1"/>
+                <line x1="84" y1="20" x2="84" y2="64" stroke="#334155" stroke-width="1"/>
+                <text x="21" y="35" fill="#38bdf8" font-size="11" text-anchor="middle">1</text>
+                <text x="63" y="35" fill="#cbd5e1" font-size="10" text-anchor="middle">d=6</text>
+                <text x="105" y="35" fill="#38bdf8" font-size="11" text-anchor="middle">7</text>
+                <text x="21" y="56" fill="#fcd34d" font-size="11" text-anchor="middle">12</text>
+                <text x="63" y="56" fill="#10b981" font-size="10" font-weight="bold" text-anchor="middle">s=11</text>
+                <text x="105" y="56" fill="#fcd34d" font-size="11" text-anchor="middle">18</text>
+              </g>
+
+              <!-- 6. Node E (CRITICAL) -->
+              <g transform="translate(500, 118)" filter="url(#cpm-glow-crit)">
+                <rect x="0" y="0" width="126" height="64" rx="6" fill="#111827" stroke="#f43f5e" stroke-width="2.5"/>
+                <rect x="0" y="0" width="126" height="20" rx="6" fill="#881337"/>
+                <text x="63" y="14" fill="#fecdd3" font-size="11" font-weight="bold" text-anchor="middle">งาน E • วิกฤต</text>
+                <line x1="0" y1="20" x2="126" y2="20" stroke="#f43f5e" stroke-width="1"/>
+                <line x1="0" y1="42" x2="126" y2="42" stroke="#334155" stroke-width="1"/>
+                <line x1="42" y1="20" x2="42" y2="64" stroke="#334155" stroke-width="1"/>
+                <line x1="84" y1="20" x2="84" y2="64" stroke="#334155" stroke-width="1"/>
+                <text x="21" y="35" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">15</text>
+                <text x="63" y="35" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle">d=3</text>
+                <text x="105" y="35" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">18</text>
+                <text x="21" y="56" fill="#fcd34d" font-size="11" font-weight="bold" text-anchor="middle">15</text>
+                <text x="63" y="56" fill="#f43f5e" font-size="10" font-weight="bold" text-anchor="middle">s=0</text>
+                <text x="105" y="56" fill="#fcd34d" font-size="11" font-weight="bold" text-anchor="middle">18</text>
+              </g>
+
+              <!-- 7. Node G (CRITICAL) -->
+              <g transform="translate(740, 168)" filter="url(#cpm-glow-crit)">
+                <rect x="0" y="0" width="126" height="64" rx="6" fill="#111827" stroke="#f43f5e" stroke-width="2.5"/>
+                <rect x="0" y="0" width="126" height="20" rx="6" fill="#881337"/>
+                <text x="63" y="14" fill="#fecdd3" font-size="11" font-weight="bold" text-anchor="middle">งาน G • วิกฤต</text>
+                <line x1="0" y1="20" x2="126" y2="20" stroke="#f43f5e" stroke-width="1"/>
+                <line x1="0" y1="42" x2="126" y2="42" stroke="#334155" stroke-width="1"/>
+                <line x1="42" y1="20" x2="42" y2="64" stroke="#334155" stroke-width="1"/>
+                <line x1="84" y1="20" x2="84" y2="64" stroke="#334155" stroke-width="1"/>
+                <text x="21" y="35" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">18</text>
+                <text x="63" y="35" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle">d=8</text>
+                <text x="105" y="35" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">26</text>
+                <text x="21" y="56" fill="#fcd34d" font-size="11" font-weight="bold" text-anchor="middle">18</text>
+                <text x="63" y="56" fill="#f43f5e" font-size="10" font-weight="bold" text-anchor="middle">s=0</text>
+                <text x="105" y="56" fill="#fcd34d" font-size="11" font-weight="bold" text-anchor="middle">26</text>
+              </g>
+            </svg>
+          </div>
+
+          <!-- LEGEND -->
+          <div style="margin-top: 0.75rem; padding-top: 0.6rem; border-top: 1px dashed rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; font-size: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+              <span style="display: inline-flex; align-items: center; gap: 0.35rem; color: #f43f5e; font-weight: 700;">
+                <span style="display: inline-block; width: 14px; height: 14px; border: 2px solid #f43f5e; background: #881337; border-radius: 3px;"></span>
+                กล่องขอบแดงเรืองแสง = งานบน Critical Path (Slack = 0)
+              </span>
+              <span style="display: inline-flex; align-items: center; gap: 0.35rem; color: #94a3b8;">
+                <span style="display: inline-block; width: 14px; height: 14px; border: 1.5px solid #475569; background: #0f172a; border-radius: 3px;"></span>
+                กล่องขอบเทา = งานทั่วไป (ยืดหยุ่นได้ Slack > 0)
+              </span>
+              <span style="color: #f43f5e; font-weight: 700;">
+                ➔ ลูกศรแดงหนา = สายงานวิกฤตที่ยาวที่สุด
+              </span>
+            </div>
+            <div style="color: #67e8f9; font-size: 0.78rem;">
+              โครงสร้างแต่ละกล่อง: <strong>[ES | Dur | EF] / [LS | Slack | LF]</strong>
+            </div>
+          </div>
+        </div>
+
         <div class="grid-2">
           <!-- Step 1: Forward Pass -->
           <div style="background: rgba(6, 182, 212, 0.05); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: var(--radius-sm); padding: 1.1rem;">

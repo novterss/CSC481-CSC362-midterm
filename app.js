@@ -104,6 +104,24 @@ const cpmDataSets = {
   }
 };
 
+function switchCpmDiagram(sheet) {
+  const d1 = document.getElementById('cpmDiagramSheet1');
+  const d2 = document.getElementById('cpmDiagramSheet2');
+  const b1 = document.getElementById('btnDiagSheet1');
+  const b2 = document.getElementById('btnDiagSheet2');
+  if (sheet === 'sheet1') {
+    if (d1) d1.style.display = 'block';
+    if (d2) d2.style.display = 'none';
+    if (b1) b1.classList.add('active');
+    if (b2) b2.classList.remove('active');
+  } else {
+    if (d1) d1.style.display = 'none';
+    if (d2) d2.style.display = 'block';
+    if (b1) b1.classList.remove('active');
+    if (b2) b2.classList.add('active');
+  }
+}
+
 function renderCpmTable(sheetKey) {
   const container = document.getElementById('cpmTableContainer');
   if (!container) return;
