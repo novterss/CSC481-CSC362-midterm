@@ -684,64 +684,82 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
 
         <!-- Clinic ERD SVG -->
         <div class="diagram-container" style="margin-top: 1rem;">
-          <svg class="diagram-svg" viewBox="0 0 920 320" xmlns="http://www.w3.org/2000/svg">
-            <!-- DOCTOR Entity -->
-            <rect x="50" y="110" width="160" height="70" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
-            <text x="130" y="152" fill="#f8fafc" font-size="16" font-weight="bold" text-anchor="middle">DOCTOR</text>
+          <svg class="diagram-svg" viewBox="0 0 940 340" xmlns="http://www.w3.org/2000/svg">
+            <!-- Connecting Lines: DOCTOR Attributes -->
+            <line x1="85" y1="72" x2="110" y2="130" stroke="#64748b" stroke-width="1.5"/>
+            <line x1="180" y1="70" x2="155" y2="130" stroke="#64748b" stroke-width="1.5"/>
+            <line x1="135" y1="190" x2="135" y2="225" stroke="#64748b" stroke-width="1.5"/>
 
-            <!-- Doctor Attributes -->
-            <ellipse cx="60" cy="45" rx="55" ry="22" fill="#0f172a" stroke="#f43f5e" stroke-width="2"/>
-            <text x="60" y="50" fill="#f43f5e" font-size="11" font-weight="bold" text-anchor="middle" text-decoration="underline"><u>DoctorID (PK)</u></text>
-            <line x1="80" y1="67" x2="105" y2="110" stroke="#64748b" stroke-width="1.5"/>
+            <!-- Connecting Lines: Relationship TREATS -->
+            <line x1="210" y1="160" x2="330" y2="160" stroke="#94a3b8" stroke-width="2"/>
+            <line x1="460" y1="160" x2="580" y2="160" stroke="#94a3b8" stroke-width="2"/>
 
-            <ellipse cx="180" cy="45" rx="50" ry="20" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
-            <text x="180" y="49" fill="#cbd5e1" font-size="11" text-anchor="middle">Specialty</text>
-            <line x1="165" y1="65" x2="150" y2="110" stroke="#64748b" stroke-width="1.5"/>
+            <!-- Connecting Lines: PATIENT Attributes -->
+            <line x1="610" y1="72" x2="630" y2="130" stroke="#64748b" stroke-width="1.5"/>
+            <line x1="695" y1="69" x2="675" y2="130" stroke="#64748b" stroke-width="1.5"/>
+            <line x1="785" y1="68" x2="715" y2="130" stroke="#64748b" stroke-width="1.5"/>
+            <line x1="730" y1="160" x2="772" y2="160" stroke="#64748b" stroke-width="1.5"/>
+            <line x1="645" y1="190" x2="630" y2="227" stroke="#64748b" stroke-width="1.5"/>
+            <line x1="595" y1="260" x2="560" y2="285" stroke="#64748b" stroke-width="1.2"/>
+            <line x1="630" y1="263" x2="645" y2="284" stroke="#64748b" stroke-width="1.2"/>
 
-            <!-- TREATS Relationship -->
-            <polygon points="340,145 400,105 460,145 400,185" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
-            <text x="400" y="150" fill="#e9d5ff" font-size="13" font-weight="bold" text-anchor="middle">TREATS</text>
+            <!-- 1. DOCTOR Entity -->
+            <rect x="60" y="130" width="150" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+            <text x="135" y="166" fill="#f8fafc" font-size="15" font-weight="bold" text-anchor="middle">DOCTOR</text>
 
-            <line x1="210" y1="145" x2="340" y2="145" stroke="#94a3b8" stroke-width="2"/>
-            <text x="240" y="135" fill="#38bdf8" font-size="16" font-weight="bold">1</text>
+            <!-- DOCTOR Attributes -->
+            <!-- DoctorID (PK) -->
+            <ellipse cx="70" cy="50" rx="55" ry="22" fill="#0f172a" stroke="#f43f5e" stroke-width="2"/>
+            <text x="70" y="55" fill="#f43f5e" font-size="11" font-weight="bold" text-anchor="middle" text-decoration="underline">DoctorID (PK)</text>
 
-            <line x1="460" y1="145" x2="590" y2="145" stroke="#94a3b8" stroke-width="2"/>
-            <text x="560" y="135" fill="#38bdf8" font-size="16" font-weight="bold">M</text>
+            <!-- Specialty -->
+            <ellipse cx="195" cy="50" rx="45" ry="20" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+            <text x="195" y="55" fill="#cbd5e1" font-size="11" text-anchor="middle">Specialty</text>
 
-            <!-- PATIENT Entity -->
-            <rect x="590" y="110" width="160" height="70" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
-            <text x="670" y="152" fill="#f8fafc" font-size="16" font-weight="bold" text-anchor="middle">PATIENT</text>
+            <!-- DoctorName -->
+            <ellipse cx="135" cy="245" rx="55" ry="20" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+            <text x="135" y="250" fill="#cbd5e1" font-size="11" text-anchor="middle">DoctorName</text>
 
-            <!-- Patient Attributes -->
-            <!-- PK -->
-            <ellipse cx="610" cy="45" rx="55" ry="22" fill="#0f172a" stroke="#f43f5e" stroke-width="2"/>
-            <text x="610" y="50" fill="#f43f5e" font-size="11" font-weight="bold" text-anchor="middle"><u>PatientID (PK)</u></text>
-            <line x1="630" y1="67" x2="650" y2="110" stroke="#64748b" stroke-width="1.5"/>
+            <!-- 2. TREATS Relationship -->
+            <polygon points="330,160 395,120 460,160 395,200" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
+            <text x="395" y="165" fill="#e9d5ff" font-size="13" font-weight="bold" text-anchor="middle">TREATS</text>
 
-            <!-- Derived Age (Dashed) -->
-            <ellipse cx="735" cy="45" rx="45" ry="20" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,3"/>
-            <text x="735" y="49" fill="#fcd34d" font-size="11" text-anchor="middle">Age (Derived)</text>
-            <line x1="720" y1="65" x2="700" y2="110" stroke="#64748b" stroke-width="1.5"/>
+            <!-- Cardinality numbers -->
+            <text x="240" y="150" fill="#38bdf8" font-size="15" font-weight="bold">1</text>
+            <text x="545" y="150" fill="#38bdf8" font-size="15" font-weight="bold">M</text>
 
-            <!-- Multivalued Phone (Double Oval) -->
-            <ellipse cx="840" cy="145" rx="60" ry="25" fill="#0f172a" stroke="#06b6d4" stroke-width="1.5"/>
-            <ellipse cx="840" cy="145" rx="54" ry="20" fill="none" stroke="#06b6d4" stroke-width="1.5"/>
-            <text x="840" y="149" fill="#67e8f9" font-size="11" text-anchor="middle">Phone (Multi)</text>
-            <line x1="750" y1="145" x2="780" y2="145" stroke="#64748b" stroke-width="1.5"/>
+            <!-- 3. PATIENT Entity -->
+            <rect x="580" y="130" width="150" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+            <text x="655" y="166" fill="#f8fafc" font-size="15" font-weight="bold" text-anchor="middle">PATIENT</text>
 
-            <!-- Composite Name -->
-            <ellipse cx="600" cy="245" rx="45" ry="18" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
-            <text x="600" y="249" fill="#cbd5e1" font-size="11" text-anchor="middle">Name</text>
-            <line x1="635" y1="180" x2="615" y2="227" stroke="#64748b" stroke-width="1.5"/>
+            <!-- PATIENT Attributes -->
+            <!-- PatientID (PK) -->
+            <ellipse cx="590" cy="50" rx="55" ry="22" fill="#0f172a" stroke="#f43f5e" stroke-width="2"/>
+            <text x="590" y="55" fill="#f43f5e" font-size="11" font-weight="bold" text-anchor="middle" text-decoration="underline">PatientID (PK)</text>
+
+            <!-- DOB -->
+            <ellipse cx="705" cy="50" rx="42" ry="19" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+            <text x="705" y="54" fill="#cbd5e1" font-size="11" text-anchor="middle">DOB</text>
+
+            <!-- Age (Derived - Dashed) -->
+            <ellipse cx="815" cy="50" rx="48" ry="20" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <text x="815" y="54" fill="#fcd34d" font-size="10" text-anchor="middle">Age (Derived)</text>
+
+            <!-- Phone (Multivalued - Double Oval) -->
+            <ellipse cx="830" cy="160" rx="58" ry="24" fill="#0f172a" stroke="#06b6d4" stroke-width="1.5"/>
+            <ellipse cx="830" cy="160" rx="52" ry="19" fill="none" stroke="#06b6d4" stroke-width="1.5"/>
+            <text x="830" y="164" fill="#67e8f9" font-size="11" text-anchor="middle">Phone (Multi)</text>
+
+            <!-- Name (Composite) -->
+            <ellipse cx="620" cy="245" rx="45" ry="18" fill="#0f172a" stroke="#94a3b8" stroke-width="1.5"/>
+            <text x="620" y="249" fill="#cbd5e1" font-size="11" text-anchor="middle">Name</text>
 
             <!-- Sub attributes of Name -->
-            <ellipse cx="530" cy="295" rx="40" ry="16" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
-            <text x="530" y="299" fill="#94a3b8" font-size="10" text-anchor="middle">Fname</text>
-            <line x1="580" y1="260" x2="545" y2="280" stroke="#64748b" stroke-width="1"/>
+            <ellipse cx="545" cy="300" rx="38" ry="16" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+            <text x="545" y="304" fill="#94a3b8" font-size="10" text-anchor="middle">Fname</text>
 
-            <ellipse cx="630" cy="295" rx="40" ry="16" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
-            <text x="630" y="299" fill="#94a3b8" font-size="10" text-anchor="middle">Lname</text>
-            <line x1="610" y1="262" x2="625" y2="280" stroke="#64748b" stroke-width="1"/>
+            <ellipse cx="650" cy="300" rx="38" ry="16" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+            <text x="650" y="304" fill="#94a3b8" font-size="10" text-anchor="middle">Lname</text>
           </svg>
         </div>
       </div>
