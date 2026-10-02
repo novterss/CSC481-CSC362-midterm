@@ -581,35 +581,35 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
       <div class="section-header">
         <span class="section-tag">CSC362 • ข้อที่ 2 (15 คะแนนเต็ม ออกแน่นอน 100%)</span>
         <h2 class="section-title">คู่มือการออกแบบ ER Diagram (Chen & Crow's Foot)</h2>
-        <p class="section-desc">คู่มือฉบับสมบูรณ์: แกะโจทย์ภาษาไทย/อังกฤษ -> สัญลักษณ์ทุกชนิด -> ตัวอย่างเคสคลินิกจริง -> เช็กลิสต์ส่งงาน</p>
+        <p class="section-desc">คู่มือฉบับสมบูรณ์: แกะโจทย์ภาษาไทย/อังกฤษ -> สัญลักษณ์ทุกชนิด -> ตัวอย่างเคสคลินิกจริง -> กระดาษคำตอบห้องสอบ</p>
       </div>
 
       <!-- SECTION 1: HOW TO EXTRACT ERD FROM TEXT -->
-      <div class="card" style="border-left: 4px solid var(--accent-cyan);">
-        <span class="content-badge theory">📖 ส่วนที่ 1: อ่านทำความเข้าใจ • วิธีแกะโจทย์ข้อสอบเป็น ERD</span>
-        <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">กฎ 3 ข้อในการเปลี่ยนโจทย์บรรยายเป็นภาพไดอะแกรม:</h3>
+      <div class="box-read">
+        <span class="content-badge theory">📖 ส่วนที่ 1: อ่านทำความเข้าใจ • กฎ 3 ข้อในการแกะโจทย์ข้อสอบเป็น ERD</span>
+        <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">วิธีคัดแยกคำจากโจทย์ให้ออกมาเป็นโครงร่างไดอะแกรม:</h3>
         <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.7;">
-          เวลาอ่านโจทย์ข้อสอบยาว 1 หน้ากระดาษ อย่าเพิ่งตกใจ ให้หยิบปากกาไฮไลต์มาคัดแยกคำตามกฎนี้ทันที:
+          เวลาอ่านโจทย์ข้อสอบยาว 1 หน้ากระดาษ ให้หยิบปากกาไฮไลต์มาคัดแยกคำตามกฎ 3 ข้อนี้ทันที:
         </p>
         <div class="grid-3" style="margin-top: 1rem;">
           <div style="background: rgba(6, 182, 212, 0.08); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: var(--radius-sm); padding: 1rem;">
             <strong style="color: #67e8f9;">1. คำนามหลัก = Entity (สี่เหลี่ยม)</strong>
             <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.35rem;">
-              คือสิ่งที่มีตัวตนในระบบ เช่น <em>ลูกค้า (CUSTOMER), สินค้า (PRODUCT), อาจารย์ (INSTRUCTOR), วิชา (COURSE)</em>
+              คือสิ่งที่มีตัวตนในระบบ เช่น <em>ลูกค้า (CUSTOMER), สินค้า (PRODUCT), แพทย์ (DOCTOR), คนไข้ (PATIENT)</em>
             </p>
           </div>
 
           <div style="background: rgba(168, 85, 247, 0.08); border: 1px solid rgba(168, 85, 247, 0.25); border-radius: var(--radius-sm); padding: 1rem;">
             <strong style="color: #d8b4fe;">2. คำกริยา = Relationship (ข้าวหลามตัด)</strong>
             <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.35rem;">
-              คือความสัมพันธ์ระหว่างเอนทิตี เช่น <em>ลูกค้า "สั่งซื้อ (ORDERS)" สินค้า, อาจารย์ "สอน (TEACHES)" วิชา</em>
+              คือความสัมพันธ์ระหว่างเอนทิตี เช่น <em>แพทย์ "ตรวจรักษา (TREATS)" คนไข้, ลูกค้า "สั่งซื้อ (ORDERS)" สินค้า</em>
             </p>
           </div>
 
           <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: var(--radius-sm); padding: 1rem;">
-            <strong style="color: #6ee7b7;">3. รายละเอียด = Attribute (วงรี)</strong>
+            <strong style="color: #6ee7b7;">3. คำขยายย่อย = Attribute (วงรี)</strong>
             <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.35rem;">
-              คือคุณสมบัติที่ติดตัวเอนทิตี เช่น <em>รหัส (ID), ชื่อ (Name), ที่อยู่ (Address), ราคา (Price), เงินเดือน (Salary)</em>
+              คือคุณสมบัติที่ติดตัวเอนทิตี เช่น <em>รหัส (ID), ชื่อ (Name), ที่อยู่ (Address), วันเกิด (DOB), เบอร์โทร (Phone)</em>
             </p>
           </div>
         </div>
@@ -617,9 +617,9 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
 
       <!-- SECTION 2: ATTRIBUTE CHEAT SHEET & STRONG VS WEAK -->
       <div class="grid-2">
-        <div class="card">
+        <div class="box-read" style="margin-bottom: 0;">
           <span class="content-badge theory">📖 สัญลักษณ์ Attribute ทุกชนิดที่ออกสอบ</span>
-          <table class="custom-table">
+          <table class="custom-table" style="margin-top: 0.5rem;">
             <thead>
               <tr><th>ชนิดของ Attribute</th><th>สัญลักษณ์ (Chen)</th><th>ตัวอย่างในชีวิตจริง</th></tr>
             </thead>
@@ -632,12 +632,12 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
               <tr>
                 <td><strong>2. Composite Attribute</strong></td>
                 <td>วงรีที่แตกกิ่งย่อยออกมา</td>
-                <td>ชื่อ-สกุล Name (แตกเป็น First, Last)</td>
+                <td>ชื่อ-สกุล Name (แตกเป็น Fname, Lname)</td>
               </tr>
               <tr>
                 <td><strong>3. Multi-valued Attribute</strong></td>
                 <td><strong style="color: #38bdf8;">วงรี 2 ชั้น (Double Oval)</strong></td>
-                <td>เบอร์โทรศัพท์ (มีหลายเบอร์), ทักษะ (Skills)</td>
+                <td>เบอร์โทรศัพท์ (มีได้หลายเบอร์), ทักษะ (Skills)</td>
               </tr>
               <tr>
                 <td><strong>4. Derived Attribute</strong></td>
@@ -647,24 +647,24 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
               <tr>
                 <td><strong>5. Primary Key</strong></td>
                 <td><strong style="color: #f43f5e;">วงรี + ขีดเส้นใต้ข้อความ</strong></td>
-                <td>รหัสประจำตัว เช่น <u>CustomerID</u>, <u>EmpID</u></td>
+                <td>รหัสประจำตัว เช่น <u>PatientID</u>, <u>DoctorID</u></td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <div class="card">
+        <div class="box-read" style="margin-bottom: 0;">
           <span class="content-badge theory">📖 ความต่าง: Strong vs Weak Entity</span>
-          <div style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6;">
+          <div style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-top: 0.5rem;">
             <div style="margin-bottom: 1rem; background: rgba(99, 102, 241, 0.08); padding: 0.85rem; border-radius: var(--radius-sm); border-left: 3px solid #6366f1;">
               <strong style="color: #a5b4fc;">🟦 Strong Entity (เอนทิตีปกติ):</strong><br>
-              เป็นเอกเทศ อยู่ได้ด้วยตัวเอง มี Primary Key ของตัวเองชัดเจน เช่น <code>EMPLOYEE</code> (รหัสพนักงาน EmpID)<br>
+              เป็นเอกเทศ อยู่ได้ด้วยตัวเอง มี Primary Key ของตัวเองชัดเจน เช่น <code>DOCTOR</code> (รหัสแพทย์ DoctorID)<br>
               <em>*สัญลักษณ์: สี่เหลี่ยมผืนผ้าเส้นเดี่ยว</em>
             </div>
 
             <div style="background: rgba(244, 63, 94, 0.08); padding: 0.85rem; border-radius: var(--radius-sm); border-left: 3px solid #f43f5e;">
               <strong style="color: #fca5a5;">🟪 Weak Entity (เอนทิตีอ่อนแอ):</strong><br>
-              อยู่ตามลำพังไม่ได้ ต้องพึ่งพาการมีอยู่ของ Strong Entity (Existence Dependent) และไม่มี PK สมบูรณ์ในตัวเอง เช่น <code>DEPENDENT</code> (บุตรของพนักงาน — ถ้าพนักงานลาออก ข้อมูลบุตรก็ต้องถูกลบทิ้งตาม)<br>
+              อยู่ตามลำพังไม่ได้ ต้องพึ่งพาการมีอยู่ของ Strong Entity (Existence Dependent) และไม่มี PK สมบูรณ์ในตัวเอง เช่น <code>DEPENDENT</code> (ผู้ติดต่อฉุกเฉินของคนไข้ — ถ้าคนไข้ลบประวัติ ข้อมูลผู้ติดต่อก็ต้องถูกลบทิ้งตาม)<br>
               <em>*สัญลักษณ์: สี่เหลี่ยมเส้นคู่ (Double Rectangle) และความสัมพันธ์ก็เป็นรูปข้าวหลามตัดเส้นคู่</em>
             </div>
           </div>
@@ -672,15 +672,14 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
       </div>
 
       <!-- SECTION 3: WORKED CASE STUDY -->
-      <div class="card" style="border-left: 4px solid var(--accent-indigo);">
+      <div class="box-read" style="margin-top: 1.75rem;">
         <span class="content-badge example">📊 ส่วนที่ 2: ตัวอย่างเคสศึกษาจริง • ระบบคลินิกรักษาพยาบาล</span>
         <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">โจทย์ตัวอย่าง: จงออกแบบ ER Diagram สำหรับระบบคลินิก</h3>
         <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
           <strong>ข้อกำหนดระบบ (Business Rules):</strong><br>
           1. แพทย์ (<code>DOCTOR</code>) มีข้อมูล: รหัสแพทย์ (DoctorID), ชื่อ (DoctorName), แผนก (Specialty)<br>
           2. คนไข้ (<code>PATIENT</code>) มีข้อมูล: รหัสคนไข้ (PatientID), ชื่อ-สกุล (Name แตกเป็น Fname + Lname), วันเกิด (DOB), อายุ (Age คำนวณได้), และเบอร์โทรศัพท์ (Phone ซึ่งคนไข้ 1 คนอาจมีหลายเบอร์)<br>
-          3. ความสัมพันธ์: แพทย์ 1 คน สามารถทำการตรวจรักษา (<code>TREATS</code>) คนไข้ได้หลายคน แต่คนไข้ในการมาตรวจครั้งนั้นจะพบแพทย์ผู้รักษาได้ 1 คน (1 : M)<br>
-          4. คนไข้มีข้อมูลประวัติผู้ติดต่อฉุกเฉิน (<code>EMERGENCY_CONTACT</code>) ซึ่งเป็น Weak Entity ขึ้นกับคนไข้
+          3. ความสัมพันธ์: แพทย์ 1 คน สามารถทำการตรวจรักษา (<code>TREATS</code>) คนไข้ได้หลายคน แต่คนไข้ในการมาตรวจครั้งนั้นจะพบแพทย์ผู้รักษาได้ 1 คน (1 : M)
         </p>
 
         <!-- Clinic ERD SVG -->
@@ -748,13 +747,22 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
       </div>
 
       <!-- SECTION 4: EXAM CHECKLIST -->
-      <div class="card" style="border-left: 4px solid var(--accent-emerald);">
-        <span class="content-badge exam-template">✍️ ส่วนที่ 3: เช็กลิสต์การตรวจข้อสอบ ERD ให้ได้คะแนนเต็ม</span>
-        <div style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7;">
+      <div class="box-action">
+        <span class="content-badge exam-template">✍️ ส่วนที่ 3: เช็กลิสต์การตรวจข้อสอบ ERD ให้ได้คะแนนเต็ม 15/15</span>
+        <div class="exam-answer-paper">
           <p>✔️ <strong>1. มี Primary Key ขีดเส้นใต้ในทุก Strong Entity:</strong> เช็กว่าเขียน <u>ID</u> และขีดเส้นใต้ชัดเจน</p>
           <p>✔️ <strong>2. ใส่ตัวเลข Cardinality กำกับบนเส้น:</strong> ต้องมี <code>1</code> กับ <code>M</code> หรือ <code>M</code> กับ <code>N</code> กำกับไว้ตรงปลายเส้นเสมอ</p>
           <p>✔️ <strong>3. สัญลักษณ์พิเศษต้องตรงชนิด:</strong> ถ้าโจทย์บอกว่ามีหลายค่า (เช่น เบอร์โทร) ต้องวาด <strong>วงรี 2 ชั้น</strong>, ถ้าคำนวณได้ (เช่น อายุ) ต้องวาด <strong>วงรีเส้นประ</strong></p>
           <p>✔️ <strong>4. เขียนชื่อความสัมพันธ์ในข้าวหลามตัด:</strong> ต้องเป็นคำกริยา เช่น TREATS, ORDERS, TEACHES, ENROLLS</p>
+        </div>
+      </div>
+
+      <!-- SECTION 5: ERD TRAPS -->
+      <div class="box-trap">
+        <span class="content-badge trap">⚠️ ส่วนที่ 4: จุดตกม้าตายเรื่อง ERD ที่มักโดนหักคะแนน</span>
+        <div style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7;">
+          <p>❌ <strong>จุดผิดที่ 1: ลืมขีดเส้นประที่ Derived Attribute (เช่น Age)</strong> — ถ้าวาดเป็นวงรีทึบ อาจารย์จะหักคะแนนทันที เพราะอายุเปลี่ยนทุกปีต้องคำนวณจากวันเกิด</p>
+          <p>❌ <strong>จุดผิดที่ 2: วาดเบอร์โทรศัพท์เป็นวงรีเดี่ยว</strong> — คนหนึ่งคนอาจมีเบอร์บ้านและเบอร์มือถือ ต้องวาดเป็นวงรี 2 ชั้น (Multivalued Attribute) เท่านั้น</p>
         </div>
       </div>
     </section>
@@ -770,7 +778,7 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
       </div>
 
       <!-- SECTION 1: THE 3 GOLDEN MAPPING RULES -->
-      <div class="card" style="border-left: 4px solid var(--accent-indigo);">
+      <div class="box-read">
         <span class="content-badge theory">📖 ส่วนที่ 1: อ่านทำความเข้าใจ • กฎเหล็ก 3 ข้อในการแปลงความสัมพันธ์</span>
         <h3 style="color: var(--text-primary); margin-bottom: 0.75rem;">ทำไมต้องแปลงแบบนี้? เหตุผลเชิงลึกที่ทำให้อ่านแล้ว "อ๋อทันที":</h3>
 
@@ -830,21 +838,30 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
       </div>
 
       <!-- SECTION 2: EXAM WRITING BLUEPRINT -->
-      <div class="card" style="border-left: 4px solid var(--accent-emerald);">
+      <div class="box-action">
         <span class="content-badge exam-template">✍️ ส่วนที่ 2: วิธีเขียนตอบ Relational Schema ในกระดาษข้อสอบ</span>
         <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">รูปแบบการเขียนส่งอาจารย์ให้ได้ 15 คะแนนเต็ม:</h3>
         <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.75rem;">
           เขียนระบุชื่อตารางตัวพิมพ์ใหญ่ เปิดวงเล็บ ขีดเส้นใต้ Primary Key และใส่เครื่องหมายดอกจัน <code>*</code> หรือกำกับ (FK) ชัดเจน:
         </p>
-        <div class="code-box">
-1. DEPARTMENT (<span class="key-pk">DeptNo</span>, DeptName, Budget)
-2. EMPLOYEE (<span class="key-pk">EmpID</span>, EmpName, Salary, <span class="key-fk">DeptNo*</span>)
-3. PROJECT (<span class="key-pk">ProjNo</span>, ProjName, DueDate)
-4. ASSIGNMENT (<span class="key-pk">EmpID*</span>, <span class="key-pk">ProjNo*</span>, AssignedHours)
+        <div class="exam-answer-paper">
+          <p>1. <strong>DEPARTMENT</strong> (<span class="highlight-pk">DeptNo</span>, DeptName, Budget)</p>
+          <p>2. <strong>EMPLOYEE</strong> (<span class="highlight-pk">EmpID</span>, EmpName, Salary, <span class="highlight-fk">DeptNo*</span>)</p>
+          <p>3. <strong>PROJECT</strong> (<span class="highlight-pk">ProjNo</span>, ProjName, DueDate)</p>
+          <p>4. <strong>ASSIGNMENT</strong> (<span class="highlight-pk">EmpID*</span>, <span class="highlight-pk">ProjNo*</span>, AssignedHours)</p>
+          <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 0.5rem;">
+            <em>*หมายเหตุ: ในตาราง ASSIGNMENT เป็นตารางเชื่อมความสัมพันธ์ M:N ทั้ง EmpID และ ProjNo ทำหน้าที่เป็น Composite Primary Key และเป็น Foreign Key ที่ชี้กลับไปยังตารางหลัก</em>
+          </p>
         </div>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">
-          *หมายเหตุ: ในตาราง <code>ASSIGNMENT</code> เป็นตารางเชื่อมความสัมพันธ์ M:N ทั้ง <code>EmpID</code> และ <code>ProjNo</code> ทำหน้าที่เป็นทั้ง Composite Primary Key และ Foreign Key ที่ชี้กลับไปยังตารางต้นทาง
-        </p>
+      </div>
+
+      <!-- SECTION 3: MAPPING TRAPS -->
+      <div class="box-trap">
+        <span class="content-badge trap">⚠️ ส่วนที่ 3: กับดักข้อสอบการแปลงตาราง (จุดหักคะแนนยอดฮิต)</span>
+        <div style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7;">
+          <p>❌ <strong>จุดผิดที่ 1: สลับฝั่งในความสัมพันธ์ 1:M</strong> — นักศึกษาชอบจำสลับ เอา PK ฝั่ง M ไปใส่ในฝั่ง 1 ทำให้ตารางฝั่ง 1 พังยับเยิน จำสูตรสั้นๆ: <em>"ลูกวิ่งไปขอบัตรประชาชนแม่มาถือ (1 ไปเป็น FK ฝั่ง M)"</em></p>
+          <p>❌ <strong>จุดผิดที่ 2: ในตาราง M:N ลืมขีดเส้นใต้คู่</strong> — ตารางเชื่อมตรงกลาง (Bridge table) ต้องขีดเส้นใต้ PK ทั้ง 2 ตัวคู่กันเป็น Composite PK เสมอ</p>
+        </div>
       </div>
     </section>
 
@@ -859,7 +876,7 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
       </div>
 
       <!-- SECTION 1: KEYS COMPARISON WITH REAL TABLE EXAMPLE -->
-      <div class="card" style="border-left: 4px solid var(--accent-cyan);">
+      <div class="box-read">
         <span class="content-badge theory">📖 ส่วนที่ 1: สรุปเรื่อง Keys ให้เห็นภาพ ไม่สับสน</span>
         <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">ตัวอย่างจริง: ตารางนักศึกษา <code>STUDENT</code></h3>
         <p style="color: var(--text-secondary); font-size: 0.92rem;">
@@ -911,7 +928,7 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
       </div>
 
       <!-- SECTION 2: INTEGRITY CONSTRAINTS WITH ERROR EXAMPLES -->
-      <div class="card" style="border-left: 4px solid var(--accent-rose);">
+      <div class="box-read">
         <span class="content-badge theory">🛡️ ส่วนที่ 2: กฎความถูกต้อง 2 ข้อ (Relational Integrity Constraints)</span>
         <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">กฎเหล็ก 2 ข้อที่ออกข้อสอบทุกเทอม พร้อมตัวอย่างข้อมูลที่ผิดกฎ:</h3>
 
@@ -966,7 +983,32 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
           </div>
         </div>
       </div>
+
+      <!-- SECTION 3: EXAM ANSWER BLUEPRINT -->
+      <div class="box-action">
+        <span class="content-badge exam-template">✍️ ส่วนที่ 3: วิธีเขียนตอบในกระดาษข้อสอบ (Exam Integrity Blueprint)</span>
+        <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">แนวข้อสอบ: "จงอธิบายความหมายและความสำคัญของ Entity Integrity และ Referential Integrity"</h3>
+        <div class="exam-answer-paper">
+          <p><strong>1. Entity Integrity:</strong><br>
+          • <strong>ความหมาย:</strong> เป็นกฎที่ระบุว่าในทุกแถว (Tuple) ของความสัมพันธ์ จะต้องมี Primary Key ที่มีค่าระบุตัวตนได้ชัดเจน โดยค่าของ Primary Key จะต้อง <strong>ห้ามเป็นค่าว่าง (NOT NULL)</strong> และ <strong>ห้ามมีค่าซ้ำกัน (UNIQUE)</strong><br>
+          • <strong>ความสำคัญ:</strong> เพื่อรับประกันว่าระบบจะสามารถระบุและค้นหาแต่ละเรคคอร์ดในตารางได้อย่างถูกต้องแม่นยำ 100% โดยไม่เกิดความสับสนหรือข้อมูลชนกัน</p>
+
+          <p style="margin-top: 0.75rem;"><strong>2. Referential Integrity:</strong><br>
+          • <strong>ความหมาย:</strong> เป็นกฎที่ควบคุมความสอดคล้องระหว่าง 2 ตาราง โดยระบุว่าค่าของ Foreign Key ในตารางลูก จะต้อง <strong>มีค่าตรงกับ Primary Key ในตารางแม่ที่มีอยู่จริง</strong> หรือมีค่าเป็น NULL (ในกรณีที่ยังไม่มีความสัมพันธ์)<br>
+          • <strong>ความสำคัญ:</strong> ป้องกันไม่ให้เกิดปัญหา <em>"Orphan Records (ข้อมูลกำพร้า)"</em> เช่น มีข้อมูลพนักงานที่ชี้ไปหาแผนกที่ไม่มีตัวตนอยู่ในระบบ</p>
+        </div>
+      </div>
+
+      <!-- SECTION 4: KEYS TRAPS -->
+      <div class="box-trap">
+        <span class="content-badge trap">⚠️ ส่วนที่ 4: จุดที่เด็กมักเข้าใจผิดเกี่ยวกับ Keys</span>
+        <div style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7;">
+          <p>❌ <strong>เข้าใจผิดว่า Foreign Key ห้ามเป็น NULL:</strong><br>
+          ความจริงแล้ว <strong>Foreign Key สามารถเป็น NULL ได้!</strong> เช่น พนักงานเข้าใหม่ที่ยังไม่ได้ถูกบรรจุเข้าแผนกใดๆ ค่า <code>DeptNo</code> ในตารางพนักงานก็สามารถเป็น NULL ได้ชั่วคราว (แต่ Primary Key เท่านั้นที่ห้ามเป็น NULL เด็ดขาด!)</p>
+        </div>
+      </div>
     </section>
+
 
     <!-- ========================================== -->
     <!-- TAB: CSC362 - QUIZ -->
@@ -986,72 +1028,171 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
     <!-- ========================================== -->
     <section id="tab-csc481-sdlc" class="content-section" style="display: none;">
       <div class="section-header">
-        <span class="section-tag">CSC481 • ข้อที่ 1 (10 คะแนน)</span>
-        <h2 class="section-title">SDLC 5 ขั้นตอน & Waterfall vs Agile</h2>
-        <p class="section-desc">วงจรการพัฒนาระบบสารสนเทศ และการเปรียบเทียบวิธีการพัฒนายอดนิยม</p>
+        <span class="section-tag">CSC481 • ข้อที่ 1 (10 คะแนนเต็ม)</span>
+        <h2 class="section-title">SDLC 5 ขั้นตอน & Waterfall vs Agile แบบเจาะลึก</h2>
+        <p class="section-desc">เข้าใจหน้าที่ของแต่ละเฟส -> เอกสารส่งมอบ (Deliverables) ที่อาจารย์ถาม -> ตารางเทียบ 6 มิติ -> จำลองกระดาษคำตอบห้องสอบ</p>
       </div>
 
-      <!-- SDLC SVG -->
-      <div class="diagram-container">
-        <svg class="diagram-svg" viewBox="0 0 950 140" xmlns="http://www.w3.org/2000/svg">
-          <!-- Phase 1 -->
-          <rect x="10" y="30" width="165" height="75" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="2"/>
-          <text x="92" y="60" fill="#67e8f9" font-size="14" font-weight="bold" text-anchor="middle">1. Planning</text>
-          <text x="92" y="82" fill="#94a3b8" font-size="11" text-anchor="middle">Feasibility, Scope</text>
+      <!-- SECTION 1: THEORY - 5 PHASES OF SDLC & DELIVERABLES -->
+      <div class="box-read">
+        <span class="content-badge theory">📖 ส่วนที่ 1: อ่านทำความเข้าใจ • วงจร SDLC 5 ขั้นตอน & เอกสารส่งมอบ (Deliverables)</span>
+        <p style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 1.25rem;">
+          SDLC (Systems Development Life Cycle) คือพิมพ์เขียวมาตรฐานที่นักวิเคราะห์ระบบ (SA) ใช้ควบคุมโปรเจกต์ตั้งแต่เริ่มต้นจนสิ้นสุดระบบ ทุกเฟสจะต้องมี <strong>"ผลลัพธ์หรือเอกสารส่งมอบ (Deliverables)"</strong> เพื่อส่งต่อให้เฟสถัดไป:
+        </p>
 
-          <path d="M 180 67 L 205 67" stroke="#f59e0b" stroke-width="2.5" fill="none"/>
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <!-- Phase 1 -->
+          <div style="background: rgba(6, 182, 212, 0.08); border: 1px solid rgba(6, 182, 212, 0.3); border-radius: var(--radius-sm); padding: 1.1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; flex-wrap: wrap; gap: 0.5rem;">
+              <h4 style="color: #67e8f9; font-size: 1.05rem;">1. Planning (การวางแผนโครงการ)</h4>
+              <span style="font-size: 0.8rem; background: rgba(6, 182, 212, 0.2); color: #67e8f9; padding: 0.2rem 0.6rem; border-radius: 4px;">ตอบคำถาม: "ทำไมต้องทำ? ทำแล้วคุ้มไหม?"</span>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+              • <strong>กิจกรรมหลัก:</strong> รับคำขอพัฒนาระบบ (System Request), วิเคราะห์ปัญหา/โอกาส, ศึกษาความเป็นไปได้ (Feasibility Study), กำหนดขอบเขตงาน (Scope) และจัดสรรงบประมาณ/ทีมงาน<br>
+              • <strong style="color: #a5f3fc;">📦 เอกสารส่งมอบ (Deliverables):</strong> <code>Feasibility Study Report</code> (รายงานความเป็นไปได้) และ <code>Project Charter / Project Plan</code> (แผนบริหารโครงการ)
+            </p>
+          </div>
 
           <!-- Phase 2 -->
-          <rect x="210" y="30" width="165" height="75" rx="8" fill="#1e293b" stroke="#6366f1" stroke-width="2"/>
-          <text x="292" y="60" fill="#a5b4fc" font-size="14" font-weight="bold" text-anchor="middle">2. Analysis</text>
-          <text x="292" y="82" fill="#94a3b8" font-size="11" text-anchor="middle">DFD, Requirements</text>
-
-          <path d="M 380 67 L 405 67" stroke="#f59e0b" stroke-width="2.5" fill="none"/>
+          <div style="background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: var(--radius-sm); padding: 1.1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; flex-wrap: wrap; gap: 0.5rem;">
+              <h4 style="color: #a5b4fc; font-size: 1.05rem;">2. Analysis (การวิเคราะห์ระบบ)</h4>
+              <span style="font-size: 0.8rem; background: rgba(99, 102, 241, 0.2); color: #a5b4fc; padding: 0.2rem 0.6rem; border-radius: 4px;">ตอบคำถาม: "ระบบใหม่ต้องทำอะไรได้บ้าง (What to do)?"</span>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+              • <strong>กิจกรรมหลัก:</strong> รวบรวมความต้องการ (Requirement Gathering) โดยการสัมภาษณ์/สังเกต/แจกแบบสอบถาม, วิเคราะห์ระบบปัจจุบัน (AS-IS) เพื่อหาระบบที่ควรจะเป็น (TO-BE), สร้างแบบจำลองการไหลของข้อมูล<br>
+              • <strong style="color: #c7d2fe;">📦 เอกสารส่งมอบ (Deliverables):</strong> <code>SRS (System Requirements Specification)</code>, <code>Data Flow Diagram (DFD Level 0 & 1)</code>, <code>Use Case Diagram</code>
+            </p>
+          </div>
 
           <!-- Phase 3 -->
-          <rect x="410" y="30" width="165" height="75" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
-          <text x="492" y="60" fill="#e9d5ff" font-size="14" font-weight="bold" text-anchor="middle">3. Design</text>
-          <text x="492" y="82" fill="#94a3b8" font-size="11" text-anchor="middle">UI, DB, Architecture</text>
-
-          <path d="M 580 67 L 605 67" stroke="#f59e0b" stroke-width="2.5" fill="none"/>
+          <div style="background: rgba(168, 85, 247, 0.08); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: var(--radius-sm); padding: 1.1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; flex-wrap: wrap; gap: 0.5rem;">
+              <h4 style="color: #e9d5ff; font-size: 1.05rem;">3. Design (การออกแบบระบบ)</h4>
+              <span style="font-size: 0.8rem; background: rgba(168, 85, 247, 0.2); color: #e9d5ff; padding: 0.2rem 0.6rem; border-radius: 4px;">ตอบคำถาม: "จะสร้างระบบขึ้นมาอย่างไร (How to build)?"</span>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+              • <strong>กิจกรรมหลัก:</strong> แปลง Requirement ให้เป็นแบบพิมพ์เขียวเชิงเทคนิค: ออกแบบหน้าจอ UI/UX (Wireframe/Mockup), ออกแบบฐานข้อมูล (ER Diagram & Relational Schema), ออกแบบ Architecture (Client-Server, Cloud API) และระบบรักษาความปลอดภัย<br>
+              • <strong style="color: #f3e8ff;">📦 เอกสารส่งมอบ (Deliverables):</strong> <code>System Design Document</code>, <code>ERD & Data Dictionary</code>, <code>UI/UX Prototypes</code>, <code>Database Schema</code>
+            </p>
+          </div>
 
           <!-- Phase 4 -->
-          <rect x="610" y="30" width="165" height="75" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
-          <text x="692" y="60" fill="#6ee7b7" font-size="14" font-weight="bold" text-anchor="middle">4. Implementation</text>
-          <text x="692" y="82" fill="#94a3b8" font-size="11" text-anchor="middle">Coding, Testing</text>
-
-          <path d="M 780 67 L 805 67" stroke="#f59e0b" stroke-width="2.5" fill="none"/>
+          <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-sm); padding: 1.1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; flex-wrap: wrap; gap: 0.5rem;">
+              <h4 style="color: #6ee7b7; font-size: 1.05rem;">4. Implementation (การนำไปใช้ / พัฒนาจริง)</h4>
+              <span style="font-size: 0.8rem; background: rgba(16, 185, 129, 0.2); color: #6ee7b7; padding: 0.2rem 0.6rem; border-radius: 4px;">ตอบคำถาม: "สร้างโค้ด ทดสอบ และเปิดระบบใช้งานจริง"</span>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+              • <strong>กิจกรรมหลัก:</strong> เขียนโปรแกรม (Coding), ทดสอบระบบ 4 ระดับ (Unit Test -> Integration Test -> System Test -> UAT: User Acceptance Testing), ติดตั้งฮาร์ดแวร์/ซอฟต์แวร์, อบรมผู้ใช้งาน (User Training), แปลงระบบงานเก่าสู่ระบบใหม่ (System Conversion: Direct, Parallel, Pilot, Phased)<br>
+              • <strong style="color: #a7f3d0;">📦 เอกสารส่งมอบ (Deliverables):</strong> <code>Installed Software</code> (ซอฟต์แวร์ที่ใช้งานได้จริง), <code>Test Cases & Results</code>, <code>User Manual (คู่มือผู้ใช้)</code>
+            </p>
+          </div>
 
           <!-- Phase 5 -->
-          <rect x="810" y="30" width="130" height="75" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="2"/>
-          <text x="875" y="60" fill="#fecdd3" font-size="13" font-weight="bold" text-anchor="middle">5. Maintenance</text>
-          <text x="875" y="82" fill="#94a3b8" font-size="11" text-anchor="middle">Support, Security</text>
-        </svg>
+          <div style="background: rgba(244, 63, 94, 0.08); border: 1px solid rgba(244, 63, 94, 0.3); border-radius: var(--radius-sm); padding: 1.1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; flex-wrap: wrap; gap: 0.5rem;">
+              <h4 style="color: #fca5a5; font-size: 1.05rem;">5. Maintenance (การบำรุงรักษา)</h4>
+              <span style="font-size: 0.8rem; background: rgba(244, 63, 94, 0.2); color: #fca5a5; padding: 0.2rem 0.6rem; border-radius: 4px;">ตอบคำถาม: "ดูแลให้ระบบทำงานเสถียรและปรับตามอนาคต"</span>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+              • <strong>กิจกรรมหลัก:</strong> ดูแลระบบรายวัน แก้ไขปัญหาที่พบ แบ่งเป็น 4 รูปแบบ: 1. <em>Corrective</em> (แก้บั๊ก/ข้อผิดพลาด) 2. <em>Adaptive</em> (ปรับตัวตามสิ่งแวดล้อมใหม่ เช่น อัปเดต OS/Database ใหม่) 3. <em>Perfective</em> (ปรับปรุงความเร็ว/เพิ่มฟีเจอร์ตามที่ User ร้องขอ) 4. <em>Preventive</em> (บำรุงรักษาเชิงป้องกันก่อนระบบพัง)<br>
+              • <strong style="color: #fecdd3;">📦 เอกสารส่งมอบ (Deliverables):</strong> <code>Maintenance Log</code>, <code>Software Patches / Updates</code>
+            </p>
+          </div>
+        </div>
       </div>
 
-      <div class="grid-2">
-        <div class="card">
-          <div class="card-header">
-            <h3>🌊 Waterfall Model (แบบดั้งเดิม)</h3>
-            <span class="card-number">W</span>
-          </div>
-          <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6;">
-            • <strong>ลักษณะ:</strong> ทำงานเป็นขั้นบันไดทีละขั้น เฟสก่อนหน้าต้องเสร็จ 100% ถึงจะเริ่มเฟสถัดไปได้<br>
-            • <strong>ข้อดี:</strong> วางแผนชัดเจน ควบคุมเอกสารและงบประมาณได้ง่าย เหมาะกับโปรเจกต์ที่ Requirement นิ่ง ไม่เปลี่ยน<br>
-            • <strong>ข้อเสีย:</strong> ไม่ยืดหยุ่น ถ้าลูกค้าเปลี่ยน Requirement กลางคันจะแก้ยากมาก และเห็นระบบตอนปลายสุดเท่านั้น
-          </p>
+      <!-- SECTION 2: WATERFALL VS AGILE COMPARISON TABLE -->
+      <div class="box-read">
+        <span class="content-badge theory">📖 ส่วนที่ 2: อ่านทำความเข้าใจ • ตารางเปรียบเทียบ Waterfall vs Agile 6 มิติ</span>
+        <div class="db-table-wrapper" style="margin: 0.5rem 0 1rem 0;">
+          <table class="db-table">
+            <thead>
+              <tr>
+                <th style="width: 22%;">มิติการเปรียบเทียบ</th>
+                <th style="color: #67e8f9; width: 39%;">🌊 Waterfall Model (แบบดั้งเดิม)</th>
+                <th style="color: #a5b4fc; width: 39%;">⚡ Agile / Scrum (แบบสมัยใหม่)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1. รูปแบบการทำงาน</strong></td>
+                <td>ทำเป็นขั้นบันไดทีละเฟสตามลำดับ (Sequential) เฟสเดิมต้องเสร็จ 100% ถึงจะเริ่มเฟสใหม่ได้</td>
+                <td>แบ่งเป็นรอบสั้นๆ เรียกว่า <strong>Sprint (1-4 สัปดาห์)</strong> วนลูป Plan-Build-Test ซ้ำๆ (Iterative & Incremental)</td>
+              </tr>
+              <tr>
+                <td><strong>2. ความยืดหยุ่นต่อการเปลี่ยนแปลง</strong></td>
+                <td><strong>ต่ำมาก (Rigid):</strong> ถ้าเริ่มโค้ดแล้วลูกค้าขอแก้ Requirement จะมีต้นทุนสูงมากและทำให้งานสะดุด</td>
+                <td><strong>สูงมาก (Flexible):</strong> ยินดีต้อนรับการเปลี่ยนแปลง ปรับเปลี่ยน Backlog ใน Sprint ถัดไปได้ทันที</td>
+              </tr>
+              <tr>
+                <td><strong>3. การส่งมอบงาน (Delivery)</strong></td>
+                <td>ส่งมอบชิ้นงานที่ใช้ได้จริง <strong>"ตอนท้ายสุดของโครงการเพียงครั้งเดียว (Big Bang)"</strong></td>
+                <td>ส่งมอบ <strong>"Working Software ที่ใช้งานได้จริงในทุกๆ สิ้นสุด Sprint"</strong> ลูกค้าได้ลองใช้ตลอด</td>
+              </tr>
+              <tr>
+                <td><strong>4. การมีส่วนร่วมของลูกค้า</strong></td>
+                <td>คุยเข้มข้นเฉพาะตอนต้นน้ำ (Requirement) แล้วเจอกันอีกทีตอนส่งมอบระบบปลายน้ำ</td>
+                <td>มีส่วนร่วมตลอดเวลา (Product Owner อยู่ในทีม) มีประชุม Review ชิ้นงานทุกสัปดาห์</td>
+              </tr>
+              <tr>
+                <td><strong>5. การจัดการเอกสาร</strong></td>
+                <td>เน้นเอกสารเข้มงวดมาก (Comprehensive Documentation) ทุกขั้นตอนต้องมี Sign-off อนุมัติ</td>
+                <td>เน้นชิ้นงานซอฟต์แวร์ที่ใช้ได้จริงมากกว่าเอกสารหนาเตอะ (Working software over comprehensive documentation)</td>
+              </tr>
+              <tr>
+                <td><strong>6. ความเหมาะสมกับโปรเจกต์</strong></td>
+                <td>โปรเจกต์ที่ <strong>Requirement นิ่ง ชัดเจน ไม่เปลี่ยน</strong> เช่น ระบบบัญชี, ระบบการบิน, ระบบราชการ, การแพทย์</td>
+                <td>โปรเจกต์ที่ <strong>Requirement ไม่แน่นอน ตลาดเปลี่ยนไว</strong> เช่น แอป Startup, E-Commerce, เกม, AI</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </div>
 
-        <div class="card">
-          <div class="card-header">
-            <h3>⚡ Agile Methodologies (แบบสมัยใหม่)</h3>
-            <span class="card-number">A</span>
+      <!-- SECTION 3: EXAM ANSWER BLUEPRINT -->
+      <div class="box-action">
+        <span class="content-badge exam-template">✍️ ส่วนที่ 3: วิธีเขียนตอบในห้องสอบ (Exam Answer Blueprint)</span>
+        <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">แนวข้อสอบยอดฮิต: "โจทย์ให้สถานการณ์มา แล้วถามว่าควรใช้ Waterfall หรือ Agile?"</h3>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1rem;">
+          จำลองกระดาษคำตอบที่อาจารย์ตรวจแล้วให้คะแนนเต็ม 100% ให้เขียนโครงสร้าง 3 ท่อน: <strong>1. ฟันธงเลือกโมเดล -> 2. ให้เหตุผลสนับสนุน 3 ข้อ -> 3. ยกตัวอย่างความเสี่ยงหากเลือกผิด</strong>
+        </p>
+
+        <div class="exam-answer-paper">
+          <p><strong>ตัวอย่างโจทย์ 1:</strong> "บริษัทต้องการพัฒนาระบบเบิกจ่ายเบี้ยประกันภัยทางการแพทย์ ซึ่งมีระเบียบคปภ. กำกับชัดเจน และผิดพลาดเรื่องตัวเลขไม่ได้เลย ควรเลือกวิธีการพัฒนาระบบแบบใด?"</p>
+          <div style="background: rgba(16, 185, 129, 0.1); border-left: 3px solid #10b981; padding: 0.75rem; margin: 0.5rem 0; border-radius: 4px;">
+            <p><strong>คำตอบที่สมบูรณ์แบบ:</strong></p>
+            <p>1. <strong>ฟันธง:</strong> ควรเลือกใช้ <strong>Waterfall Model</strong></p>
+            <p>2. <strong>เหตุผลประกอบ:</strong><br>
+            • ข้อกำหนดและกฎหมายทางการแพทย์มีความชัดเจนแน่นอน (Fixed Requirements) ไม่เปลี่ยนแปลงบ่อย<br>
+            • ต้องการความแม่นยำสูงมากและเอกสารหลักฐาน (Audit Trail) ครบถ้วนตามกฎหมาย Waterfall มีการทำ Deliverable และ Sign-off ทุกเฟสอย่างเป็นทางการ<br>
+            • ช่วยให้สามารถวางแผนงบประมาณและกรอบเวลาการตรวจสอบระบบความปลอดภัยได้อย่างเป็นระบบก่อนเปิดใช้งานจริง</p>
           </div>
-          <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6;">
-            • <strong>ลักษณะ:</strong> แบ่งการทำงานเป็นรอบสั้นๆ เรียกว่า Sprint (1-4 สัปดาห์) มีการส่งมอบชิ้นงานที่ใช้งานได้จริงในทุกรอบ<br>
-            • <strong>ข้อดี:</strong> ยืดหยุ่นสูง รับมือกับการเปลี่ยนแปลงได้ดี ลูกค้าเห็นงานตลอดเวลา<br>
-            • <strong>ข้อเสีย:</strong> ควบคุม Scope และงบประมาณสุดท้ายได้ยาก หากไม่มีวินัยอาจเกิด Scope Creep ได้ง่าย
-          </p>
+
+          <hr style="border-color: rgba(255,255,255,0.1); margin: 1rem 0;">
+
+          <p><strong>ตัวอย่างโจทย์ 2:</strong> "ธุรกิจ Startup ต้องการเปิดตัวแอปพลิเคชันค้นหาร้านอาหารแบบใหม่ เพื่อชิงความได้เปรียบในตลาดที่มีคู่แข่งเกิดใหม่ตลอดเวลา ควรเลือกวิธีการพัฒนาแบบใด?"</p>
+          <div style="background: rgba(99, 102, 241, 0.1); border-left: 3px solid #6366f1; padding: 0.75rem; margin: 0.5rem 0; border-radius: 4px;">
+            <p><strong>คำตอบที่สมบูรณ์แบบ:</strong></p>
+            <p>1. <strong>ฟันธง:</strong> ควรเลือกใช้ <strong>Agile Methodologies (Scrum Framework)</strong></p>
+            <p>2. <strong>เหตุผลประกอบ:</strong><br>
+            • พฤติกรรมผู้บริโภคและเทรนด์ร้านอาหารเปลี่ยนแปลงรวดเร็วมาก Agile รองรับการแก้ไข Requirement ได้ตลอดเวลา<br>
+            • สามารถส่งมอบ <strong>MVP (Minimum Viable Product)</strong> ที่ใช้งานได้จริงออกสู่ตลาดได้ภายใน 2-4 สัปดาห์แรก เพื่อทดสอบความต้องการของผู้ใช้จริง (User Feedback)<br>
+            • ลดความเสี่ยงในการลงทุนสร้างแอปนานเป็นปีแล้วเปิดตัวออกมาไม่มีใครใช้</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 4: EXAM TRAPS -->
+      <div class="box-trap">
+        <span class="content-badge trap">⚠️ ส่วนที่ 4: กับดักข้อสอบ & จุดที่นักศึกษาชอบตอบผิด</span>
+        <div style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7;">
+          <p>❌ <strong>จุดผิดที่ 1: สับสนว่า DFD และ ERD อยู่เฟสไหน!</strong><br>
+          จำให้แม่น: <code>DFD (Data Flow Diagram)</code> อยู่ในเฟส <strong>Analysis (การวิเคราะห์)</strong> เพราะเป็นการระบุ "การไหลของข้อมูลเชิงตรรกะ (Logical)"<br>
+          ส่วน <code>ER Diagram & Schema</code> อยู่ในเฟส <strong>Design (การออกแบบ)</strong> เพราะเป็นการออกแบบ "โครงสร้างตารางข้อมูลเพื่อนำไปสร้างจริง (Physical Database)"</p>
+          <p>❌ <strong>จุดผิดที่ 2: ตอบว่า Agile ไม่ต้องมีเอกสารอะไรเลย</strong><br>
+          ผิดทันที! Agile ไม่ได้บอกว่าห้ามทำเอกสาร แต่ Agile <em>"ลดเอกสารที่ซ้ำซ้อนและเน้นเท่าที่จำเป็น"</em> เช่น ยังคงมี Product Backlog, User Story, Definition of Done อยู่เสมอ</p>
         </div>
       </div>
     </section>
@@ -1061,47 +1202,160 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
     <!-- ========================================== -->
     <section id="tab-csc481-swot" class="content-section" style="display: none;">
       <div class="section-header">
-        <span class="section-tag">CSC481 • ข้อที่ 2 (10 คะแนน)</span>
-        <h2 class="section-title">Feasibility 4 ด้าน & SWOT/TOWS Matrix</h2>
-        <p class="section-desc">การศึกษาความเป็นไปได้และการจับคู่กลยุทธ์ตามสไลด์เคสศึกษา 7-Eleven</p>
+        <span class="section-tag">CSC481 • ข้อที่ 2 (10 คะแนนเต็ม)</span>
+        <h2 class="section-title">Feasibility 5 ด้าน & SWOT / TOWS Matrix</h2>
+        <p class="section-desc">TELOS Framework การศึกษาความเป็นไปได้ -> การแยก SWOT ภายใน vs ภายนอก -> การจับคู่กลยุทธ์ TOWS 4 มิติ (เคสศึกษา 7-Eleven)</p>
       </div>
 
-      <div class="grid-2">
-        <div class="card">
-          <div class="card-header">
-            <h3>🔍 Feasibility Study (ความเป็นไปได้ 4 ด้าน)</h3>
-            <span class="card-number">4</span>
+      <!-- SECTION 1: FEASIBILITY 5 DIMENSIONS (TELOS) -->
+      <div class="box-read">
+        <span class="content-badge theory">📖 ส่วนที่ 1: อ่านทำความเข้าใจ • การศึกษาความเป็นไปได้ 5 ด้าน (TELOS Framework)</span>
+        <p style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 1rem;">
+          ก่อนจะอนุมัติสร้างระบบในเฟส Planning นักวิเคราะห์ระบบต้องทำ <strong>Feasibility Study</strong> เพื่อพิสูจน์ว่าโปรเจกต์นี้ <em>"ทำได้จริงและคุ้มค่าที่จะทำ"</em> โดยใช้กรอบ TELOS 5 ด้าน:
+        </p>
+
+        <div class="grid-2">
+          <div style="background: rgba(6, 182, 212, 0.08); border: 1px solid rgba(6, 182, 212, 0.3); border-radius: var(--radius-sm); padding: 1rem;">
+            <h4 style="color: #67e8f9; margin-bottom: 0.4rem;">1. Technical Feasibility (ด้านเทคนิค)</h4>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+              • มีเทคโนโลยี ฮาร์ดแวร์ ซอฟต์แวร์ และโครงข่ายสัญญาณรองรับหรือไม่?<br>
+              • ทีมพัฒนามีทักษะและความเชี่ยวชาญพอไหม หรือต้องจ้าง Outsource / อบรมเพิ่ม?
+            </p>
           </div>
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.9rem; color: var(--text-secondary);">
-            <li>• <strong>1. Economic Feasibility:</strong> ความคุ้มค่าทางการเงิน (Cost-Benefit Analysis, TCO, ROI, Payback Period)</li>
-            <li>• <strong>2. Technical Feasibility:</strong> เทคโนโลยีและฮาร์ดแวร์/ทีมงานมีความพร้อมรองรับได้หรือไม่</li>
-            <li>• <strong>3. Operational Feasibility:</strong> ระบบใหม่เข้ากับการทำงานของคนในองค์กรและแก้ปัญหาได้จริงไหม</li>
-            <li>• <strong>4. Schedule Feasibility:</strong> สามารถพัฒนาระบบให้เสร็จทันเวลาที่กำหนดได้หรือไม่</li>
-          </ul>
+
+          <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-sm); padding: 1rem;">
+            <h4 style="color: #6ee7b7; margin-bottom: 0.4rem;">2. Economic Feasibility (ด้านความคุ้มค่าทางการเงิน)</h4>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+              • การวิเคราะห์ต้นทุนเทียบผลประโยชน์ (Cost-Benefit Analysis)<br>
+              • <strong>ROI (Return on Investment):</strong> <code>(ผลประโยชน์สุทธิ / ต้นทุนทั้งหมด) x 100%</code><br>
+              • <strong>Payback Period:</strong> ระยะเวลาคืนทุน (ต้องสั้นกว่าอายุการใช้งานของระบบ)<br>
+              • <strong>TCO (Total Cost of Ownership):</strong> รวมค่าติดตั้ง ค่าลิขสิทธิ์ และค่าบำรุงรักษา
+            </p>
+          </div>
+
+          <div style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: var(--radius-sm); padding: 1rem;">
+            <h4 style="color: #fcd34d; margin-bottom: 0.4rem;">3. Legal & Ethical Feasibility (ด้านกฎหมายและจริยธรรม)</h4>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+              • ไม่ละเมิดกฎหมาย เช่น <strong>พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล (PDPA)</strong><br>
+              • ไม่ละเมิดลิขสิทธิ์ซอฟต์แวร์ หรือสิทธิบัตรของผู้อื่น และสอดคล้องกับข้อกำหนดภาครัฐ
+            </p>
+          </div>
+
+          <div style="background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: var(--radius-sm); padding: 1rem;">
+            <h4 style="color: #a5b4fc; margin-bottom: 0.4rem;">4. Operational Feasibility (ด้านการปฏิบัติงาน / ผู้ใช้)</h4>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+              • ผู้ใช้งาน (พนักงาน) พร้อมยอมรับระบบใหม่หรือไม่? จะเกิดการต่อต้าน (User Resistance) ไหม?<br>
+              • ระบบแก้ปัญหาการทำงานเดิมขององค์กรได้จริงหรือไม่ และเข้ากับวัฒนธรรมองค์กรไหม
+            </p>
+          </div>
         </div>
 
-        <div class="card">
-          <div class="card-header">
-            <h3>🎯 TOWS Matrix (การจับคู่กลยุทธ์)</h3>
-            <span class="card-number">T</span>
+        <div style="background: rgba(168, 85, 247, 0.08); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: var(--radius-sm); padding: 1rem; margin-top: 0.5rem;">
+          <h4 style="color: #e9d5ff; margin-bottom: 0.4rem;">5. Schedule Feasibility (ด้านกรอบเวลา)</h4>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+            • สามารถพัฒนาระบบให้เสร็จทันกำหนดการส่งมอบ (Deadlines) หรือไม่? ถ้าดีเลย์จะกระทบต่อธุรกิจอย่างไร?
+          </p>
+        </div>
+      </div>
+
+      <!-- SECTION 2: SWOT INTERNAL VS EXTERNAL -->
+      <div class="box-read">
+        <span class="content-badge theory">📖 ส่วนที่ 2: อ่านทำความเข้าใจ • SWOT แยกปัจจัยภายใน vs ภายนอกให้เด็ดขาด</span>
+        <p style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 1rem;">
+          หัวใจของ SWOT คือการแยกแยะสิ่งที่ <strong>"องค์กรควบคุมได้ (ภายใน)"</strong> ออกจากสิ่งที่ <strong>"องค์กรควบคุมไม่ได้ (ภายนอก)"</strong>:
+        </p>
+
+        <div class="grid-2">
+          <!-- Internal -->
+          <div style="background: rgba(16, 185, 129, 0.06); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-sm); padding: 1.25rem;">
+            <h4 style="color: #6ee7b7; font-size: 1.05rem; margin-bottom: 0.75rem;">🏢 ปัจจัยภายใน (Internal - องค์กรควบคุมได้เอง)</h4>
+            <div style="margin-bottom: 0.75rem;">
+              <strong style="color: #34d399;">S - Strengths (จุดแข็ง):</strong>
+              <p style="font-size: 0.86rem; color: var(--text-secondary); margin-top: 0.2rem;">
+                สิ่งที่เราทำได้ดีเด่นเหนือคู่แข่ง เช่น มีสาขากระจายทั่วประเทศ, ฐานข้อมูลลูกค้าใหญ่, เงินทุนหนา, มีระบบโลจิสติกส์ของตัวเอง
+              </p>
+            </div>
+            <div>
+              <strong style="color: #f87171;">W - Weaknesses (จุดอ่อน):</strong>
+              <p style="font-size: 0.86rem; color: var(--text-secondary); margin-top: 0.2rem;">
+                ข้อเสียเปรียบหรือข้อบกพร่องภายใน เช่น พนักงานหน้าสาขาขาดทักษะไอที, ระบบสต็อกเก่าทำให้อัปเดตช้า, แอปพลิเคชันยังไม่รองรับหลายภาษา
+              </p>
+            </div>
           </div>
-          <div style="font-size: 0.88rem; display: flex; flex-direction: column; gap: 0.6rem;">
-            <div style="background: rgba(16, 185, 129, 0.12); padding: 0.5rem 0.8rem; border-radius: 6px; border-left: 3px solid #10b981;">
-              <strong>กลยุทธ์เชิงรุก (S + O):</strong> ใช้จุดแข็ง วิ่งเข้าหาโอกาสที่เปิดอยู่เพื่อเติบโตก้าวกระโดด
+
+          <!-- External -->
+          <div style="background: rgba(99, 102, 241, 0.06); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: var(--radius-sm); padding: 1.25rem;">
+            <h4 style="color: #a5b4fc; font-size: 1.05rem; margin-bottom: 0.75rem;">🌍 ปัจจัยภายนอก (External - สภาพแวดล้อมที่ควบคุมไม่ได้)</h4>
+            <div style="margin-bottom: 0.75rem;">
+              <strong style="color: #60a5fa;">O - Opportunities (โอกาส):</strong>
+              <p style="font-size: 0.86rem; color: var(--text-secondary); margin-top: 0.2rem;">
+                ปัจจัยภายนอกที่เป็นประโยชน์ต่อเรา เช่น นโยบายรัฐหนุนสังคมไร้เงินสด (Cashless), พฤติกรรมผู้บริโภคนิยมสั่งของออนไลน์ส่งถึงบ้าน
+              </p>
             </div>
-            <div style="background: rgba(6, 182, 212, 0.12); padding: 0.5rem 0.8rem; border-radius: 6px; border-left: 3px solid #06b6d4;">
-              <strong>กลยุทธ์เชิงแก้ไข (W + O):</strong> พยายามปิดจุดอ่อนภายใน เพื่อไม่ให้เสียโอกาสสำคัญภายนอกไป
-            </div>
-            <div style="background: rgba(245, 158, 11, 0.12); padding: 0.5rem 0.8rem; border-radius: 6px; border-left: 3px solid #f59e0b;">
-              <strong>กลยุทธ์เชิงป้องกัน (S + T):</strong> ใช้จุดแข็งเป็นเกราะป้องกันภัยคุกคามจากภายนอก
-            </div>
-            <div style="background: rgba(244, 63, 94, 0.12); padding: 0.5rem 0.8rem; border-radius: 6px; border-left: 3px solid #f43f5e;">
-              <strong>กลยุทธ์เชิงรับ (W + T):</strong> ลดความเสี่ยงที่เลวร้ายที่สุด (จุดที่จุดอ่อนตรงกับภัยคุกคามพอดี)
+            <div>
+              <strong style="color: #fbbf24;">T - Threats (อุปสรรค / ภัยคุกคาม):</strong>
+              <p style="font-size: 0.86rem; color: var(--text-secondary); margin-top: 0.2rem;">
+                ปัจจัยภายนอกที่อาจก่อให้เกิดความเสียหาย เช่น คู่แข่งรายใหญ่ทำสงครามตัดราคา, เงินเฟ้อทำให้กำลังซื้อลดลง, ปัญหาค่าพลังงาน/น้ำมันพุ่งสูง
+              </p>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- SECTION 3: TOWS MATRIX ACTION TEMPLATE -->
+      <div class="box-action">
+        <span class="content-badge exam-template">✍️ ส่วนที่ 3: วิธีเขียนตอบในห้องสอบ • ตาราง TOWS Matrix จับคู่กลยุทธ์ 4 ช่อง (เคส 7-Eleven)</span>
+        <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">การแปลง SWOT เป็นแผนกลยุทธ์ปฏิบัติการ (Action Plan):</h3>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1rem;">
+          เวลาข้อสอบให้ออกแบบกลยุทธ์ TOWS Matrix จากเคสศึกษา 7-Eleven หรือร้านค้าปลีก ให้จำคู่ผสม 4 แบบนี้ไปเขียนตอบได้เลยครับ:
+        </p>
+
+        <div class="db-table-wrapper" style="margin: 0.5rem 0 1rem 0;">
+          <table class="db-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">สูตรกลยุทธ์</th>
+                <th style="width: 35%;">ความหมายและเป้าหมาย</th>
+                <th style="color: #6ee7b7; width: 40%;">📝 ตัวอย่างคำตอบที่ต้องเขียนในกระดาษข้อสอบ (เคส 7-Eleven)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="color: #34d399; font-weight: bold;">1. กลยุทธ์ SO (เชิงรุก)</td>
+                <td><strong>ใช้จุดแข็ง (S) วิ่งเข้าหาโอกาส (O)</strong><br>เพื่อสร้างการเติบโตอย่างก้าวกระโดด</td>
+                <td>ใช้เครือข่ายสาขาที่มีมากกว่า 14,000 แห่ง (S) ผนวกกับระบบ Delivery เพื่อรองรับพฤติกรรมสั่งของด่วนถึงบ้านของผู้บริโภคยุคใหม่ (O) กลายเป็นบริการ <strong>7-Delivery ส่งเร็วใน 30 นาที</strong></td>
+              </tr>
+              <tr>
+                <td style="color: #60a5fa; font-weight: bold;">2. กลยุทธ์ WO (เชิงแก้ไข)</td>
+                <td><strong>พลิกจุดอ่อน (W) โดยอาศัยโอกาส (O)</strong><br>ปิดจุดบกพร่องเพื่อไม่ให้เสียโอกาส</td>
+                <td>พนักงานหน้าสาขายังขาดทักษะดิจิทัลและแอปช้า (W) อาศัยโอกาสช่วงที่ภาครัฐมีโครงการส่งเสริม Digital Literacy (O) จัดโปรแกรมอบรม Reskill พนักงาน และปรับปรุงระบบ Cloud Point of Sale</td>
+              </tr>
+              <tr>
+                <td style="color: #fbbf24; font-weight: bold;">3. กลยุทธ์ ST (เชิงป้องกัน)</td>
+                <td><strong>ใช้จุดแข็ง (S) เป็นเกราะต้านภัยคุกคาม (T)</strong><br>รับมือคู่แข่งหรือความเสี่ยงภายนอก</td>
+                <td>คู่แข่งทำสงครามตัดราคา (T) นำระบบฐานข้อมูลสมาชิก <strong>All-Member และ Big Data Loyalty (S)</strong> มาทำการตลาดแบบเฉพาะบุคคล (Personalized Promotion) แจกคูปองสะสมแต้มล็อกลูกค้าไว้โดยไม่ต้องแข่งตัดราคาให้เจ็บตัว</td>
+              </tr>
+              <tr>
+                <td style="color: #f87171; font-weight: bold;">4. กลยุทธ์ WT (เชิงรับ / ถอยตั้งหลัก)</td>
+                <td><strong>ลดจุดอ่อน (W) และหลีกเลี่ยงภัยคุกคาม (T)</strong><br>เพื่อลดความเสียหายร้ายแรงที่สุด</td>
+                <td>สินค้าบางรายการค้างสต็อกนานและมีต้นทุนดูแลสูง (W) ประกอบกับสภาพเศรษฐกิจชะลอตัวและค่าพลังงานพุ่ง (T) ทำการ <strong>ยุบเลิกสินค้าที่ขายไม่ออก และปรับลดเวลาเปิดแอร์/ตู้แช่ในสาขาที่ลูกค้าเบาบาง</strong> เพื่อควบคุมกระแสเงินสด</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SECTION 4: EXAM TRAPS -->
+      <div class="box-trap">
+        <span class="content-badge trap">⚠️ ส่วนที่ 4: จุดตกม้าตายที่เด็กสอบมักโดนหักคะแนน</span>
+        <div style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7;">
+          <p>❌ <strong>จุดผิดยอดฮิต: เอาสิ่งแวดล้อมภายนอกไปใส่ในจุดอ่อน (W) หรือจุดแข็ง (S)</strong><br>
+          เช่น เขียนว่า <em>"จุดอ่อนคือเศรษฐกิจแย่ หรือคู่แข่งเปิดร้านติดกัน"</em> — <strong>ผิดมหันต์!</strong><br>
+          เศรษฐกิจหรือคู่แข่งเป็นปัจจัยภายนอกที่องค์กรสั่งไม่ได้ ต้องเขียนเป็น <strong>ภัยคุกคาม (Threats)</strong> เท่านั้น! จุดอ่อน (Weakness) ต้องเป็นเรื่องในบ้านเราเอง เช่น พนักงานเราทำงานช้า ระบบเราเก่า สินค้าเราหมด</p>
         </div>
       </div>
     </section>
+
 
     <!-- ========================================== -->
     <!-- TAB: CSC481 - CRITICAL PATH (CPM) -->
@@ -1348,74 +1602,124 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
     <!-- ========================================== -->
     <section id="tab-csc481-fishbone" class="content-section" style="display: none;">
       <div class="section-header">
-        <span class="section-tag">CSC481 • ข้อที่ 6 (10 คะแนน)</span>
-        <h2 class="section-title">Fishbone Diagram (ผังก้างปลา) & การแก้ไขปัญหา</h2>
-        <p class="section-desc">การวิเคราะห์สาเหตุและผลกระทบ (Cause and Effect) เคส E-Commerce ยอดขายตก</p>
+        <span class="section-tag">CSC481 • ข้อที่ 6 (10 คะแนนเต็ม)</span>
+        <h2 class="section-title">Fishbone Diagram (ผังก้างปลา) & แผนแก้ปัญหาเชิงระบบ</h2>
+        <p class="section-desc">การวิเคราะห์หาสาเหตุที่แท้จริง (Cause-and-Effect / Ishikawa) -> เทคนิค 5 Whys -> เคสศึกษา E-Commerce ตะกร้าสินค้าถูกทิ้ง -> แผน Action Plan เต็มคะแนน</p>
       </div>
 
-      <!-- Fishbone SVG -->
-      <div class="diagram-container">
-        <svg class="diagram-svg" viewBox="0 0 900 240" xmlns="http://www.w3.org/2000/svg">
-          <!-- Main Spine -->
-          <line x1="60" y1="120" x2="680" y2="120" stroke="#f59e0b" stroke-width="4"/>
-          <!-- Fish Head (Problem) -->
-          <polygon points="680,80 860,120 680,160" fill="#dc2626" stroke="#991b1b" stroke-width="2"/>
-          <text x="750" y="115" fill="#ffffff" font-size="13" font-weight="bold" text-anchor="middle">ปัญหาหลัก:</text>
-          <text x="750" y="135" fill="#ffffff" font-size="12" text-anchor="middle">ยอดขายตก / Conv Rate ต่ำ</text>
+      <!-- SECTION 1: THEORY OF FISHBONE & 5 WHYS -->
+      <div class="box-read">
+        <span class="content-badge theory">📖 ส่วนที่ 1: อ่านทำความเข้าใจ • หลักการของผังก้างปลา (Ishikawa Diagram)</span>
+        <p style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 1rem;">
+          ผังก้างปลา (Cause and Effect Diagram) คิดค้นโดย Dr. Kaoru Ishikawa ใช้เพื่อ <strong>"ระดมสมองค้นหารากเหง้าของปัญหา (Root Causes)"</strong> โดยมองว่าปัญหาที่เกิดขึ้นเป็นเพียง <em>"ยอดภูเขาน้ำแข็ง"</em> ที่เกิดจากสาเหตุสะสมหลายด้าน:
+        </p>
 
-          <!-- Top Bones -->
-          <!-- Bone 1: Tech -->
-          <line x1="220" y1="30" x2="280" y2="120" stroke="#38bdf8" stroke-width="3"/>
-          <rect x="130" y="10" width="180" height="32" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-          <text x="220" y="31" fill="#67e8f9" font-size="12" font-weight="bold" text-anchor="middle">1. ระบบ & เทคโนโลยี</text>
-
-          <!-- Bone 2: Product -->
-          <line x1="450" y1="30" x2="510" y2="120" stroke="#38bdf8" stroke-width="3"/>
-          <rect x="370" y="10" width="160" height="32" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-          <text x="450" y="31" fill="#67e8f9" font-size="12" font-weight="bold" text-anchor="middle">2. สินค้า & ราคา</text>
-
-          <!-- Bottom Bones -->
-          <!-- Bone 3: Service -->
-          <line x1="280" y1="120" x2="220" y2="210" stroke="#a855f7" stroke-width="3"/>
-          <rect x="130" y="195" width="180" height="32" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
-          <text x="220" y="216" fill="#e9d5ff" font-size="12" font-weight="bold" text-anchor="middle">3. บริการ & ขนส่ง</text>
-
-          <!-- Bone 4: Marketing -->
-          <line x1="510" y1="120" x2="450" y2="210" stroke="#a855f7" stroke-width="3"/>
-          <rect x="370" y="195" width="160" height="32" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
-          <text x="450" y="216" fill="#e9d5ff" font-size="12" font-weight="bold" text-anchor="middle">4. การตลาด</text>
-
-          <!-- Sub-Ribs Text Example -->
-          <text x="175" y="70" fill="#94a3b8" font-size="11">• เว็บโหลดช้า</text>
-          <text x="175" y="85" fill="#94a3b8" font-size="11">• Checkout ซับซ้อน</text>
-        </svg>
-      </div>
-
-      <div class="grid-2">
-        <div class="card">
-          <div class="card-header">
-            <h3>🐟 ก้างปลา 5 ด้าน (วิเคราะห์สาเหตุ)</h3>
-            <span class="card-number">5</span>
+        <div class="grid-2">
+          <div style="background: rgba(6, 182, 212, 0.08); border: 1px solid rgba(6, 182, 212, 0.3); border-radius: var(--radius-sm); padding: 1rem;">
+            <h4 style="color: #67e8f9; margin-bottom: 0.4rem;">🎯 1. โครงสร้างของผังก้างปลา</h4>
+            <ul style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; padding-left: 1.2rem;">
+              <li><strong>หัวปลา (Head):</strong> คือ <em>"ปัญหาหลัก หรือผลกระทบ (Effect/Problem Statement)"</em> ที่ต้องการแก้ไข (ห้ามเขียนวิธีแก้ที่หัวปลาเด็ดขาด!)</li>
+              <li><strong>กระดูกสันหลัง (Spine):</strong> เส้นแนวนอนหลักลากพุ่งตรงไปที่หัวปลา</li>
+              <li><strong>ก้างปลาใหญ่ (Major Bones):</strong> หมวดหมู่สาเหตุหลัก เช่น คน, วิธีการ, ระบบ, สภาพแวดล้อม</li>
+              <li><strong>ก้างปลาย่อย (Sub-ribs):</strong> สาเหตุรากเหง้าที่ขุดลึกด้วยเทคนิค <strong>"5 Whys"</strong></li>
+            </ul>
           </div>
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.88rem; color: var(--text-secondary);">
-            <li>• <strong>1. ระบบ & เทคโนโลยี:</strong> เว็บโหลดช้าเกิน 3 วินาที, Checkout หลายขั้นตอน, ล่มตอน Flash Sale</li>
-            <li>• <strong>2. สินค้า & ราคา:</strong> สินค้าหมดสต็อกบ่อย, แพงกว่าคู่แข่ง, ขาดรูปและรีวิวสร้างความเชื่อมั่น</li>
-            <li>• <strong>3. บริการ & ขนส่ง:</strong> ค่าส่งแพงเกินไป, ขนส่งล่าช้า, ไม่มีระบบ Tracking, แอดมินตอบช้า</li>
-            <li>• <strong>4. การตลาด & สื่อสาร:</strong> ยิงแอดไม่ตรงกลุ่มเป้าหมาย, ไม่ทำ Re-targeting ลูกค้าเก่า</li>
-            <li>• <strong>5. ปัจจัยภายนอก:</strong> กำลังซื้อผู้บริโภคชะลอตัว, คู่แข่งทำสงครามตัดราคา</li>
-          </ul>
+
+          <div style="background: rgba(168, 85, 247, 0.08); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: var(--radius-sm); padding: 1rem;">
+            <h4 style="color: #e9d5ff; margin-bottom: 0.4rem;">🔍 2. เทคนิคถาม 5 Whys (ทำไม 5 ครั้ง)</h4>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+              เมื่อเจอปัญหา อย่าหยุดแค่สาเหตุแรก ให้ถามต่อว่า "ทำไมถึงเกิดสิ่งนั้น?" ลึกลงไป 5 ชั้น เช่น:<br>
+              1. ทำไมลูกค้าทิ้งตะกร้าสินค้า? -> <em>เพราะขั้นตอน Checkout ซับซ้อน</em><br>
+              2. ทำไม Checkout ซับซ้อน? -> <em>เพราะบังคับกรอกข้อมูลถึง 15 ช่อง</em><br>
+              3. ทำไมต้องกรอก 15 ช่อง? -> <em>เพราะระบบต้องการข้อมูลไปทำ CRM</em><br>
+              4. ทำไมเก็บตอนซื้อ? -> <em>เพราะไม่มีนโยบาย Guest Checkout ซื้อก่อนสมัครทีหลัง</em><br>
+              💡 <strong>รากเหง้าที่แท้จริง:</strong> ขาดระบบ Guest Checkout ทางแก้จึงเป็นการตัดขั้นตอนให้ซื้อได้ทันที!
+            </p>
+          </div>
         </div>
+      </div>
 
-        <div class="card">
-          <div class="card-header">
-            <h3>🛠️ แผนแก้ไขปัญหา (Action Plan)</h3>
-            <span class="card-number">✓</span>
-          </div>
-          <div style="font-size: 0.88rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.5rem;">
-            <p>• <strong>แก้ไขด้านระบบ:</strong> บีบอัดรูปภาพเป็น <code>.webp</code> + ใช้ CDN ให้โหลดใน 1-2 วินาที, ทำ One-Page Guest Checkout ซื้อได้เลยไม่ต้องบังคับสมัครสมาชิก</p>
-            <p>• <strong>แก้ไขด้านสินค้า:</strong> ใช้ระบบ Real-time ERP สต็อกไม่ขาด และจัดเซ็ตบันเดิล (Bundling) เพื่อสร้าง Value แทนการตัดราคา</p>
-            <p>• <strong>แก้ไขด้านขนส่ง:</strong> ตั้งเงื่อนไขส่งฟรีเมื่อซื้อครบยอด (Free Shipping Threshold) เพื่อดันยอดสั่งซื้อเฉลี่ย (AOV) ให้สูงขึ้น</p>
-          </div>
+      <!-- SECTION 2: FISHBONE VISUAL DIAGRAM -->
+      <div class="box-read">
+        <span class="content-badge example">📊 ส่วนที่ 2: ตัวอย่างผังก้างปลาข้อสอบจริง (เคส E-Commerce ยอดขายตก & ทิ้งตะกร้าสินค้า)</span>
+        
+        <div class="diagram-container">
+          <svg class="diagram-svg" viewBox="0 0 920 250" xmlns="http://www.w3.org/2000/svg">
+            <!-- Main Spine -->
+            <line x1="40" y1="125" x2="700" y2="125" stroke="#f59e0b" stroke-width="4.5"/>
+            
+            <!-- Fish Head -->
+            <polygon points="700,75 890,125 700,175" fill="#dc2626" stroke="#ef4444" stroke-width="2"/>
+            <text x="780" y="115" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">ปัญหาหลัก:</text>
+            <text x="780" y="138" fill="#ffffff" font-size="12" text-anchor="middle">ยอดขายตก 35% / ทิ้งตะกร้า</text>
+
+            <!-- Top Left Bone: Platform / Tech -->
+            <line x1="200" y1="30" x2="270" y2="125" stroke="#38bdf8" stroke-width="3"/>
+            <rect x="110" y="10" width="180" height="34" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+            <text x="200" y="32" fill="#67e8f9" font-size="12" font-weight="bold" text-anchor="middle">1. เทคโนโลยี & ระบบ (Platform)</text>
+            <text x="160" y="70" fill="#cbd5e1" font-size="11">• เว็บโหลดช้า (> 4 วิ)</text>
+            <text x="160" y="88" fill="#cbd5e1" font-size="11">• ระบบจ่ายเงินตัดบัตร Error</text>
+
+            <!-- Top Right Bone: Process / Checkout -->
+            <line x1="450" y1="30" x2="520" y2="125" stroke="#38bdf8" stroke-width="3"/>
+            <rect x="370" y="10" width="170" height="34" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+            <text x="455" y="32" fill="#67e8f9" font-size="12" font-weight="bold" text-anchor="middle">2. ขั้นตอนการทำงาน (Process)</text>
+            <text x="420" y="70" fill="#cbd5e1" font-size="11">• Checkout ซ้ำซ้อน 5 หน้า</text>
+            <text x="420" y="88" fill="#cbd5e1" font-size="11">• บังคับสมัครสมาชิกก่อนซื้อ</text>
+
+            <!-- Bottom Left Bone: People / Support -->
+            <line x1="270" y1="125" x2="200" y2="220" stroke="#a855f7" stroke-width="3"/>
+            <rect x="110" y="205" width="180" height="34" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
+            <text x="200" y="227" fill="#e9d5ff" font-size="12" font-weight="bold" text-anchor="middle">3. บุคลากร & บริการ (People)</text>
+            <text x="160" y="155" fill="#cbd5e1" font-size="11">• แอดมินตอบแชตช้าเกิน 1 ชม.</text>
+            <text x="160" y="173" fill="#cbd5e1" font-size="11">• ขาดทักษะแก้ปัญหาลูกค้า</text>
+
+            <!-- Bottom Right Bone: Price & Policy -->
+            <line x1="520" y1="125" x2="450" y2="220" stroke="#a855f7" stroke-width="3"/>
+            <rect x="370" y="205" width="170" height="34" rx="6" fill="#1e293b" stroke="#a855f7" stroke-width="1.5"/>
+            <text x="455" y="227" fill="#e9d5ff" font-size="12" font-weight="bold" text-anchor="middle">4. ราคา & นโยบาย (Price/Policy)</text>
+            <text x="420" y="155" fill="#cbd5e1" font-size="11">• แอบบวกค่าส่งแพงหน้าสุดท้าย</text>
+            <text x="420" y="173" fill="#cbd5e1" font-size="11">• ไม่มีเก็บเงินปลายทาง (COD)</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- SECTION 3: EXAM ANSWER BLUEPRINT (ACTION PLAN) -->
+      <div class="box-action">
+        <span class="content-badge exam-template">✍️ ส่วนที่ 3: วิธีเขียนตอบในห้องสอบ (Exam Action Plan Blueprint)</span>
+        <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">กระดาษคำตอบแผนปฏิบัติการแก้ไขปัญหา (Action Plan) ที่ได้คะแนนเต็ม 10/10:</h3>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1rem;">
+          เมื่อวาดผังก้างปลาเสร็จ อาจารย์มักจะให้เขียน <strong>"แนวทางการแก้ไขปัญหา (Solutions & Action Plan)"</strong> ให้แบ่งตอบเป็น 4 ด้านตามก้างปลา โดยระบุทั้งมาตรการเร่งด่วนและระยะยาว:
+        </p>
+
+        <div class="exam-answer-paper">
+          <p><strong>1. ด้านระบบและเทคโนโลยี (Platform):</strong><br>
+          • <em>แก้ด่วน:</em> บีบอัดรูปภาพสินค้าทั้งหมดเป็นสกุลไฟล์ <code>.webp</code> และเชื่อมต่อ Cloudflare CDN เพื่อลดระยะเวลาโหลดหน้าเว็บให้ต่ำกว่า 2 วินาที<br>
+          • <em>ระยะยาว:</em> ผสาน Payment Gateway สำรอง (Fallback Gateway) เช่น หากระบบ PromptPay ธนาคารหลักล่ม ให้สลับไปตัดบัตรเครดิตหรือ TrueMoney Wallet อัตโนมัติ</p>
+
+          <p style="margin-top: 0.75rem;"><strong>2. ด้านขั้นตอนการสั่งซื้อ (Process):</strong><br>
+          • <em>แก้ด่วน:</em> เพิ่มฟังก์ชัน <strong>One-Page Guest Checkout</strong> ให้ลูกค้าพิมพ์แค่ชื่อ-ที่อยู่-เบอร์โทร แล้วกดสั่งซื้อได้ทันที ไม่ต้องบังคับลงทะเบียนหรือยืนยัน OTP ซ้ำซ้อน<br>
+          • <em>ระยะยาว:</em> ทำ Auto-fill ที่อยู่จากรหัสไปรษณีย์ และรองรับการสั่งซื้อผ่าน Social Login (Line / Google Account)</p>
+
+          <p style="margin-top: 0.75rem;"><strong>3. ด้านบุคลากรและการบริการ (People):</strong><br>
+          • <em>แก้ด่วน:</em> ติดตั้ง Chatbot อัจฉริยะ (AI / Auto-Reply) เพื่อตอบคำถามพื้นฐาน (เช่น สินค้ามีพร้อมส่งไหม, ค่าส่งเท่าไร) ภายใน 5 วินาทีตลอด 24 ชั่วโมง<br>
+          • <em>ระยะยาว:</em> อบรมฝ่าย Customer Support ให้มี KPI ตอบแชตภายใน 5 นาทีในเวลาทำการ และมีแบบประเมินความพึงพอใจ</p>
+
+          <p style="margin-top: 0.75rem;"><strong>4. ด้านราคาและนโยบาย (Price & Policy):</strong><br>
+          • <em>แก้ด่วน:</em> แสดงค่าจัดส่งอย่างโปร่งใสตั้งแต่หน้ารายการสินค้า ไม่ซ่อนค่าใช้จ่ายแอบแฝง (No Hidden Fees) เพื่อสร้างความเชื่อมั่น<br>
+          • <em>ระยะยาว:</em> จัดแคมเปญ <strong>Free Shipping Threshold</strong> (เช่น ส่งฟรีเมื่อซื้อครบ 500 บาท) เพื่อจูงใจให้ลูกค้าเพิ่มสินค้าลงตะกร้า ดันยอดสั่งซื้อเฉลี่ย (AOV) ให้สูงขึ้น</p>
+        </div>
+      </div>
+
+      <!-- SECTION 4: EXAM TRAPS -->
+      <div class="box-trap">
+        <span class="content-badge trap">⚠️ ส่วนที่ 4: กับดักข้อสอบ & จุดที่นักศึกษาชอบทำผิด</span>
+        <div style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7;">
+          <p>❌ <strong>จุดผิดที่ 1: เขียน "วิธีแก้" ไว้ที่หัวปลา!</strong><br>
+          นักศึกษาหลายคนเขียนที่หัวปลาว่า <em>"ต้องปรับปรุงเว็บไซต์ให้เร็วขึ้น"</em> — <strong>ผิดหลักการทันที!</strong><br>
+          หัวปลาต้องเป็น <strong>"ปัญหาหรือผลกระทบที่เกิดขึ้นแล้ว (Effect)"</strong> เท่านั้น เช่น <em>"เว็บไซต์โหลดช้า / ยอดขายตกต่ำ 30%"</em></p>
+          <p>❌ <strong>จุดผิดที่ 2: ก้างหลักและก้างย่อยไม่สอดคล้องกัน</strong><br>
+          เช่น เอาก้างย่อยเรื่อง "แอดมินตอบช้า" ไปใส่ไว้ใต้ก้างหลัก "เทคโนโลยีและระบบ" (ซึ่งจริงๆ ควรอยู่ใต้หมวด "คน/บุคลากร") ตรวจสอบให้ตรงหมวดหมู่อยู่เสมอ</p>
         </div>
       </div>
     </section>
@@ -1438,37 +1742,75 @@ ORDER_1NF (<span class="key-pk">OrderID</span>, OrderDate, CustomerID, CustomerN
     <!-- ========================================== -->
     <section id="tab-cheatsheet" class="content-section" style="display: none;">
       <div class="section-header">
-        <span class="section-tag">ก่อนเดินเข้าห้องสอบ</span>
-        <h2 class="section-title">⚡ แผ่นพับสรุปย่อ 5 นาทีสุดท้าย</h2>
-        <p class="section-desc">รวมสูตรและคีย์เวิร์ดสำคัญที่ต้องมองผ่านตาก่อนปิดมือถือวางบนเวที</p>
+        <span class="section-tag">ก่อนเดินเข้าห้องสอบ 9N-200</span>
+        <h2 class="section-title">⚡ แผ่นพับสรุปย่อ 5 นาทีสุดท้าย (The Master Blueprint)</h2>
+        <p class="section-desc">สรุปสูตร กฎเหล็ก และคีย์เวิร์ดโกยคะแนนทั้งหมดของ 2 วิชาติด รวมไว้ในหน้าเดียวเพื่อกวาดสายตาก่อนปิดเครื่อง</p>
       </div>
 
+      <!-- MASTER CHEAT SHEET MATRICES -->
       <div class="grid-2">
-        <div class="card" style="border-left: 4px solid #06b6d4;">
-          <h3 style="color: #67e8f9; margin-bottom: 0.5rem;">CSC362 (ฐานข้อมูล)</h3>
-          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary);">
-            • <strong>1NF:</strong> กำจัด Repeating Groups, ค่าในช่องต้องเป็น Atomic, หา Composite PK<br>
-            • <strong>2NF:</strong> กำจัด Partial Dependency (ฟิลด์ธรรมดาขึ้นกับ PK บางส่วน) -> แตกตาราง<br>
-            • <strong>3NF:</strong> กำจัด Transitive Dependency (ฟิลด์ธรรมดาขึ้นกับฟิลด์ธรรมดา A -> B -> C) -> แตกตาราง<br>
-            • <strong>1:M Mapping:</strong> เอา PK ฝั่ง 1 ไปใส่เป็น FK ฝั่ง M<br>
-            • <strong>M:N Mapping:</strong> แตกตาราง Bridge ตรงกลาง ดึง PK ทั้งสองฝั่งเป็น Composite PK<br>
-            • <strong>Entity Integrity:</strong> PK ห้ามเป็น NULL และห้ามซ้ำ<br>
-            • <strong>Referential Integrity:</strong> FK ต้องตรงกับ PK แม่ที่มีอยู่จริง หรือเป็น NULL
-          </p>
+        <!-- Morning CSC362 -->
+        <div class="box-read" style="margin-bottom: 0;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+            <h3 style="color: #67e8f9; font-size: 1.15rem;">🌅 เช้า: CSC362 (ฐานข้อมูล 4 ข้อ 60 คะแนน)</h3>
+            <span style="font-size: 0.75rem; background: rgba(6, 182, 212, 0.2); color: #67e8f9; padding: 0.2rem 0.5rem; border-radius: 4px;">09:00 - 12:00</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+            <div style="background: rgba(255,255,255,0.03); padding: 0.75rem; border-radius: 6px; border-left: 3px solid #06b6d4;">
+              <strong style="color: #67e8f9;">1. Normalization Recipe:</strong><br>
+              • <strong>1NF:</strong> กำจัด Repeating Groups -> ค่า Atomic -> รวม Composite PK (ขีดเส้นใต้ 2 ตัว)<br>
+              • <strong>2NF:</strong> กำจัด Partial Dependency (ฟิลด์ที่ขึ้นกับ PK ตัวใดตัวหนึ่ง) -> แตกเป็นตารางเดี่ยว<br>
+              • <strong>3NF:</strong> กำจัด Transitive Dependency (A -> B -> C ฟิลด์ธรรมดาขึ้นกับฟิลด์ธรรมดา) -> แตกตารางทิ้ง FK ไว้เชื่อม
+            </div>
+
+            <div style="background: rgba(255,255,255,0.03); padding: 0.75rem; border-radius: 6px; border-left: 3px solid #6366f1;">
+              <strong style="color: #a5b4fc;">2. ERD to Relational Mapping:</strong><br>
+              • <strong>1:M:</strong> เอา PK ฝั่ง 1 ไปวางเป็น FK ฝั่ง Many (ลูกดึงบัตรแม่มาถือ)<br>
+              • <strong>M:N:</strong> แตกตาราง Bridge ตรงกลาง ดึง PK ทั้งสองฝั่งมารวมเป็น Composite PK<br>
+              • <strong>1:1:</strong> เอา PK ฝั่งใดฝั่งหนึ่งไปเป็น FK ของอีกฝั่ง (มักเลือกฝั่งที่จำเป็นต้องมี)
+            </div>
+
+            <div style="background: rgba(255,255,255,0.03); padding: 0.75rem; border-radius: 6px; border-left: 3px solid #10b981;">
+              <strong style="color: #6ee7b7;">3. Keys & Integrity Rules:</strong><br>
+              • <strong>Entity Integrity:</strong> Primary Key ห้ามเป็น NULL และห้ามซ้ำเด็ดขาด<br>
+              • <strong>Referential Integrity:</strong> Foreign Key ต้องมีค่าตรงกับ Primary Key ในตารางแม่ หรือเป็น NULL
+            </div>
+          </div>
         </div>
 
-        <div class="card" style="border-left: 4px solid #f59e0b;">
-          <h3 style="color: #fcd34d; margin-bottom: 0.5rem;">CSC481 (วิเคราะห์ระบบ)</h3>
-          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary);">
-            • <strong>SDLC:</strong> Planning -> Analysis -> Design -> Implementation -> Maintenance<br>
-            • <strong>Forward Pass:</strong> ES + Dur = EF (หลายทางเข้า เลือกค่ามากสุด)<br>
-            • <strong>Backward Pass:</strong> LF - Dur = LS (หลายทางออก เลือกค่าน้อยสุด)<br>
-            • <strong>Critical Path:</strong> เส้นทางที่ยาวที่สุด และ Slack = 0 ทุกตัว (ห้ามดีเลย์)<br>
-            • <strong>DFD กฎเหล็ก:</strong> ห้าม Black Hole (มีแต่เข้า), ห้าม Miracle (มีแต่ออก), ห้ามลาก Entity ชน Entity ตรงๆ
-          </p>
+        <!-- Afternoon CSC481 -->
+        <div class="box-action" style="margin-bottom: 0;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+            <h3 style="color: #fcd34d; font-size: 1.15rem;">🌇 บ่าย: CSC481 (วิเคราะห์ระบบ 6 ข้อ 60 คะแนน)</h3>
+            <span style="font-size: 0.75rem; background: rgba(245, 158, 11, 0.2); color: #fcd34d; padding: 0.2rem 0.5rem; border-radius: 4px;">13:00 - 16:00</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+            <div style="background: rgba(255,255,255,0.03); padding: 0.75rem; border-radius: 6px; border-left: 3px solid #f59e0b;">
+              <strong style="color: #fcd34d;">1. CPM Calculation (ออกชัวร์ 100%):</strong><br>
+              • <strong>Forward Pass (ขาไป):</strong> <code>ES + Duration = EF</code> (ทางแยกชนกันเลือก <strong>MAX</strong>)<br>
+              • <strong>Backward Pass (ขากลับ):</strong> <code>LF - Duration = LS</code> (ทางแยกชนกันเลือก <strong>MIN</strong>)<br>
+              • <strong>Slack:</strong> <code>LS - ES</code> หรือ <code>LF - EF</code> (สายวิกฤต Critical Path คือสายที่ Slack = 0 ทุกตัว)
+            </div>
+
+            <div style="background: rgba(255,255,255,0.03); padding: 0.75rem; border-radius: 6px; border-left: 3px solid #f43f5e;">
+              <strong style="color: #fca5a5;">2. DFD Fatal Errors & Rules:</strong><br>
+              • <strong>Black Hole:</strong> มีแต่ Input ไม่มี Output<br>
+              • <strong>Miracle:</strong> เสก Output โดยไม่มี Input เข้า<br>
+              • <strong>กฎห้ามลาก:</strong> ห้าม Entity ชน Entity, ห้าม Entity ชน Data Store, ห้าม Data Store ชน Data Store (ต้องผ่าน Process เสมอ)
+            </div>
+
+            <div style="background: rgba(255,255,255,0.03); padding: 0.75rem; border-radius: 6px; border-left: 3px solid #a855f7;">
+              <strong style="color: #e9d5ff;">3. SDLC & Strategy Matrices:</strong><br>
+              • <strong>SDLC:</strong> Planning (Feasibility) -> Analysis (DFD/SRS) -> Design (ERD/Schema) -> Implementation (Coding/UAT) -> Maintenance<br>
+              • <strong>TOWS:</strong> SO (เชิงรุก), WO (เชิงแก้ไข), ST (เชิงป้องกัน), WT (เชิงรับ)
+            </div>
+          </div>
         </div>
       </div>
     </section>
+
 
   </main>
 </div>
